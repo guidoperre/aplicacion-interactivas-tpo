@@ -16,7 +16,7 @@ export function Home() {
                 </div>
                 <div className="Decoration">
                     <div className="Decoration_Emoji_Left">
-                        <p className="Decoration_Emoji">📕</p>
+                        <p className="Decoration_Emoji">📗</p>
                     </div>
                     <div className="Decoration_Image_Container">
                         <img className="Decoration_Image"
