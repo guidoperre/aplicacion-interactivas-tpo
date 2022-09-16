@@ -1,6 +1,6 @@
 import React from "react";
 import './Footer.css';
-import {Logo} from "../commons/logo/Logo";
+import {Logo} from "../../../components/logo/Logo";
 import {onPrivacyPolicyClicked, onSocialClicked, onTermsAndConditionsClicked} from "./FooterNavigation";
 
 export function Footer() {

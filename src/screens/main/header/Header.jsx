@@ -1,8 +1,8 @@
 import React from "react";
 import './Header.css';
 import {onLoginClicked} from "./HeaderNavigation";
-import {useScrollPosition} from "../states/ScrollState";
-import {Logo} from "../commons/logo/Logo";
+import {useScrollPosition} from "../../../utils/ScrollState";
+import {Logo} from "../../../components/logo/Logo";
 
 export function Header() {
     const scrollPosition = useScrollPosition()

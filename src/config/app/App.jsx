@@ -1,10 +1,10 @@
 import React, {useRef} from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Home} from "../home/Home";
-import {Description} from "../description/Description";
-import {Header} from "../header/Header";
-import {Footer} from "../footer/Footer";
+import {Home} from "../../screens/main/home/Home";
+import {Description} from "../../screens/main/description/Description";
+import {Header} from "../../screens/main/header/Header";
+import {Footer} from "../../screens/main/footer/Footer";
 
 export default function App() {
     const descriptionSection = useRef(null);
