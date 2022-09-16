@@ -1,0 +1,113 @@
+.Description {
+    background: #FAFAFA;
+    display: flex;
+}
+
+.Description_Content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 5% 12.5% 5% 12.5%;
+}
+
+.Description_Subtitle {
+    font-family: Quicksand, serif;
+    font-weight: 500;
+    font-size: 0.85vw;
+    line-height: 1vw;
+    color: #FF4040;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.Description_Title {
+    font-family: Quicksand, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.4vw;
+    line-height: 35px;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 0.5vw;
+}
+
+.Description_Text {
+    width: 75%;
+    font-family: Quicksand, serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.85vw;
+    line-height: 1.4vw;
+    color: #333333;
+    margin-top: 0;
+}
+
+.Description_Features_Content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vw;
+}
+
+.Description_Features {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 1.5vw;
+    grid-column-gap: 2vw;
+    flex: 1;
+    margin: auto 2vw auto auto;
+}
+
+.Feature {
+    background: #FFFFFF;
+    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5vw;
+    padding: 0.85vw 1.4vw;
+}
+
+.Feature_Title_Container {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    margin-bottom: 0.25vw;
+}
+
+.Feature_Emoji {
+    font-family: Quicksand, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1vw;
+    color: #333333;
+    margin: auto 0 auto 0;
+}
+
+.Feature_Title {
+    font-family: Quicksand, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75vw;
+    line-height: 1vw;
+    color: #333333;
+    margin: auto auto 0.1vw 0.25vw;
+}
+
+.Feature_Description {
+    font-family: Quicksand, serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75vw;
+    line-height: 1.12vw;
+    color: #333333;
+    margin: auto;
+    overflow: auto;
+}
+
+.Description_Image {
+    width: 30%;
+    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
+    border-radius: 16px;
+    margin: auto 0 auto auto;
+}

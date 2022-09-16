@@ -1,0 +1,17 @@
+.Logo {
+    display: flex;
+}
+
+.Logo_Image {
+    height: 1.75vw;
+    pointer-events: none;
+    margin: auto;
+}
+
+.Logo_Name {
+    font-family: Quicksand, serif;
+    font-size: 1vw;
+    font-weight: normal;
+    color: white;
+    margin: auto auto auto 0.3vw;
+}
