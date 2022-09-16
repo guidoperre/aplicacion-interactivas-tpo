@@ -11,7 +11,7 @@ export function Home() {
                     <p className="Brand_Title">EL FUTURO EN TUS MANOS</p>
                     <p className="Brand_Description">En Institular ayudamos a los alumnos a que puedan encontrar a su profesor ideal. Le ofrecemos una plataforma donde va a poder buscar todas las clases que siempre quiso asistir.</p>
                     <div className="Brand_Action" onClick={onCreateShopClicked}>
-                        <p className="Brand_Action_Text">CREA TU TIENDA</p>
+                        <p className="Brand_Action_Text">BUSCA CURSOS</p>
                     </div>
                 </div>
                 <div className="Decoration">
