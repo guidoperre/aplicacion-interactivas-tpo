@@ -19,7 +19,7 @@ export function Footer() {
                     <p className="Footer_Clickable_Text" onClick={onPrivacyPolicyClicked}>Politicas de privacidad</p>
                     <p className="Footer_Clickable_Text" onClick={onTermsAndConditionsClicked}>Términos y condiciones</p>
                 </div>
-                <p className="Footer_Text">2022 institular ®. Reservados todos los derechos.</p>
+                <p className="Footer_Text">2022 Institular ®. Reservados todos los derechos.</p>
             </div>
         </header>
     );

@@ -109,7 +109,7 @@
 }
 
 .Decoration_Emoji {
-    width: 2.5vw;
+    font-size: 2vw;
     margin: auto;
     font-family: Quicksand, serif;
 }

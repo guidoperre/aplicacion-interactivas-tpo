@@ -7,21 +7,21 @@ export function Description(props) {
             <div className="Description_Content">
                 <p className="Description_Subtitle">DESCRIPCIÓN</p>
                 <p className="Description_Title">¿Quienes somos?</p>
-                <p className="Description_Text">En institular tenemos como misión ayudar a encontrar a cada persona que tenga una tienda, a encontrar su lugar en el mundo digital. Para esto nos encargamos de desarrollar un plataforma completa, donde puedan crear y administrar su tienda de forma facil y segura.</p>
+                <p className="Description_Text">En Institular tenemos como misión ayudar a cada alumno que este buscando aprender, a encontrar el curso que siempre soño. Para esto nos encargamos de desarrollar un plataforma completa, donde puedan buscar y administrar todos sus cursos de forma facil y segura.</p>
                 <div className="Description_Features_Content">
                     <div className="Description_Features">
                         <Feature
                             icon='🌎'
-                            title='Tu lugar en el mapa'
-                            description='Cada tienda registrada va a participar del mapa de nuestra aplicacion movil, que le va a garantizar mas exposicion de la misma.' />
+                            title='Todo en un lugar'
+                            description='Centralizamos la listas donde vas a poder encontrar cursos para facilitar el acceso a lo mismo.' />
                         <Feature
                             icon='👩‍💻'
                             title='Autogestionable'
-                            description='Vas a poder gestionar tanto tu tienda como tus productos desde donde quieras y como quieras.' />
+                            description='Vas a poder gestionar tanto tus cursos como tus horarios desde donde quieras y como quieras.' />
                         <Feature
                             icon='👑'
-                            title='Tu tienda, tus reglas'
-                            description='Al crearte una tienda, te vamos a otorgar un vinculo hacia la misma que podes compartir y utilizar como gustes.' />
+                            title='Tu cursos, tus reglas'
+                            description='Al buscar un curso, vas a poder elegir cualquier modalidad que desees y de la forma que buscas.' />
                     </div>
                     <img className="Description_Image"
                          src={process.env.PUBLIC_URL + '/description/description_image.jpg'}
