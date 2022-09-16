@@ -14,13 +14,13 @@ export function Header() {
 
     if (scrollPosition > 80) {
         backgroundColor = '#FFFFFF'
-        logoImage = 'instituto_logo_red'
-        logoColor = '#FF5757'
+        logoImage = 'institular_logo'
+        logoColor = '#6c8ed0'
         loginBorder = '0px'
         boxShadow = '0 3px 6px rgba(51, 51, 51, 0.2)'
     } else {
-        backgroundColor = '#FF5757'
-        logoImage = 'instituto_logo'
+        backgroundColor = '#6c8ed0'
+        logoImage = 'institular_logo_white'
         logoColor = '#FFFFFF'
         loginBorder = '1px solid white'
         boxShadow = '0 0 0 rgba(0, 0, 0, 0.0)'

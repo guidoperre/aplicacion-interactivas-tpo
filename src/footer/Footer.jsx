@@ -7,7 +7,7 @@ export function Footer() {
     return (
         <header className="Footer">
             <div className="Footer_Top_Container">
-                <Logo className="Footer_Logo" image='instituto_logo' color='#FFFFFF'/>
+                <Logo className="Footer_Logo" image='institular_logo_white' color='#FFFFFF'/>
                 <div className="Social_Container">
                     <SocialLink image='youtube_icon' url='https://'/>
                     <SocialLink image='facebook_icon' url='https://'/>
@@ -19,7 +19,7 @@ export function Footer() {
                     <p className="Footer_Clickable_Text" onClick={onPrivacyPolicyClicked}>Politicas de privacidad</p>
                     <p className="Footer_Clickable_Text" onClick={onTermsAndConditionsClicked}>Términos y condiciones</p>
                 </div>
-                <p className="Footer_Text">2022 instituto ®. Reservados todos los derechos.</p>
+                <p className="Footer_Text">2022 institular ®. Reservados todos los derechos.</p>
             </div>
         </header>
     );

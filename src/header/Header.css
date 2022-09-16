@@ -4,7 +4,6 @@
     width: 100%;
     height: 9%;
     z-index: 3;
-    background-color: #FF5757;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,7 +32,6 @@
 
 .Login {
     height: 2vw;
-    background: #FF5757;
     border: 1px solid white;
     border-radius: 1vw;
     display: flex;
