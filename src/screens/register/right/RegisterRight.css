@@ -1,4 +1,4 @@
-.LoginRight {
+.RegisterRight {
     width: 50%;
     background: linear-gradient(212.62deg, #6c8ed0 0%, #547ecc 100%);
     display: flex;
@@ -9,14 +9,14 @@
     margin: auto auto auto auto;
 }
 
-.Login_Card {
+.Register_Card {
     margin: auto auto auto 0;
     position: relative;
     display: flex;
     flex-direction: row;
 }
 
-.Login_Card_Image_Container {
+.Register_Card_Image_Container {
     max-height: 80%;
     display: flex;
     flex-direction: column;
@@ -26,12 +26,12 @@
     overflow: visible;
 }
 
-.Login_Card_Image {
+.Register_Card_Image {
     width: 75%;
     margin: auto 0 auto auto;
 }
 
-.Login_Card_Emoji_Left {
+.Register_Card_Emoji_Left {
     width: 5vw;
     height: 5vw;
     position: absolute;
@@ -42,7 +42,7 @@
     display: flex;
 }
 
-.Login_Card_Emoji_Right {
+.Register_Card_Emoji_Right {
     width: 5vw;
     height: 5vw;
     position: absolute;
@@ -53,13 +53,13 @@
     display: flex;
 }
 
-.Login_Card_Emoji {
+.Register_Card_Emoji {
     font-size: 2vw;
     margin: auto;
     font-family: Quicksand, serif;
 }
 
-.Login_Card_Title {
+.Register_Card_Title {
     width: 40%;
     font-family: Quicksand, serif;
     font-weight: 600;
