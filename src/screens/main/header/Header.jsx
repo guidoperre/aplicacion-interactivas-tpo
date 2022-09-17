@@ -1,11 +1,14 @@
 import React from "react";
 import './Header.css';
-import {onLoginClicked} from "./HeaderNavigation";
 import {useScrollPosition} from "../../../utils/ScrollState";
 import {Logo} from "../../../components/logo/Logo";
 
 export function Header() {
+    const onLoginClicked = () => {
+        window.location.href='/login'
+    };
     const scrollPosition = useScrollPosition()
+
     let backgroundColor
     let logoImage
     let logoColor

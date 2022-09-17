@@ -1,0 +1,52 @@
+.TextInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.TextInput_Title {
+    width: fit-content;
+    font-family: Quicksand, serif;
+    z-index: 2;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: #333333;
+    background-color: white;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin: 0 0 -7px 16px;
+}
+
+.TextInput_Text {
+    height: 40px;
+    border: 2px solid #EEEEEE;
+    border-radius: 8px;
+    font-family: Quicksand, serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #333333;
+    text-align: left;
+    padding: 0 16px;
+}
+
+.TextInput_Text::placeholder {
+    color: #CCCCCC;
+    opacity: 1;
+}
+
+.TextInput_Text:focus {
+    outline: none !important;
+    border: 2px solid #777777;
+    box-shadow: 0 3px 4px rgba(51, 51, 51, 0.05);
+    border-radius: 8px;
+}
+
+.TextInput_Text[type=number]::-webkit-inner-spin-button,
+.TextInput_Text[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}

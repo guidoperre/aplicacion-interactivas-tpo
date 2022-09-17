@@ -2,8 +2,12 @@ import React from "react";
 import './Logo.css';
 
 export function Logo(props) {
+    const onLogoClicked = () => {
+        window.location.href='/'
+    };
+
     return (
-        <div className="Logo">
+        <div className="Logo" onClick={onLogoClicked}>
             <img className="Logo_Image"
                  src={process.env.PUBLIC_URL + '/logo/' + props.image + '.png'}
                  alt="logo" />
