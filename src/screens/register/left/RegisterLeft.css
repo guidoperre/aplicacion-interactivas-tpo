@@ -35,18 +35,46 @@
 .Register_Input_Container {
     display: flex;
     flex-direction: column;
-    margin-top: 2vw;
+    margin-top: 1vw;
     margin-bottom: 1vw;
     gap: 1vw
 }
 
-.Register_Forgot_Password {
+.Register_User_Type_Container{
+    margin-bottom: 0.25vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.Register_User_Type_Title {
     font-family: Quicksand, serif;
-    font-size: 12px;
-    font-weight: normal;
-    color: #6c8ed0;
-    margin: 0 0 0 auto;
+    font-size: 16px;
+    color: #333333;
+    margin-top: 0.25vw;
+    margin-bottom: 0.25vw;
+}
+
+.Register_Checkbox_Container {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    gap: 1vw;
+}
+
+.Register_Checkbox_Label {
+    display: flex;
+    flex-direction: row;
     cursor: pointer;
+}
+
+.Register_Checkbox_Label_Text {
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin: auto;
+    user-select: none;
 }
 
 .Register_Button {
@@ -55,14 +83,20 @@
     border-radius: 8px;
     display: flex;
     cursor: pointer;
-    margin-top: 1.5vw;
+    margin-top: 1vw;
 }
+
 .Register_Button_Text {
     font-family: Quicksand, serif;
     font-size: 0.75vw;
     font-weight: 400;
     color: white;
     margin: auto;
+}
+
+.Register_Login {
+    color: #6c8ed0;
+    text-decoration: none
 }
 
 .Copyright_Text {

@@ -42,3 +42,11 @@
     box-shadow: 0 3px 4px rgba(51, 51, 51, 0.05);
     border-radius: 8px;
 }
+
+.TextInput_Text[type=number]::-webkit-inner-spin-button,
+.TextInput_Text[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
