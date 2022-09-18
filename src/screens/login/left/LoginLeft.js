@@ -17,8 +17,8 @@ export function LoginLeft() {
                     <TextInput title="Contraseña" type="password" placeholder="Secreta1234"/>
                 </div>
                 <p className="Login_Forgot_Password">¿Olvidó su contraseña?</p>
-                <div className="Login_Button">
-                    <p className="Login_Button_Text">Iniciar sesión</p>
+                <div className="Login_Button" href="/finder">
+                    <p className="Login_Button_Text" >Iniciar sesión</p>
                 </div>
             </div>
             <p className="Copyright_Text">2022 Institular ®. Reservados todos los derechos.</p>

@@ -7,6 +7,7 @@ import {
 import MainScreen from "../screens/main/MainScreen";
 import LoginScreen from "../screens/login/LoginScreen";
 import RegisterScreen from "../screens/register/RegisterScreen";
+import FinderScreen from "../screens/finder/FinderScreen";
 
 export default function AppRouter() {
     return (
@@ -16,6 +17,7 @@ export default function AppRouter() {
                     <Route path="/" element={<MainScreen/>}/>
                     <Route path="/login" element={<LoginScreen/>}/>
                     <Route path="/register" element={<RegisterScreen/>}/>
+                    <Route path="/finder" element={<FinderScreen/>}/>
                 </Routes>
             </div>
         </Router>
