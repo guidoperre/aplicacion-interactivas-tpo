@@ -16,7 +16,7 @@ export function LoginLeft() {
                     <TextInput title="Email" type="email" placeholder="alumno@gmail.com"/>
                     <TextInput title="Contraseña" type="password" placeholder="Secreta1234"/>
                 </div>
-                <p className="Login_Forgot_Password">¿Olvidó su contraseña?</p>
+                <a className="Login_Forgot_Password" href="/forgotpassword">¿Olvidó su contraseña?</a>
                 <div className="Login_Button">
                     <p className="Login_Button_Text">Iniciar sesión</p>
                 </div>
