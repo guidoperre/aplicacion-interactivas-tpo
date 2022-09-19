@@ -42,7 +42,7 @@
 
 .Login_Forgot_Password {
     font-family: Quicksand, serif;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: normal;
     color: #6c8ed0;
     margin: 0 0 0 auto;
@@ -57,6 +57,7 @@
     cursor: pointer;
     margin-top: 1.5vw;
 }
+
 .Login_Button_Text {
     font-family: Quicksand, serif;
     font-size: 0.75vw;
