@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './RegisterLeft.css';
-import {Logo} from "../../../components/logo/Logo";
-import {TextInput} from "../../../components/input/single/TextInput";
+import {Logo} from "../../../../components/logo/Logo";
+import {TextInput} from "../../../../components/input/single/TextInput";
 
 export function RegisterLeft() {
     return (

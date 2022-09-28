@@ -1,6 +1,6 @@
 import React from "react";
 import './RegisterRight.css';
-import {SessionCard} from "../../../components/image/session/SessionCard";
+import {SessionCard} from "../../../../components/image/session/SessionCard";
 
 export function RegisterRight() {
     return (
