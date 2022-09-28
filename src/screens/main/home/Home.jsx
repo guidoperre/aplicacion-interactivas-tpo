@@ -1,6 +1,6 @@
 import React from "react";
 import './Home.css';
-import {CardImage} from "../../../components/image/CardImage";
+import {CardImage} from "../../../components/image/home/CardImage";
 
 export function Home() {
     const onCreateAccountClicked = () => {

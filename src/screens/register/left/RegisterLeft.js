@@ -40,7 +40,7 @@ function UserTypeSelector() {
 
     return (
         <div className="Register_User_Type_Container">
-            <p className="Register_User_Type_Title">Selecciona un tipo de registro</p>
+            <p className="Register_User_Type_Title">¿Sos alumno o profesor?</p>
             <div className="Register_Checkbox_Container">
                 <label className="Register_Checkbox_Label">
                     <input

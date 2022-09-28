@@ -1,10 +1,10 @@
 import React from "react";
-import './LoginRight.css';
+import './ForgotRight.css';
 import {SessionCard} from "../../../components/image/session/SessionCard";
 
-export function LoginRight() {
+export function ForgotRight() {
     return (
-        <div className="LoginRight">
+        <div className="ForgotRight">
             <div className="Decoration">
                 <SessionCard/>
             </div>
