@@ -10,17 +10,22 @@ import 'bootstrap/dist/css/bootstrap.min.css' ;
 
 export function FinderFilter() {
 
-    var materia,tipoClase, frecuencia, calificacion= 0;
-    var cursos = [];
+    var materia,tipoClase, frecuencia, cal= 0;
+    var cursosFiltrados = [];
 
     const setMateria = (e) => { materia = e.value }
     const setTipoClase = (e) => { tipoClase = e.value }
     const setFrecuencia = (e) => { frecuencia = e.value }
-    const setCalificacion = (e) => { calificacion = e.value }
+    const setCalificacion = (e) => { cal = e.value }
 
     const filtrar = () => {
-        debugger;
-        console.log(mock.cursos);
+        //debugger;       
+        cursosFiltrados = mock.cursos.filter(function(item) { 
+            if(item.materiaId === materia) { 
+                return item;
+            }
+        });        
+        console.log(cursosFiltrados);
     }
 
     return (
@@ -59,7 +64,7 @@ export function FinderFilter() {
                 <div class="row">
                     <div class="col-md-3">
                         <Grid>
-                            {mock.cursos.map(curso => (
+                            {cursosFiltrados.map(curso => (
                                 <Card key={curso.id} 
                                     id={curso.id} 
                                     name={curso.materiaNombre} 
