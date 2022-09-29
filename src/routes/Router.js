@@ -11,6 +11,8 @@ import RegisterScreen from "../screens/register/main/RegisterScreen";
 import ForgotScreen from "../screens/forgot/ForgotScreen";
 import StudentRegisterScreen from "../screens/register/student/StudentRegisterScreen";
 import TeacherRegisterScreen from "../screens/register/teacher/TeacherRegisterScreen";
+import TeacherHome from "../screens/home/teacher/TeacherHomeScreen";
+import TeacherHomeScreen from "../screens/home/teacher/TeacherHomeScreen";
 
 export default function AppRouter() {
     return (
@@ -24,6 +26,7 @@ export default function AppRouter() {
                     <Route path="/register/teacher" element={<TeacherRegisterScreen/>}/>
                     <Route path="/finder" element={<FinderScreen/>}/>
                     <Route path="/forgotpassword" element={<ForgotScreen/>}/>
+                    <Route path="/home/teacher" element={<TeacherHomeScreen/>}/>
                 </Routes>
             </div>
         </Router>

@@ -1,0 +1,82 @@
+.Teacher_Home {
+    width: 100%;
+    background: #FFFFFF;
+    margin-top: 6.5vw;
+    margin-bottom: 4vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.Teacher_Home_Title {
+    font-family: Quicksand, serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0 auto 0 auto;
+    cursor: pointer;
+}
+
+.Teacher_Home_List {
+    margin: 1vw auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+}
+
+.Teacher_Home_Item {
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    margin: 1vw;
+    background: #FFFFFF;
+    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
+    border-radius: 8px;
+    gap: 4vw;
+}
+
+.Teacher_Home_Item_Left {
+    display: flex;
+    flex-direction: column;
+    margin: 16px auto 16px 16px;
+    gap: 4px;
+}
+
+.Teacher_Home_Item_Text_Bold {
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0 auto 0 0;
+}
+
+.Teacher_Home_Item_Text_Normal {
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333333;
+    margin: 0 auto 0 0;
+}
+
+.Teacher_Home_Item_Text_Light {
+    font-family: Quicksand, serif;
+    font-size: 12px;
+    font-weight: lighter;
+    color: #333333;
+    margin: 0 auto 0 0;
+}
+
+.Teacher_Home_Item_Right {
+    display: flex;
+    flex-direction: row;
+    margin: auto 16px auto auto;
+    gap: 16px;
+}
+
+.Teacher_Home_Item_Actionable {
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c8ed0;
+    margin: 0 auto 0 auto;
+    cursor: pointer;
+}

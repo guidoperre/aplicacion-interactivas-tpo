@@ -11,6 +11,9 @@ export function LoginLeft() {
         const path = "/finder";
         navigate(path);
     }
+    const onLoginClicked = () => {
+        window.location.href='/home/teacher'
+    };
 
     return (
         <div className="LoginLeft">
