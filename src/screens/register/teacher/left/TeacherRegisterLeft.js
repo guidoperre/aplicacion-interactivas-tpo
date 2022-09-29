@@ -4,6 +4,10 @@ import {Logo} from "../../../../components/logo/Logo";
 import {TextInput} from "../../../../components/input/single/TextInput";
 
 export function TeacherRegisterLeft() {
+    const onRegisterClicked = () => {
+        window.location.href='/login'
+    }
+
     return (
         <div className="TeacherRegisterLeft">
             <div className="Logo_Container">
@@ -21,7 +25,7 @@ export function TeacherRegisterLeft() {
                             placeholder="Hace 5 años trabajo como repartidor en..."/>
                     </label>
                 </div>
-                <div className="TeacherRegister_Button">
+                <div className="TeacherRegister_Button" onClick={onRegisterClicked}>
                     <p className="TeacherRegister_Button_Text">Crear cuenta</p>
                 </div>
             </div>

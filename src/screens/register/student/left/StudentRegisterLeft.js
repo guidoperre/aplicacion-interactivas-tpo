@@ -6,6 +6,10 @@ import Select from "react-select";
 import {TextInput} from "../../../../components/input/single/TextInput";
 
 export function StudentRegisterLeft() {
+    const onRegisterClicked = () => {
+        window.location.href='/login'
+    }
+
     return (
         <div className="StudentRegisterLeft">
             <div className="Logo_Container">
@@ -27,7 +31,7 @@ export function StudentRegisterLeft() {
                         <Select className="StudentRegister_Studies" options={mock.estudios} />
                     </div>
                 </div>
-                <div className="StudentRegister_Button">
+                <div className="StudentRegister_Button" onClick={onRegisterClicked}>
                     <p className="StudentRegister_Button_Text">Crear cuenta</p>
                 </div>
             </div>
