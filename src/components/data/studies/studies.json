@@ -1,0 +1,20 @@
+{
+    "estudios": [
+        {
+          "value": 1,
+          "label": "En curso"
+        },
+        {
+          "value": 2,
+          "label": "Terminados"
+        },
+        {
+          "value": 3,
+          "label": "Incompletos"
+        },
+        {
+            "value": 4,
+            "label": "Sin empezar"
+        }
+    ]
+}
