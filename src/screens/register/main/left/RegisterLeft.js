@@ -3,9 +3,25 @@ import './RegisterLeft.css';
 import {Logo} from "../../../../components/logo/Logo";
 import {TextInput} from "../../../../components/input/single/TextInput";
 
+
+
 export function RegisterLeft() {
+    const [checked, setChecked] = useState("")
+
+    const onCheckboxClicked = (e) => {
+        setChecked(e.target.name)
+    }
+
     const onRegisterClicked = () => {
-        window.location.href='/register/student'
+        switch (checked) {
+            case "alumno":
+                window.location.href='/register/student'
+                break
+            case "profesor":
+                window.location.href='/register/teacher'
+                break
+
+        }
     };
 
     return (
@@ -17,14 +33,14 @@ export function RegisterLeft() {
                 <p className="Register_Title">Crea tu cuenta 😋</p>
                 <p className="Register_Subtitle">Si ya tenes cuenta, podes <a className="Register_Login" href="/login">iniciar sesión aquí</a></p>
                 <div className="Register_Input_Container">
-                    <UserTypeSelector/>
+                    <UserTypeSelector onChanged={event => onCheckboxClicked(event)}/>
                     <TextInput title="Nombre completo" type="text" placeholder="Juan Perez"/>
                     <TextInput title="Email" type="email" placeholder="alumno@gmail.com"/>
                     <TextInput title="Telefono" type="number" placeholder="1123456789"/>
                     <TextInput title="Contraseña" type="password" placeholder="Secreta1234"/>
                 </div>
-                <div className="Register_Button">
-                    <p className="Register_Button_Text" onClick={onRegisterClicked}>Continuar</p>
+                <div className="Register_Button" onClick={onRegisterClicked}>
+                    <p className="Register_Button_Text">Continuar</p>
                 </div>
             </div>
             <p className="Copyright_Text">2022 Institular ®. Reservados todos los derechos.</p>
@@ -32,14 +48,15 @@ export function RegisterLeft() {
     )
 }
 
-function UserTypeSelector() {
-    const [checked, setChecked] = useState("alumno")
+function UserTypeSelector(props) {
+    const [checked, setChecked] = useState("")
 
     const onCheckboxClicked = (e) => {
         console.log(e.target.id)
         if (checked !== e.target.name) {
             setChecked(e.target.name)
         }
+        props.onChanged(e)
     }
 
     return (

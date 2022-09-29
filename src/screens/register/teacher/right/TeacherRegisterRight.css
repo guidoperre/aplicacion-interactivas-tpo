@@ -1,0 +1,10 @@
+.TeacherRegisterRight {
+    width: 50%;
+    background: linear-gradient(212.62deg, #6c8ed0 0%, #547ecc 100%);
+    display: flex;
+}
+
+.Decoration {
+    width: 55%;
+    margin: auto auto auto auto;
+}

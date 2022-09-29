@@ -16,15 +16,15 @@ export function StudentRegisterLeft() {
                 <p className="StudentRegister_Subtitle">Si ya tenes cuenta, podes <a className="StudentRegister_Login" href="/login">iniciar sesión aquí</a></p>
                 <div className="StudentRegister_Input_Container">
                     <TextInput title="Fecha de nacimiento" type="date"/>
-                    <div className="StudentRegister_Estudios_Container">
-                        <p className="StudentRegister_Estudios_Label">Primaria</p>
-                        <p className="StudentRegister_Estudios_Label">Secundaria</p>
-                        <Select className="StudentRegister_Estudios" options={mock.estudios} />
-                        <Select className="StudentRegister_Estudios" options={mock.estudios} />
-                        <p className="StudentRegister_Estudios_Label">Terciaria</p>
-                        <p className="StudentRegister_Estudios_Label">Universitaria</p>
-                        <Select className="StudentRegister_Estudios" options={mock.estudios} />
-                        <Select className="StudentRegister_Estudios" options={mock.estudios} />
+                    <div className="StudentRegister_Studies_Container">
+                        <p className="StudentRegister_Studies_Label">Primaria</p>
+                        <p className="StudentRegister_Studies_Label">Secundaria</p>
+                        <Select className="StudentRegister_Studies" options={mock.estudios} />
+                        <Select className="StudentRegister_Studies" options={mock.estudios} />
+                        <p className="StudentRegister_Studies_Label">Terciaria</p>
+                        <p className="StudentRegister_Studies_Label">Universitaria</p>
+                        <Select className="StudentRegister_Studies" options={mock.estudios} />
+                        <Select className="StudentRegister_Studies" options={mock.estudios} />
                     </div>
                 </div>
                 <div className="StudentRegister_Button">
