@@ -47,6 +47,12 @@
     margin-bottom: 1vw;
 }
 
+.StudentRegister_Estudios {
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    color: #333333;
+}
+
 .StudentRegister_Estudios_Label {
     font-family: Quicksand, serif;
     font-size: 14px;
