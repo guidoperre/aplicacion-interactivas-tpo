@@ -5,9 +5,20 @@ import mock from "../../../../components/data/teacher/clases.json";
 export function TeacherHome(props) {
     return (
         <div className="Teacher_Home">
-            <p className="Teacher_Home_Title">Clases</p>
-            <ClassesList classes={mock.clases} dialog={props.dialog}/>
-
+            <div className="Teacher_Home_Navigator">
+                <div className="Teacher_Home_Navigator_Header">
+                    <p className="Teacher_Home_Navigator_Header_Title">Profesor Juan Ramirez</p>
+                </div>
+                <div className="Teacher_Home_Navigator_Button">
+                    <p className="Teacher_Home_Navigator_Button_Title_Selected">Clases</p>
+                </div>
+                <div className="Teacher_Home_Navigator_Button">
+                    <p className="Teacher_Home_Navigator_Button_Title">Contrataciones</p>
+                </div>
+            </div>
+            <div className="Teacher_Home_Content">
+                <ClassesList classes={mock.clases} dialog={props.dialog}/>
+            </div>
         </div>
     );
 }

@@ -4,16 +4,58 @@
     margin-top: 6.5vw;
     margin-bottom: 4vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
-.Teacher_Home_Title {
+.Teacher_Home_Navigator {
+    top: 9%;
+    left: 0;
+    position: absolute;
+    width: 20%;
+    height: 91%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
+}
+
+.Teacher_Home_Navigator_Header {
+    display: flex;
+    border-bottom: 1px solid #CCCCCC;
+    background-color: #84abe7;
+}
+
+.Teacher_Home_Navigator_Header_Title {
+    margin: 32px auto 32px auto;
     font-family: Quicksand, serif;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+.Teacher_Home_Navigator_Button {
+    display: flex;
+    border-bottom: 1px solid #CCCCCC;
+    cursor: pointer;
+}
+
+.Teacher_Home_Navigator_Button_Title_Selected {
+    margin: 32px auto 32px auto;
+    font-family: Quicksand, serif;
+    font-size: 16px;
     font-weight: bold;
     color: #333333;
-    margin: 0 auto 0 auto;
-    cursor: pointer;
+}
+
+.Teacher_Home_Navigator_Button_Title {
+    margin: 32px auto 32px auto;
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+}
+
+.Teacher_Home_Content {
+    margin: 4vw auto auto 55vmin;
 }
 
 .Teacher_Home_List {
