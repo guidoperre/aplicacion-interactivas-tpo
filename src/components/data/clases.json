@@ -7,7 +7,7 @@
         },
         { 
             "value": 2, 
-            "label": "Programación",
+            "label": "Programación III",
             "description": "Aprenderan los metodos de ordenamiento mas conocidos."
         },
         { 
@@ -92,7 +92,7 @@
             "id": 1, 
             "materiaId": 1,
             "materiaNombre": "Aplicaciones Interactivas",
-            "materiaDetalle": "Aprenderan a construir una aplicacion web desde cero, con FRONTEND y BACKEND funcional.",
+            "materiaDescription": "Aprenderan a construir una aplicacion web desde cero, con FRONTEND y BACKEND funcional.",
             "tipoClaseId": 2,
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 2,
@@ -102,7 +102,7 @@
         {
             "id": 2, 
             "materiaId": 2,
-            "materiaNombre": "Programación",
+            "materiaNombre": "Programación III",
             "materiaDescription": "Aprenderan los metodos de ordenamiento mas conocidos.",
             "tipoClaseId": 2,
             "tipoClaseDescripcion": "Grupal",
@@ -113,7 +113,7 @@
         {
             "id": 3, 
             "materiaId": 2,
-            "materiaNombre": "Programación",
+            "materiaNombre": "Programación III",
             "materiaDescription": "Aprenderan los metodos de ordenamiento mas conocidos.",
             "tipoClaseId": 1,
             "tipoClaseDescripcion": "Individual",

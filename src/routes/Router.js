@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import MainScreen from "../screens/main/MainScreen";
 import LoginScreen from "../screens/login/LoginScreen";
-import RegisterScreen from "../screens/register/RegisterScreen";
 import FinderScreen from "../screens/finder/FinderScreen";
 import RegisterScreen from "../screens/register/main/RegisterScreen";
 import ForgotScreen from "../screens/forgot/ForgotScreen";

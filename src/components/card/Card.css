@@ -12,5 +12,9 @@
 }
 
 .cardContainer {
-    padding: 2px 16px;
+    padding: 2px 2px;
+}
+
+.lineBreak {
+    margin-top: 20px;
 }

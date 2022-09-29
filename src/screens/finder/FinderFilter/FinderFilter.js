@@ -3,14 +3,24 @@ import './FinderFilter.css';
 import {Logo} from "../../../components/logo/Logo";
 import mock from "../../../components/data/clases.json";
 import Card from "../../../components/card/Card";
+import Grid from "../../../components/grid/Grid";
 import Select from 'react-select'
 import 'bootstrap/dist/css/bootstrap.min.css' ;
 
 
 export function FinderFilter() {
 
+    var materia,tipoClase, frecuencia, calificacion= 0;
+    var cursos = [];
+
+    const setMateria = (e) => { materia = e.value }
+    const setTipoClase = (e) => { tipoClase = e.value }
+    const setFrecuencia = (e) => { frecuencia = e.value }
+    const setCalificacion = (e) => { calificacion = e.value }
+
     const filtrar = () => {
         debugger;
+        console.log(mock.cursos);
     }
 
     return (
@@ -18,24 +28,25 @@ export function FinderFilter() {
             <div className="Logo_Container">
                 <Logo image="institular_logo" color="#6c8ed0"/>
             </div>
-            <div className="FinderSeparador"></div>
+        
             <div class="container">
+                <div className="FinderSeparador"></div>
                 <div className="Finder_Container" >
                     <p className="Finder_Title">Seleccione el filtro de busqueda</p>
                     <div className="Finder_Input_Container">
                         <div>
                             <div class="row">
                                 <div class="col-md-3">
-                                     <Select options={mock.materias} />                                    
+                                     <Select onChange={e => setMateria(e)} options={mock.materias} />                                    
                                 </div> 
                                 <div class="col-md-3">
-                                    <Select options={mock.tipoClase} />
+                                    <Select onChange={e => setTipoClase(e)} options={mock.tipoClase} />
                                 </div>     
                                 <div class="col-md-3">
-                                    <Select  options={mock.frecuencia} /> 
+                                    <Select onChange={e => setFrecuencia(e)}  options={mock.frecuencia} /> 
                                 </div>  
                                 <div class="col-md-3">
-                                    <Select options={mock.calificacion} />
+                                    <Select onChange={e => setCalificacion(e)} options={mock.calificacion} />
                                 </div>  
                             </div>                                      
                         </div>                   
@@ -47,11 +58,20 @@ export function FinderFilter() {
 
                 <div class="row">
                     <div class="col-md-3">
-                        <Card key={1} id={1} name={"Programación"} descripcion={"descripcion de la materia"}/>
-                    </div>
-                    <div class="col-md-3">                    
-                        <Card key={2} id={2} name={"Bases de Datos"} descripcion={"descripcion de la materia"}/>
-                    </div>
+                        <Grid>
+                            {mock.cursos.map(curso => (
+                                <Card key={curso.id} 
+                                    id={curso.id} 
+                                    name={curso.materiaNombre} 
+                                    descripcion={curso.materiaDescription} 
+                                    tipoClaseDescripcion={curso.tipoClaseDescripcion} 
+                                    frecuenciaDescripcion={curso.frecuenciaDescripcion} 
+                                    calificacion={curso.calificacion}
+                                />
+                            ))}
+                        </Grid>
+                    </div> 
+                      
                 </div>
                 
             </div>
