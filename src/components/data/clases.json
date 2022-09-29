@@ -2,15 +2,23 @@
     "materias": [
         { 
             "value": 1, 
-            "label": "Aplicaciones Interactivas" 
+            "label": "Aplicaciones Interactivas",
+            "description": "Aprenderan a construir una aplicacion web desde cero, con FRONTEND y BACKEND funcional."
         },
         { 
             "value": 2, 
-            "label": "Programacion" 
+            "label": "Programación",
+            "description": "Aprenderan los metodos de ordenamiento mas conocidos."
         },
         { 
             "value": 3, 
-            "label": "Bases de Datos" 
+            "label": "Bases de Datos",
+            "description": "Aprenderan a gestionar una base de dato y sus tipos."
+        },
+        { 
+            "value": 3, 
+            "label": "Analisis y Diseño Orientado a Objetos",
+            "description": "Aprenderan los principales patrones de diseño de la programación"
         }
     ],
     "tipoClase": [
@@ -34,7 +42,7 @@
         },
         { 
             "value": 3, 
-            "label": "Grupal"
+            "label": "Mensual"
         }
     ],
     "calificacion": [
@@ -78,5 +86,60 @@
             "value": 10, 
             "label": "10"
         }
+    ],
+    "cursos": [
+        {
+            "id": 1, 
+            "materiaId": 1,
+            "materiaNombre": "Aplicaciones Interactivas",
+            "materiaDetalle": "Aprenderan a construir una aplicacion web desde cero, con FRONTEND y BACKEND funcional.",
+            "tipoClaseId": 2,
+            "tipoClaseDescripcion": "Grupal",
+            "frecuenciaId": 2,
+            "frecuenciaDescripcion": "Semanal",
+            "calificacion": 7
+        },
+        {
+            "id": 2, 
+            "materiaId": 2,
+            "materiaNombre": "Programación",
+            "materiaDescription": "Aprenderan los metodos de ordenamiento mas conocidos.",
+            "tipoClaseId": 2,
+            "tipoClaseDescripcion": "Grupal",
+            "frecuenciaId": 2,
+            "frecuenciaDescripcion": "Semanal",
+            "calificacion": 8
+        },
+        {
+            "id": 3, 
+            "materiaId": 2,
+            "materiaNombre": "Programación",
+            "materiaDescription": "Aprenderan los metodos de ordenamiento mas conocidos.",
+            "tipoClaseId": 1,
+            "tipoClaseDescripcion": "Individual",
+            "frecuenciaId": 2,
+            "frecuenciaDescripcion": "Semanal",
+            "calificacion": 5
+        },
+        {
+            "id": 4, 
+            "materiaId": 3,
+            "materiaNombre": "Bases de Datos",
+            "materiaDescription": "Aprenderan a gestionar una base de dato y sus tipos.",
+            "tipoClaseId": 2,
+            "tipoClaseDescripcion": "Grupal",
+            "frecuenciaId": 3,
+            "frecuenciaDescripcion": "Mensual"
+        },
+        {
+            "id": 5, 
+            "materiaId": 3,
+            "materiaNombre": "Analisis y Diseño Orientado a Objetos",
+            "materiaDescription": "Aprenderan los principales patrones de diseño de la programación",
+            "tipoClaseId": 2,
+            "tipoClaseDescripcion": "Grupal",
+            "frecuenciaId": 2,
+            "frecuenciaDescripcion": "Semanal"
+        } 
     ]
 }

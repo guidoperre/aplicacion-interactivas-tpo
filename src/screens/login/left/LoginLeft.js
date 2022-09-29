@@ -1,9 +1,17 @@
 import React from "react";
 import './LoginLeft.css';
-import {Logo} from "../../../components/logo/Logo";
-import {TextInput} from "../../../components/input/single/TextInput";
+import { Logo } from "../../../components/logo/Logo";
+import { useNavigate } from "react-router-dom";
+import { TextInput } from "../../../components/input/single/TextInput";
 
 export function LoginLeft() {
+    const navigate = useNavigate();
+
+    const ingresar = () => {
+        const path = "/finder";
+        navigate(path);
+    }
+
     return (
         <div className="LoginLeft">
             <div className="Logo_Container">
@@ -16,15 +24,9 @@ export function LoginLeft() {
                     <TextInput title="Email" type="email" placeholder="alumno@gmail.com"/>
                     <TextInput title="Contraseña" type="password" placeholder="Secreta1234"/>
                 </div>
-<<<<<<< HEAD
-                <p className="Login_Forgot_Password">¿Olvidó su contraseña?</p>
-                <div className="Login_Button" href="/finder">
-                    <p className="Login_Button_Text" >Iniciar sesión</p>
-=======
                 <a className="Login_Forgot_Password" href="/forgotpassword">¿Olvidó su contraseña?</a>
                 <div className="Login_Button">
-                    <p className="Login_Button_Text">Iniciar sesión</p>
->>>>>>> 79263d66d5a6693f7aa5c8355c278158a163d598
+                <button type="button" class="btn btn-secondary col-md-12" onClick={ingresar}>Iniciar Sesión</button>
                 </div>
             </div>
             <p className="Copyright_Text">2022 Institular ®. Reservados todos los derechos.</p>

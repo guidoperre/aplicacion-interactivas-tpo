@@ -1,22 +1,29 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {UserContext} from "../../contexts/UserContext";
+import {UserContext} from "../../context/UserContext";
 import "./Card.css";
 
-export default function Card({id, name, position}) {
+export default function Card({id, name, descripcion}) {
     const {user} = useContext(UserContext);
-    const navigate = useNavigate();
-    const redirect = () => {
-        const path = user?.role === "STUDENT" ? `/students/${id}` : `/users/${id}`;
-        navigate(path);
+    var [visible] = useState(false);
+    
+    const setVisible = () => {
+    
     }
-    return (<div className="card">
-            <img src={require("../../assets/img_avatar.png")} alt="Avatar" style={{width: 300, height: 300}}/>
-            <div className="container">
-                <h4><b>{name}</b></h4>
-                <p>{position}</p>
-                <button onClick={redirect}>Ver detalle</button>
-            </div>
+
+    return (
+        <div className="card">
+            <div class="container">
+                <div class="row align-items-center" id="card-{id}">
+                    <h4><b>{name}</b></h4>                
+                    <button class="btn btn-secondary col-md-12" onClick={setVisible}>Ver detalle</button>
+                    
+                    <div className="container">
+                        <p>{descripcion}</p> 
+                    </div>
+                    
+                </div>
+            </div>            
         </div>
     )
 }
