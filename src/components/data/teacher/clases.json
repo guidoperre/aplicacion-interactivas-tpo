@@ -4,6 +4,7 @@
             "key": 1,
             "nombre": "Clase de integrales",
             "materia": "Matematica",
+            "duracion": "40 horas",
             "frecuencia": "MA y JU",
             "costo": "$500.00"
         },
@@ -11,6 +12,7 @@
             "key": 2,
             "nombre": "Clase de integrales",
             "materia": "Matematica",
+            "duracion": "40 horas",
             "frecuencia": "MA y JU",
             "costo": "$500.00"
         },
@@ -18,6 +20,7 @@
             "key": 3,
             "nombre": "Clase de integrales",
             "materia": "Matematica",
+            "duracion": "40 horas",
             "frecuencia": "MA y JU",
             "costo": "$500.00"
         },
@@ -25,6 +28,7 @@
             "key": 4,
             "nombre": "Clase de integrales",
             "materia": "Matematica",
+            "duracion": "40 horas",
             "frecuencia": "MA y JU",
             "costo": "$500.00"
         },
@@ -32,6 +36,15 @@
             "key": 5,
             "nombre": "Clase de integrales",
             "materia": "Matematica",
+            "duracion": "40 horas",
+            "frecuencia": "MA y JU",
+            "costo": "$500.00"
+        },
+        {
+            "key": 6,
+            "nombre": "Clase de integrales",
+            "materia": "Matematica",
+            "duracion": "40 horas",
             "frecuencia": "MA y JU",
             "costo": "$500.00"
         }
