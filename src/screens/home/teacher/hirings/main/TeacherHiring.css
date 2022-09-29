@@ -1,0 +1,124 @@
+.Teacher_Hiring {
+    width: 100%;
+    background: #FFFFFF;
+    margin-top: 6.5vw;
+    margin-bottom: 4vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.Teacher_Hiring_Navigator {
+    top: 9%;
+    left: 0;
+    position: absolute;
+    width: 20%;
+    height: 91%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
+}
+
+.Teacher_Hiring_Navigator_Header {
+    display: flex;
+    border-bottom: 1px solid #CCCCCC;
+    background-color: #84abe7;
+}
+
+.Teacher_Hiring_Navigator_Header_Title {
+    margin: 32px auto 32px auto;
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+.Teacher_Hiring_Navigator_Button {
+    display: flex;
+    border-bottom: 1px solid #CCCCCC;
+    cursor: pointer;
+}
+
+.Teacher_Hiring_Navigator_Button_Title_Selected {
+    margin: 32px auto 32px auto;
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.Teacher_Hiring_Navigator_Button_Title {
+    margin: 32px auto 32px auto;
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+}
+
+.Teacher_Hiring_Content {
+    margin: 4vw auto auto 55vmin;
+}
+
+.Teacher_Hiring_List {
+    margin: 1vw auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+}
+
+.Teacher_Hiring_Item {
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    margin: 1vw;
+    background: #FFFFFF;
+    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
+    border-radius: 8px;
+    gap: 4vw;
+}
+
+.Teacher_Hiring_Item_Left {
+    display: flex;
+    flex-direction: column;
+    margin: 16px auto 16px 16px;
+    gap: 4px;
+}
+
+.Teacher_Hiring_Item_Text_Bold {
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0 auto 0 0;
+}
+
+.Teacher_Hiring_Item_Text_Normal {
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333333;
+    margin: 0 auto 0 0;
+}
+
+.Teacher_Hiring_Item_Text_Light {
+    font-family: Quicksand, serif;
+    font-size: 12px;
+    font-weight: lighter;
+    color: #333333;
+    margin: 0 auto 0 0;
+}
+
+.Teacher_Hiring_Item_Right {
+    display: flex;
+    flex-direction: row;
+    margin: auto 16px auto auto;
+    gap: 16px;
+}
+
+.Teacher_Hiring_Item_Actionable {
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c8ed0;
+    margin: 0 auto 0 auto;
+    cursor: pointer;
+}

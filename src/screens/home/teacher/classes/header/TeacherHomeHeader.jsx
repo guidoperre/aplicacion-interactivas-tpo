@@ -1,6 +1,6 @@
 import React from "react";
 import './TeacherHomeHeader.css';
-import {Logo} from "../../../../components/logo/Logo";
+import {Logo} from "../../../../../components/logo/Logo";
 
 export function TeacherHomeHeader(props) {
     return (

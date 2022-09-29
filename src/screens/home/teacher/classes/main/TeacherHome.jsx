@@ -1,8 +1,12 @@
 import React from "react";
 import './TeacherHome.css';
-import mock from "../../../../components/data/teacher/clases.json";
+import mock from "../../../../../components/data/teacher/clases.json";
 
 export function TeacherHome(props) {
+    const onHiringClicked = () => {
+        window.location.href='/home/teacher/hiring'
+    };
+
     return (
         <div className="Teacher_Home">
             <div className="Teacher_Home_Navigator">
@@ -12,7 +16,7 @@ export function TeacherHome(props) {
                 <div className="Teacher_Home_Navigator_Button">
                     <p className="Teacher_Home_Navigator_Button_Title_Selected">Clases</p>
                 </div>
-                <div className="Teacher_Home_Navigator_Button">
+                <div className="Teacher_Home_Navigator_Button" onClick={onHiringClicked}>
                     <p className="Teacher_Home_Navigator_Button_Title">Contrataciones</p>
                 </div>
             </div>
