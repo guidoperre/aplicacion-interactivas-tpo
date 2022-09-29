@@ -1,0 +1,39 @@
+{
+    "clases": [
+        { 
+            "key": 1,
+            "nombre": "Clase de integrales",
+            "materia": "Matematica",
+            "frecuencia": "MA y JU",
+            "costo": "$500.00"
+        },
+        {
+            "key": 2,
+            "nombre": "Clase de integrales",
+            "materia": "Matematica",
+            "frecuencia": "MA y JU",
+            "costo": "$500.00"
+        },
+        {
+            "key": 3,
+            "nombre": "Clase de integrales",
+            "materia": "Matematica",
+            "frecuencia": "MA y JU",
+            "costo": "$500.00"
+        },
+        {
+            "key": 4,
+            "nombre": "Clase de integrales",
+            "materia": "Matematica",
+            "frecuencia": "MA y JU",
+            "costo": "$500.00"
+        },
+        {
+            "key": 5,
+            "nombre": "Clase de integrales",
+            "materia": "Matematica",
+            "frecuencia": "MA y JU",
+            "costo": "$500.00"
+        }
+    ]
+}

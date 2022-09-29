@@ -5,7 +5,7 @@ import {TextInput} from "../../../components/input/single/TextInput";
 
 export function LoginLeft() {
     const onLoginClicked = () => {
-        window.location.href='/finder'
+        window.location.href='/home/teacher'
     };
 
     return (
