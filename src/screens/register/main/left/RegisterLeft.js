@@ -4,6 +4,10 @@ import {Logo} from "../../../../components/logo/Logo";
 import {TextInput} from "../../../../components/input/single/TextInput";
 
 export function RegisterLeft() {
+    const onRegisterClicked = () => {
+        window.location.href='/register/student'
+    };
+
     return (
         <div className="RegisterLeft">
             <div className="Logo_Container">
@@ -20,7 +24,7 @@ export function RegisterLeft() {
                     <TextInput title="Contraseña" type="password" placeholder="Secreta1234"/>
                 </div>
                 <div className="Register_Button">
-                    <p className="Register_Button_Text">Crear cuenta</p>
+                    <p className="Register_Button_Text" onClick={onRegisterClicked}>Continuar</p>
                 </div>
             </div>
             <p className="Copyright_Text">2022 Institular ®. Reservados todos los derechos.</p>
