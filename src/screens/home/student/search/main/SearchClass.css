@@ -103,6 +103,12 @@
     cursor: pointer;
 }
 
+.Search_Comment_Image{
+    width: 32px;
+    height: 40px;
+    margin: auto 0 auto 16px;
+}
+
 .Search_Comment_Text_Bold {
     font-family: Quicksand, serif;
     font-size: 14px;
