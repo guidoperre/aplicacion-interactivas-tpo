@@ -16,7 +16,7 @@
             "description": "Aprenderan a gestionar una base de dato y sus tipos."
         },
         { 
-            "value": 3, 
+            "value": 4,
             "label": "Analisis y Diseño Orientado a Objetos",
             "description": "Aprenderan los principales patrones de diseño de la programación"
         }

@@ -9,7 +9,8 @@
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 2,
             "frecuenciaDescripcion": "Semanal",
-            "calificacion": 7
+            "calificacion": 7,
+            "costo": "$500.00"
         },
         {
             "key": 2,
@@ -20,7 +21,8 @@
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 2,
             "frecuenciaDescripcion": "Semanal",
-            "calificacion": 8
+            "calificacion": 8,
+            "costo": "$500.00"
         },
         {
             "key": 3,
@@ -31,7 +33,8 @@
             "tipoClaseDescripcion": "Individual",
             "frecuenciaId": 2,
             "frecuenciaDescripcion": "Semanal",
-            "calificacion": 5
+            "calificacion": 5,
+            "costo": "$500.00"
         },
         {
             "key": 4,
@@ -41,17 +44,19 @@
             "tipoClaseId": 2,
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 3,
-            "frecuenciaDescripcion": "Mensual"
+            "frecuenciaDescripcion": "Mensual",
+            "costo": "$500.00"
         },
         {
             "key": 5,
-            "materiaId": 3,
+            "materiaId": 4,
             "materiaNombre": "Analisis y Diseño Orientado a Objetos",
             "materiaDescription": "Aprenderan los principales patrones de diseño de la programación",
             "tipoClaseId": 2,
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 2,
-            "frecuenciaDescripcion": "Semanal"
+            "frecuenciaDescripcion": "Semanal",
+            "costo": "$500.00"
         } 
     ]
 }
