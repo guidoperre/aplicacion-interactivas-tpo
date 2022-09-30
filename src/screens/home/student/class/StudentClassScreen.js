@@ -2,15 +2,15 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {HomeHeader} from "../../header/HomeHeader";
-import {SearchClass} from "./main/SearchClass";
+import {StudentClass} from "./main/StudentClass";
 import StudentSideMenu from "../navigation/StudentSideMenu";
 
-export default function SearchClassScreen() {
+export default function StudentClassScreen() {
     return (
-        <div className="Teacher_Hiring_Screen">
+        <div className="Student_Class_Screen">
             <HomeHeader/>
             <StudentSideMenu titleSelected={1}/>
-            <SearchClass/>
+            <StudentClass/>
             <ToastContainer/>
         </div>
     );

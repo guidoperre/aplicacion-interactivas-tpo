@@ -69,18 +69,13 @@ export function SearchClass() {
 
 function ListItem(props) {
     const c = props.class;
-    const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
+    const onClassClicked = () => {
+        window.location.href='/home/student/search/class'
     };
 
     return (
-        <li className="Search_Comment_Item" onClick={handleClickOpen}>
+        <li className="Search_Comment_Item" onClick={onClassClicked}>
             <p className="Search_Comment_Text_Bold">{c.materiaNombre}</p>
             <p className="Search_Comment_Text_Normal">{c.costo}</p>
         </li>
