@@ -1,13 +1,12 @@
 import React from "react";
-import './StudentQualify.css';
+import './StudentClasses.css';
 import mock from "../../../../../components/data/student/classes.json";
 import BlockDialog from "../modal/ModalBlock";
 import StudentSideMenu from "../../navigation/StudentSideMenu";
 
-export function StudentQualify() {
+export function StudentClasses() {
     return (
         <div className="Student_Comment">
-            <StudentSideMenu titleSelected={3}/>
             <div className="Student_Comment_Content">
                 <CoursesQualifyList qualify={mock.cursos}/>
             </div>
