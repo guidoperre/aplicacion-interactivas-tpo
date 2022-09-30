@@ -9,10 +9,12 @@ import LoginScreen from "../screens/login/LoginScreen";
 import RegisterScreen from "../screens/register/main/RegisterScreen";
 import ForgotScreen from "../screens/forgot/ForgotScreen";
 import StudentRegisterScreen from "../screens/register/student/StudentRegisterScreen";
+
 import TeacherRegisterScreen from "../screens/register/teacher/TeacherRegisterScreen";
 import TeacherHomeScreen from "../screens/home/teacher/classes/TeacherHomeScreen";
 import TeacherHiringScreen from "../screens/home/teacher/hirings/TeacherHiringScreen";
 import TeacherCommentScreen from "../screens/home/teacher/comments/TeacherCommentScreen";
+import StudentQualifyScreen from "../screens/home/student/qualify/StudentQualifyScreen";
 import SearchClass from "../screens/home/student/search/SearchClassScreen";
 
 export default function AppRouter() {
@@ -29,6 +31,7 @@ export default function AppRouter() {
                     <Route path="/home/teacher/classes" element={<TeacherHomeScreen/>}/>
                     <Route path="/home/teacher/hiring" element={<TeacherHiringScreen/>}/>
                     <Route path="/home/teacher/comments" element={<TeacherCommentScreen/>}/>
+                    <Route path="/home/student/qualify" element={<StudentQualifyScreen/>}/>
                     <Route path="/home/student/search" element={<SearchClass/>}/>
                 </Routes>
             </div>

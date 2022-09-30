@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import './FinderFilter.css';
 import {Logo} from "../../../components/logo/Logo";
-import mock from "../../../components/data/clases.json";
+import mockDatos from "../../../components/data/student/filters.json";
+import mockClases from "../../../components/data/student/classes.json";
 import Card from "../../../components/card/Card";
 import Grid from "../../../components/grid/Grid";
 import Select from 'react-select'
@@ -12,8 +13,8 @@ export function FinderFilter() {
 
     var materia,tipoClase, frecuencia, cal = 0;
     var cursosFiltrados = [];
-    cursosFiltrados = mock.cursos;
-    // const [courses, setFiltro] = useState(0);
+    cursosFiltrados = mockClases.cursos;
+    const [courses, setFiltro] = useState(0);
 
     const setMateria = (e) => { materia = e.value }
     const setTipoClase = (e) => { tipoClase = e.value }
@@ -22,7 +23,7 @@ export function FinderFilter() {
 
     const filtrar = () => {
         //debugger;       
-        cursosFiltrados = mock.cursos.filter(function(item) { 
+        cursosFiltrados = mockClases.cursos.filter(function(item) { 
             if(item.materiaId === materia) { 
                 return item;
             }
@@ -45,16 +46,16 @@ export function FinderFilter() {
                         <div>
                             <div className="row">
                                 <div className="col-md-3">
-                                     <Select onChange={e => setMateria(e)} options={mock.materias} />                                    
+                                     <Select onChange={e => setMateria(e)} options={mockDatos.materias} />                                    
                                 </div> 
                                 <div className="col-md-3">
-                                    <Select onChange={e => setTipoClase(e)} options={mock.tipoClase} />
+                                    <Select onChange={e => setTipoClase(e)} options={mockDatos.tipoClase} />
                                 </div>     
                                 <div className="col-md-3">
-                                    <Select onChange={e => setFrecuencia(e)}  options={mock.frecuencia} /> 
+                                    <Select onChange={e => setFrecuencia(e)}  options={mockDatos.frecuencia} /> 
                                 </div>  
                                 <div className="col-md-3">
-                                    <Select onChange={e => setCalificacion(e)} options={mock.calificacion} />
+                                    <Select onChange={e => setCalificacion(e)} options={mockDatos.calificacion} />
                                 </div>  
                             </div>                                      
                         </div>                   

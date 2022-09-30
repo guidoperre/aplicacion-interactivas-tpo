@@ -15,7 +15,7 @@ export function TeacherComment() {
     );
 }
 
-function CommentList(props) {
+function CommentList(props) {    
     const comment = props.comment;
     const [items, setItems] = React.useState(comment);
 

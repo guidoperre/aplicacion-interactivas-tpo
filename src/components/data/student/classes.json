@@ -41,7 +41,8 @@
             "tipoClaseId": 2,
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 3,
-            "frecuenciaDescripcion": "Mensual"
+            "frecuenciaDescripcion": "Mensual",
+            "calificacion": ""
         },
         {
             "key": 5,
@@ -51,7 +52,8 @@
             "tipoClaseId": 2,
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 2,
-            "frecuenciaDescripcion": "Semanal"
+            "frecuenciaDescripcion": "Semanal",
+            "calificacion": ""
         } 
     ]
 }
