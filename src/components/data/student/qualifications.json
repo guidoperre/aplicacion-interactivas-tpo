@@ -1,0 +1,24 @@
+{
+    "calificacion": [
+        { 
+            "value": 1, 
+            "label": "Muy malo"
+        },
+        { 
+            "value": 2, 
+            "label": "Malo"
+        },
+        { 
+            "value": 3, 
+            "label": "Regular"
+        },
+        { 
+            "value": 4, 
+            "label": "Bueno"
+        },
+        { 
+            "value": 5, 
+            "label": "Muy bueno"
+        }
+    ]
+}

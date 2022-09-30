@@ -1,4 +1,4 @@
-.Student_Comment {
+.Student_Class_Qualify {
     width: 100%;
     background: #FFFFFF;
     display: flex;
@@ -7,19 +7,19 @@
     padding-top: 8vmin;
 }
 
-.Student_Comment_Content {
+.Student_Class_Qualify_Content {
     width: 100%;
     margin: 32px 10% auto 10%;
 }
 
-.Student_Comment_List {
+.Student_Class_Qualify_List {
     margin: 1vw auto 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 40px;
 }
 
-.Student_Comment_Item {
+.Student_Class_Qualify_Item {
     min-height: 60px;
     display: flex;
     flex-direction: row;
@@ -29,29 +29,29 @@
     border-radius: 8px;
 }
 
-.Student_Comment_Left {
+.Student_Class_Qualify_Left {
     display: flex;
     flex-direction: column;
     margin: 16px 0 16px 16px;
     gap: 4px;
 }
 
-.Student_Comment_Right {
+.Student_Class_Qualify_Right {
     display: flex;
     flex-direction: row;
     margin: auto 16px auto auto;
     gap: 16px;
 }
 
-.Student_Comment_Text_Bold {
+.Student_Class_Qualify_Text_Bold {
     font-family: Quicksand, serif;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: normal;
     color: #333333;
     margin: 0 16px 0 0;
 }
 
-.Student_Comment_Text_Normal {
+.Student_Class_Qualify_Text_Normal {
     font-family: Quicksand, serif;
     font-size: 14px;
     font-weight: normal;
@@ -59,10 +59,10 @@
     margin: 0 16px 0 0;
 }
 
-.Student_Comment_Image {
+.Student_Class_Qualify_Image {
     width: 1vw;
     height: 1vw;
-    margin: auto 0 auto 0;
+    margin: auto 16px auto 0;
     user-select: none;
     cursor: pointer;
 }

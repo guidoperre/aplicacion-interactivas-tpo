@@ -1,39 +1,12 @@
 import React from "react";
 import './StudentClasses.css';
 import mock from "../../../../../components/data/student/classes.json";
-import BlockDialog from "../modal/ModalBlock";
-import StudentSideMenu from "../../navigation/StudentSideMenu";
+import ClassQualifyDialog from "../modal/ClassQualifyDialog";
+import ClassCommentDialog from "../modal/ClassCommentDialog";
 
 export function StudentClasses() {
-    return (
-        <div className="Student_Comment">
-            <div className="Student_Comment_Content">
-                <CoursesQualifyList qualify={mock.cursos}/>
-            </div>
-        </div>
-    );
-}
-
-function CoursesQualifyList(props) {    
-    const qualify = props.qualify;
-    const [items, setItems] = React.useState(qualify);
-
-    const onQualify = (key) => {
-        debugger;
-        setItems((items) => items.filter((item, _) => item.key !== key));
-    };
-
-    const listItems = items.map((h) =>
-        <ListItem key={h.key} qualify={h} onQualify={onQualify}/>
-    );
-    return (
-        <ul className="Student_Comment_List">{listItems}</ul>
-    );
-}
-
-function ListItem(props) {
-    const c = props.qualify;
     const [open, setOpen] = React.useState(false);
+    const [openC, setOpenC] = React.useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -43,24 +16,66 @@ function ListItem(props) {
         setOpen(false);
     };
 
+    const handleCClickOpen = () => {
+        setOpenC(true);
+    };
+
+    const handleCClose = () => {
+        setOpenC(false);
+    };
+
+    const onQualify = () => {
+        setOpen(true);
+    };
+
     return (
-        <li className="Student_Comment_Item" onClick={handleClickOpen}>
-            <div className="Student_Comment_Left">
-                <p className="Student_Comment_Text_Bold">{c.materiaNombre}</p>
-                <p className="Student_Comment_Text_Normal"><b>Calificación: </b>{c.calificacion}</p>
+        <div className="Student_Class_Qualify">
+            <div className="Student_Class_Qualify_Content">
+                <CoursesQualifyList qualify={mock.cursos} onQualify={onQualify} onComment={handleCClickOpen}/>
             </div>
-            <div className="Student_Comment_Right">
-                <img className="Student_Comment_Image"
-                     src={process.env.PUBLIC_URL + '/class/edit.png'}
-                     alt="aprove"
-                     />
-            </div>
-            <BlockDialog
+            <ClassQualifyDialog
                 open={open}
                 handleClickOpen={handleClickOpen}
-                handleClose={handleClose}
-                onQualify={() => props.onQualify(c.key)}
-                />
+                handleClose={handleClose}/>
+            <ClassCommentDialog
+                open={openC}
+                handleClickOpen={handleCClickOpen}
+                handleClose={handleCClose}/>
+        </div>
+    );
+}
+
+function CoursesQualifyList(props) {    
+    const qualify = props.qualify;
+    const [items, setItems] = React.useState(qualify);
+
+    const listItems = items.map((h) =>
+        <ListItem key={h.key} qualify={h} onQualify={props.onQualify} onComment={props.onComment}/>
+    );
+    return (
+        <ul className="Student_Class_Qualify_List">{listItems}</ul>
+    );
+}
+
+function ListItem(props) {
+    const c = props.qualify;
+
+    return (
+        <li className="Student_Class_Qualify_Item">
+            <div className="Student_Class_Qualify_Left">
+                <p className="Student_Class_Qualify_Text_Bold">{c.materiaNombre}</p>
+                <p className="Student_Class_Qualify_Text_Normal"><b>Frecuencia: </b>{c.frecuenciaDescripcion}</p>
+            </div>
+            <div className="Student_Class_Qualify_Right" >
+                <img className="Student_Class_Qualify_Image"
+                     onClick={props.onComment}
+                     src={process.env.PUBLIC_URL + '/class/comment.png'}
+                     alt="edit"/>
+                <img className="Student_Class_Qualify_Image"
+                     onClick={() => props.onQualify(c.key)}
+                     src={process.env.PUBLIC_URL + '/class/edit.png'}
+                     alt="edit"/>
+            </div>
         </li>
     );
 }

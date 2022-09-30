@@ -19,7 +19,7 @@ export function SearchClass() {
                     (course === undefined || item.materiaId === course) &&
                     (classType === undefined || item.tipoClaseId === classType) &&
                     (frequency === undefined || item.frecuenciaId === frequency) &&
-                    (qualification === undefined || item.calificacion === qualification)
+                    (qualification === undefined || item.calificacionId === qualification)
                 )
         )
     }
@@ -76,6 +76,9 @@ function ListItem(props) {
 
     return (
         <li className="Search_Comment_Item" onClick={onClassClicked}>
+            <img className="Search_Comment_Image"
+                 src={process.env.PUBLIC_URL + '/class/course.png'}
+                 alt="course"/>
             <p className="Search_Comment_Text_Bold">{c.materiaNombre}</p>
             <p className="Search_Comment_Text_Normal">{c.costo}</p>
         </li>

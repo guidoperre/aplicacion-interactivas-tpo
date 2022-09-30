@@ -60,7 +60,7 @@
     font-size: 14px;
     font-weight: normal;
     color: white;
-    margin: 9px auto 8px;
+    margin: 13px auto 12px;
 }
 
 .Search_Button {
@@ -101,6 +101,12 @@
     border-radius: 8px;
     align-content: space-between;
     cursor: pointer;
+}
+
+.Search_Comment_Image{
+    width: 32px;
+    height: 40px;
+    margin: auto 0 auto 16px;
 }
 
 .Search_Comment_Text_Bold {
