@@ -115,10 +115,19 @@
 }
 
 .Teacher_Home_Item_Actionable {
-    font-family: Quicksand, serif;
-    font-size: 14px;
-    font-weight: normal;
-    color: #6c8ed0;
-    margin: 0 auto 0 auto;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #CCCCCC;
+    border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    margin: 0 auto 0 auto;
+    user-select: none;
+}
+
+.Teacher_Home_Item_Actionable_Image {
+    width: 1vw;
+    height: 1vw;
+    margin: auto;
+    user-select: none;
 }

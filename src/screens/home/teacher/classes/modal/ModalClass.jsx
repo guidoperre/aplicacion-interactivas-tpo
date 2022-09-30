@@ -23,20 +23,22 @@ export default function ClassDialog(props) {
             onClose={props.handleClose}
             aria-labelledby="customized-dialog-title"
             open={props.open}>
-            <DialogTitle sx={{ m: 0, p: 2 }}>{props.title}</DialogTitle>
+            <DialogTitle sx={{ m: 2, p: 2 }}>
+                <p className="Modal_Title">{props.title}</p>
+            </DialogTitle>
             <DialogContent>
                 <div className="Class_Dialog_Content">
                     <TextInput title="Nombre" type="text" placeholder={"Nombre de la clase"}/>
                     <TextInput title="Materia" type="text" placeholder={"Nombre de la materia"}/>
                     <TextInput title="Duracion en horas" type="number" placeholder={"40"}/>
-                    <TextInput title="Frecuencia" type="text" placeholder={"LU JU"}/>
+                    <TextInput title="Frecuencia" type="text" placeholder={"Semanal"}/>
                     <TextInput title="Costo" type="number" placeholder={"100.00"}/>
                 </div>
             </DialogContent>
             <DialogActions>
-                <Button autoFocus onClick={props.handleClose}>
-                    Guardar
-                </Button>
+                <div className="Modal_Button" onClick={props.handleClose}>
+                    <p className="Modal_Button_Text">Guardar</p>
+                </div>
             </DialogActions>
         </BootstrapDialog>
     );

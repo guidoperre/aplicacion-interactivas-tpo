@@ -1,0 +1,24 @@
+{
+    "comentarios": [
+        {
+            "key": 1,
+            "autor": "Guido Perre",
+            "descripcion": "La clase estuvo buenisima, recomendada 100%."
+        },
+        {
+            "key": 2,
+            "autor": "Guido Perre",
+            "descripcion": "La clase estuvo buenisima, recomendada 100%."
+        },
+        {
+            "key": 3,
+            "autor": "Guido Perre",
+            "descripcion": "La clase estuvo buenisima, recomendada 100%."
+        },
+        {
+            "key": 4,
+            "autor": "Guido Perre",
+            "descripcion": "La clase estuvo buenisima, recomendada 100%."
+        }
+    ]
+}
