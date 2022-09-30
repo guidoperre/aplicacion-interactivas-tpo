@@ -4,6 +4,12 @@
     flex-direction: column;
 }
 
+.Logo_Container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vw;
+}
+
 .Finder_Select {
     margin-top: 5px;
     width: 25%;
@@ -62,3 +68,12 @@
     margin-top: 50px;
 }
 
+
+.Copyright_Text {
+    font-family: Quicksand, serif;
+    font-size: 0.85vw;
+    font-weight: normal;
+    color: #6c8ed0;
+    margin-left: 12.5%;
+    margin-bottom: 2vw;
+}

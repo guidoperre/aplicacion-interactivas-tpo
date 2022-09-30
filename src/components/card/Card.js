@@ -5,25 +5,28 @@ import "./Card.css";
 
 export default function Card({id, name, descripcion, tipoClaseDescripcion, frecuenciaDescripcion, calificacion}) {
     const {user} = useContext(UserContext);
-    var [visible] = useState(false);
+    var [visible, setVisible] = useState(true);
     
-    const setVisible = () => {
     
-    }
 
     return (
         <div className="card">
-            <div class="cardContainer">
-                <div class="align-items-center" id="card-{id}">
-                    <h5><b>{name}</b></h5>                
-                    <button class="btn btn-secondary col-md-12" onClick={setVisible}>Ver detalle</button>
+            <div className="cardContainer">
+                <div className="align-items-center" id="card-{id}">
+                    <div className="titleClase">
+                        <h5><b>{name}</b></h5>  
+                    </div>                                  
+                    <button 
+                        className="btn btn-secondary col-md-12" 
+                        onClick={() => setVisible(!visible)}>{visible ? "Ver detalle" : "Ocultar detalle"}
+                    </button>
                     <div className="lineBreak"></div>
-                    <div className="cardContainer">
+                    {!visible && <div className="cardContainer">
                         <p><b>Descripción: </b>{descripcion}</p> 
                         <p><b>Tipo: </b>{tipoClaseDescripcion}</p> 
                         <p><b>Frecuencia: </b>{frecuenciaDescripcion}</p> 
                         <p><b>Calificación: </b>{calificacion}</p> 
-                    </div>
+                    </div>}
                     
                 </div>
             </div>            

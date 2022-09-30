@@ -29,7 +29,7 @@ export function LoginLeft() {
                 </div>
                 <a className="Login_Forgot_Password" href="/forgotpassword">¿Olvidó su contraseña?</a>
                 <div className="Login_Button">
-                <button type="button" class="btn btn-secondary col-md-12" onClick={ingresar}>Iniciar Sesión</button>
+                <button type="button" className="btn btn-secondary col-md-12" onClick={ingresar}>Iniciar Sesión</button>
                 </div>
             </div>
             <p className="Copyright_Text">2022 Institular ®. Reservados todos los derechos.</p>
