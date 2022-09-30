@@ -1,7 +1,7 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import './LoginLeft.css';
 import { Logo } from "../../../components/logo/Logo";
-import { useNavigate } from "react-router-dom";
 import { TextInput } from "../../../components/input/single/TextInput";
 
 export function LoginLeft() {
@@ -30,9 +30,12 @@ export function LoginLeft() {
                 <a className="Login_Forgot_Password" href="/forgotpassword">¿Olvidó su contraseña?</a>
                 <div className="Login_Button">
                 <button type="button" className="btn btn-secondary col-md-12" onClick={ingresar}>Iniciar Sesión</button>
+                <div className="Login_Button" onClick={onLoginClicked}>
+                    <p className="Login_Button_Text">Iniciar sesión</p>
                 </div>
             </div>
             <p className="Copyright_Text">2022 Institular ®. Reservados todos los derechos.</p>
+            </div>
         </div>
     )
 }

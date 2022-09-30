@@ -1,0 +1,96 @@
+.SearchContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20%;
+    padding-top: 8vmin;
+}
+
+.Search_Container {
+    display: flex;
+    flex-direction: column;
+    margin: 32px 10% auto 10%;
+}
+
+.Search_Filter_Container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vw;
+}
+
+.Search_Title {
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+    margin: 0;
+}
+
+.Search_Filter_List_Container {
+    width: 100%;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.Search_Filter_List {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+    gap: 1vw;
+}
+
+.Search_Filter {
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+    margin: 0;
+}
+
+.Search_Filter_Button {
+    background-color: #547ecc;
+    border-radius: 8px;
+    display: flex;
+    cursor: pointer;
+}
+
+.Search_Filter_Button_Text {
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: white;
+    margin: 9px auto 8px;
+}
+
+.Search_Select {
+    margin-top: 5px;
+    width: 25%;
+}
+
+.Search_Container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.Search_Button {
+    height: 2.5vw;
+    background: #6c8ed0;
+    border-radius: 8px;
+    display: flex;
+    cursor: pointer;
+    margin-top: 1.5vw;
+    width: 25%;
+}
+.Search_Button_Text {
+    font-family: Quicksand, serif;
+    font-size: 0.75vw;
+    font-weight: 400;
+    color: white;
+    margin: auto;
+}
+.lineBreak {
+    margin-top: 50px;
+}
+

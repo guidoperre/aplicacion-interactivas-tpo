@@ -1,0 +1,76 @@
+.Teacher_Navigator {
+    top: 10%;
+    left: 0;
+    position: fixed;
+    width: 20%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
+}
+
+.Teacher_Navigator_Header {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #CCCCCC;
+    background-color: #F4F4F4;
+}
+
+.Teacher_Navigator_Header_Content {
+    display: flex;
+    flex-direction: column;
+    margin: auto auto auto 16px;
+}
+
+.Teacher_Navigator_Image {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    margin: 32px 0 32px auto;
+}
+
+.Teacher_Navigator_Header_Title {
+    margin: auto 0 0 0;
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.Teacher_Navigator_Header_Subtitle {
+    margin: 0 0 auto 0;
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333333;
+}
+
+.Teacher_Navigator_Button {
+    display: flex;
+    border-bottom: 1px solid #CCCCCC;
+    cursor: pointer;
+}
+
+.Teacher_Navigator_Button_Title_Selected {
+    margin: 32px auto 32px auto;
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.Teacher_Navigator_Button_Title {
+    margin: 32px auto 32px auto;
+    font-family: Quicksand, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+}
+
+.Navigator_Footer_Text {
+    margin: auto auto 16px auto;
+    font-family: Quicksand, serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #547ecc;
+}

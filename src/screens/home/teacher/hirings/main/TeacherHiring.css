@@ -1,61 +1,15 @@
 .Teacher_Hiring {
     width: 100%;
     background: #FFFFFF;
-    margin-top: 6.5vw;
-    margin-bottom: 4vw;
     display: flex;
     flex-direction: row;
-}
-
-.Teacher_Hiring_Navigator {
-    top: 9%;
-    left: 0;
-    position: absolute;
-    width: 20%;
-    height: 91%;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
-}
-
-.Teacher_Hiring_Navigator_Header {
-    display: flex;
-    border-bottom: 1px solid #CCCCCC;
-    background-color: #84abe7;
-}
-
-.Teacher_Hiring_Navigator_Header_Title {
-    margin: 32px auto 32px auto;
-    font-family: Quicksand, serif;
-    font-size: 16px;
-    font-weight: normal;
-    color: #FFFFFF;
-}
-
-.Teacher_Hiring_Navigator_Button {
-    display: flex;
-    border-bottom: 1px solid #CCCCCC;
-    cursor: pointer;
-}
-
-.Teacher_Hiring_Navigator_Button_Title_Selected {
-    margin: 32px auto 32px auto;
-    font-family: Quicksand, serif;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333333;
-}
-
-.Teacher_Hiring_Navigator_Button_Title {
-    margin: 32px auto 32px auto;
-    font-family: Quicksand, serif;
-    font-size: 16px;
-    font-weight: normal;
-    color: #333333;
+    padding-left: 20%;
+    padding-top: 8vmin;
 }
 
 .Teacher_Hiring_Content {
-    margin: 4vw auto auto 55vmin;
+    width: 100%;
+    margin: 32px 10% auto 10%;
 }
 
 .Teacher_Hiring_List {
@@ -115,10 +69,19 @@
 }
 
 .Teacher_Hiring_Item_Actionable {
-    font-family: Quicksand, serif;
-    font-size: 14px;
-    font-weight: normal;
-    color: #6c8ed0;
-    margin: 0 auto 0 auto;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #CCCCCC;
+    border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    margin: 0 auto 0 auto;
+    user-select: none;
+}
+
+.Teacher_Hiring_Item_Actionable_Image {
+    width: 1vw;
+    height: 1vw;
+    margin: auto;
+    user-select: none;
 }

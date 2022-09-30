@@ -1,25 +1,12 @@
 import React from "react";
 import './TeacherHiring.css';
 import mock from "../../../../../components/data/teacher/hiring.json";
+import TeacherSideMenu from "../../navigation/TeacherSideMenu";
 
 export function TeacherHiring(props) {
-    const onClassesClicked = () => {
-        window.location.href='/home/teacher/classes'
-    };
-
     return (
         <div className="Teacher_Hiring">
-            <div className="Teacher_Hiring_Navigator">
-                <div className="Teacher_Hiring_Navigator_Header">
-                    <p className="Teacher_Hiring_Navigator_Header_Title">Profesor Juan Ramirez</p>
-                </div>
-                <div className="Teacher_Hiring_Navigator_Button" onClick={onClassesClicked}>
-                    <p className="Teacher_Hiring_Navigator_Button_Title">Clases</p>
-                </div>
-                <div className="Teacher_Hiring_Navigator_Button">
-                    <p className="Teacher_Hiring_Navigator_Button_Title_Selected">Contrataciones</p>
-                </div>
-            </div>
+            <TeacherSideMenu titleSelected={2}/>
             <div className="Teacher_Hiring_Content">
                 <HiringList hiring={mock.contrataciones} dialog={props.dialog}/>
             </div>
@@ -29,8 +16,15 @@ export function TeacherHiring(props) {
 
 function HiringList(props) {
     const hiring = props.hiring;
-    const listItems = hiring.map((h) =>
-        <ListItem key={h.key} hire={h} dialog={props.dialog}/>
+
+    const [items, setItems] = React.useState(hiring);
+
+    const onDelete = (key) => {
+        setItems((items) => items.filter((item, _) => item.key !== key));
+    };
+
+    const listItems = items.map((h) =>
+        <ListItem key={h.key} hire={h} dialog={props.dialog} onDelete={onDelete}/>
     );
     return (
         <ul className="Teacher_Hiring_List">{listItems}</ul>
@@ -47,10 +41,29 @@ function ListItem(props) {
                 <p className="Teacher_Hiring_Item_Text_Light">{h.alumno}</p>
             </div>
             <div className="Teacher_Home_Item_Right">
-                <p className="Teacher_Hiring_Item_Actionable" onClick={props.dialog}>Contactar</p>
-                <p className="Teacher_Hiring_Item_Actionable">Aceptar</p>
-                <p className="Teacher_Hiring_Item_Actionable">Cancelar</p>
+                <HiringAction
+                    onClick={props.dialog}
+                    image="phone"
+                    alt="phone"/>
+                <HiringAction
+                    onClick={() => props.onDelete(h.key)}
+                    image="approve"
+                    alt="approve"/>
+                <HiringAction
+                    onClick={() => props.onDelete(h.key)}
+                    image="cancel"
+                    alt="cancel"/>
             </div>
         </li>
+    );
+}
+
+function HiringAction(props) {
+    return (
+        <div className="Teacher_Hiring_Item_Actionable" onClick={props.onClick}>
+            <img className="Teacher_Hiring_Item_Actionable_Image"
+                 src={process.env.PUBLIC_URL + '/class/' + props.image + '.png'}
+                 alt={props.alt} />
+        </div>
     );
 }
