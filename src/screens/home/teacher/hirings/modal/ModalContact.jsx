@@ -26,8 +26,8 @@ export default function ContactDialog(props) {
             <DialogTitle sx={{ m: 0, p: 2 }}>Datos de contacto</DialogTitle>
             <DialogContent>
                 <div className="Contact_Dialog_Content">
-                    <TextInput title="Nombre" type="text" text={"Pedro Alfonso"}/>
-                    <TextInput title="Email" type="text" text={"pedroalfonso@gmail.com"}/>
+                    <TextInput title="Nombre" type="text" text={"Guido Perre"}/>
+                    <TextInput title="Email" type="text" text={"perreguido@gmail.com"}/>
                     <TextInput title="Telefono" type="text" text={"+54 116846836"}/>
                     <TextInput title="Hora de contacto" type="text" text={"De 9hs a 18hs"}/>
                     <label className="Contact_Dialog_Label">
@@ -38,11 +38,6 @@ export default function ContactDialog(props) {
                     </label>
                 </div>
             </DialogContent>
-            <DialogActions>
-                <Button autoFocus onClick={props.handleClose}>
-                    Cerrar
-                </Button>
-            </DialogActions>
         </BootstrapDialog>
     );
 }

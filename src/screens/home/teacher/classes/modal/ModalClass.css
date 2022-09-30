@@ -32,20 +32,20 @@
     padding: 8px 24px;
 }
 
-.Teacher_Comment_Content {
+.Teacher_Modal_Comment_Content {
     max-height: 30vw;
     min-width: 20vw;
     display: flex;
 }
 
-.Teacher_Comment_List {
+.Teacher_Modal_Comment_List {
     margin: auto;
     display: flex;
     flex-direction: column;
     list-style: none;
 }
 
-.Teacher_Comment_Item {
+.Teacher_Modal_Comment_Item {
     min-height: 60px;
     display: flex;
     flex-direction: row;
@@ -56,14 +56,14 @@
     border-radius: 8px;
 }
 
-.Teacher_Comment_Left {
+.Teacher_Modal_Comment_Left {
     display: flex;
     flex-direction: column;
     margin: 16px 16px 16px 16px;
     gap: 4px;
 }
 
-.Teacher_Comment_Text_Bold {
+.Teacher_Modal_Comment_Text_Bold {
     font-family: Quicksand, serif;
     font-size: 14px;
     font-weight: bold;
@@ -71,7 +71,7 @@
     margin: 0 auto 0 0;
 }
 
-.Teacher_Comment_Text_Normal {
+.Teacher_Modal_Comment_Text_Normal {
     font-family: Quicksand, serif;
     font-size: 14px;
     font-weight: normal;
@@ -79,14 +79,14 @@
     margin: 0 auto 0 0;
 }
 
-.Teacher_Comment_Right {
+.Teacher_Modal_Comment_Right {
     display: flex;
     flex-direction: row;
     margin: auto 16px auto auto;
     gap: 16px;
 }
 
-.Teacher_Comment_Image {
+.Teacher_Modal_Comment_Image {
     width: 1vw;
     height: 1vw;
     margin: auto;

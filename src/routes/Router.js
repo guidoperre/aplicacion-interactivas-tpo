@@ -14,6 +14,7 @@ import TeacherRegisterScreen from "../screens/register/teacher/TeacherRegisterSc
 import TeacherHome from "../screens/home/teacher/classes/TeacherHomeScreen";
 import TeacherHomeScreen from "../screens/home/teacher/classes/TeacherHomeScreen";
 import TeacherHiringScreen from "../screens/home/teacher/hirings/TeacherHiringScreen";
+import TeacherCommentScreen from "../screens/home/teacher/comments/TeacherCommentScreen";
 
 export default function AppRouter() {
     return (
@@ -29,6 +30,7 @@ export default function AppRouter() {
                     <Route path="/forgotpassword" element={<ForgotScreen/>}/>
                     <Route path="/home/teacher/classes" element={<TeacherHomeScreen/>}/>
                     <Route path="/home/teacher/hiring" element={<TeacherHiringScreen/>}/>
+                    <Route path="/home/teacher/comments" element={<TeacherCommentScreen/>}/>
                 </Routes>
             </div>
         </Router>

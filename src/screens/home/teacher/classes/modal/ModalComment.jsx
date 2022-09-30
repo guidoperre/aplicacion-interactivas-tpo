@@ -37,8 +37,8 @@ export default function CommentDialog(props) {
                 <p className="Modal_Title">Comentarios</p>
             </DialogTitle>
             <DialogContent>
-                <div className="Teacher_Comment_Content">
-                    <ul className="Teacher_Comment_List">{listItems}</ul>
+                <div className="Teacher_Modal_Comment_Content">
+                    <ul className="Teacher_Modal_Comment_List">{listItems}</ul>
                 </div>
             </DialogContent>
         </BootstrapDialog>
@@ -49,10 +49,10 @@ export default function CommentDialog(props) {
 function ListComment(props) {
     const c = props.comment;
     return (
-        <li className="Teacher_Comment_Item">
-            <div className="Teacher_Comment_Left">
-                <p className="Teacher_Comment_Text_Bold">{c.autor}</p>
-                <p className="Teacher_Comment_Text_Normal">{c.descripcion}</p>
+        <li className="Teacher_Modal_Comment_Item">
+            <div className="Teacher_Modal_Comment_Left">
+                <p className="Teacher_Modal_Comment_Text_Bold">{c.autor}</p>
+                <p className="Teacher_Modal_Comment_Text_Normal">{c.descripcion}</p>
             </div>
         </li>
     );

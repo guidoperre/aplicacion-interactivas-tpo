@@ -17,6 +17,9 @@ export function TeacherHome(props) {
     const onHiringClicked = () => {
         window.location.href='/home/teacher/hiring'
     };
+    const onCommentsClicked = () => {
+        window.location.href='/home/teacher/comments'
+    };
 
     return (
         <div className="Teacher_Home">
@@ -29,6 +32,9 @@ export function TeacherHome(props) {
                 </div>
                 <div className="Teacher_Home_Navigator_Button" onClick={onHiringClicked}>
                     <p className="Teacher_Home_Navigator_Button_Title">Contrataciones</p>
+                </div>
+                <div className="Teacher_Comment_Navigator_Button" onClick={onCommentsClicked}>
+                    <p className="Teacher_Comment_Navigator_Button_Title">Comentarios</p>
                 </div>
             </div>
             <div className="Teacher_Home_Content">
