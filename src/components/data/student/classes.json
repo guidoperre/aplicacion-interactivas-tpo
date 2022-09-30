@@ -9,7 +9,8 @@
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 2,
             "frecuenciaDescripcion": "Semanal",
-            "calificacion": 7,
+            "calificacionId": 3,
+            "calificacion": "Regular",
             "costo": "$500.00"
         },
         {
@@ -21,7 +22,8 @@
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 2,
             "frecuenciaDescripcion": "Semanal",
-            "calificacion": 8,
+            "calificacionId": 3,
+            "calificacion": "Regular",
             "costo": "$500.00"
         },
         {
@@ -33,7 +35,8 @@
             "tipoClaseDescripcion": "Individual",
             "frecuenciaId": 2,
             "frecuenciaDescripcion": "Semanal",
-            "calificacion": 5,
+            "calificacionId": 4,
+            "calificacion": "Buena",
             "costo": "$500.00"
         },
         {
@@ -45,7 +48,8 @@
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 3,
             "frecuenciaDescripcion": "Mensual",
-            "calificacion": "",
+            "calificacionId": 4,
+            "calificacion": "Buena",
             "costo": "$500.00"
         },
         {
@@ -57,7 +61,8 @@
             "tipoClaseDescripcion": "Grupal",
             "frecuenciaId": 2,
             "frecuenciaDescripcion": "Semanal",
-            "calificacion": "",
+            "calificacionId": 4,
+            "calificacion": "Buena",
             "costo": "$500.00"
         } 
     ]
