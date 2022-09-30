@@ -66,6 +66,32 @@ Al seleccionar los filtros deberá presionar el botón de <Buscar> y mostrará e
 5.2.	Clases. /home/student/classes)
 Es esta pantalla se listarán las clases en las que el estudiante esta registrado con la opción de hacer un comentario o calificar la misma.
 
+## Arquitectura
+
+Decidimos hacer una arquitectura orientada a la feature, siguiendo el modelo basico de clean architecture.
+
+![image](https://user-images.githubusercontent.com/50251532/193357120-0045ce13-4ea1-4101-852d-81bf8078da94.png)
+
+En la carpeta "routes" almacenamos las rutas hacia las diferentes pantallas.
+En la carpeta de "screens" tenemos la division por feature en relacion a las diferentes pantallas.
+
+![image](https://user-images.githubusercontent.com/50251532/193357234-214083d9-cb05-4661-9e86-9a7c65e4cd51.png)
+
+Y en la carpeta "components" guardamos los distintos componentes visuales comunes a toda la aplicacion:
+
+![image](https://user-images.githubusercontent.com/50251532/193357281-54917ae9-0ea3-44dc-b703-70a282befdb5.png)
+
+Si nos metemos mas adentro de la carpeta "screens" podemos encontrar el desglose de pantalla, donde en cada una podemos ver el contenido de la misma, o las diferentes subpantallas que la componen:
+
+![image](https://user-images.githubusercontent.com/50251532/193357408-89d79625-1654-4a24-90ad-19b5a77f4397.png)
+  
+Como se puede ver arriba, en la composicion de las pantallas dividimos las vistas en base a la parte de la pantalla que ocupan o la relacion que tienen con los otros componentes:
+  
+![image](https://user-images.githubusercontent.com/50251532/193357595-45624225-de53-4c9c-bda3-8fafc65088b9.png)
+![image](https://user-images.githubusercontent.com/50251532/193357642-2e18a988-cd6f-4ff4-9fac-2c748f4867ae.png)
+
+En la mayoria de las pantallas decidimos tener un .js o .jsx que coordine las diferentes parte de la misma. Esto nos resulto especialmente util cuando tenemos componentes en comun entre varias subpantallas.
+
 ## Colaboradores:
   1. Perre Guido Simon
   2. Perez Cimato Gonzalo
