@@ -5,12 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { TextInput } from "../../../components/input/single/TextInput";
 
 export function LoginLeft() {
-    const navigate = useNavigate();
-
-    const ingresar = () => {
-        const path = "/finder";
-        navigate(path);
-    }
+    const onLoginClicked = () => {
+        window.location.href='/home/teacher/classes'
+    };
 
     return (
         <div className="LoginLeft">
@@ -26,7 +23,7 @@ export function LoginLeft() {
                 </div>
                 <a className="Login_Forgot_Password" href="/forgotpassword">¿Olvidó su contraseña?</a>
                 <div className="Login_Button">
-                <button type="button" class="btn btn-secondary col-md-12" onClick={ingresar}>Iniciar Sesión</button>
+                <button type="button" class="btn btn-secondary col-md-12" onClick={onLoginClicked}>Iniciar Sesión</button>
                 </div>
             </div>
             <p className="Copyright_Text">2022 Institular ®. Reservados todos los derechos.</p>
