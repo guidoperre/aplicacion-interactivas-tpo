@@ -62,7 +62,7 @@
 .Student_Class_Qualify_Image {
     width: 1vw;
     height: 1vw;
-    margin: auto 0 auto 0;
+    margin: auto 16px auto 0;
     user-select: none;
     cursor: pointer;
 }
