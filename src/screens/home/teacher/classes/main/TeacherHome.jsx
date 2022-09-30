@@ -1,13 +1,28 @@
 import React from "react";
 import './TeacherHome.css';
-import mock from "../../../../components/data/teacher/clases.json";
+import mock from "../../../../../components/data/teacher/clases.json";
 
 export function TeacherHome(props) {
+    const onHiringClicked = () => {
+        window.location.href='/home/teacher/hiring'
+    };
+
     return (
         <div className="Teacher_Home">
-            <p className="Teacher_Home_Title">Clases</p>
-            <ClassesList classes={mock.clases} dialog={props.dialog}/>
-
+            <div className="Teacher_Home_Navigator">
+                <div className="Teacher_Home_Navigator_Header">
+                    <p className="Teacher_Home_Navigator_Header_Title">Profesor Juan Ramirez</p>
+                </div>
+                <div className="Teacher_Home_Navigator_Button">
+                    <p className="Teacher_Home_Navigator_Button_Title_Selected">Clases</p>
+                </div>
+                <div className="Teacher_Home_Navigator_Button" onClick={onHiringClicked}>
+                    <p className="Teacher_Home_Navigator_Button_Title">Contrataciones</p>
+                </div>
+            </div>
+            <div className="Teacher_Home_Content">
+                <ClassesList classes={mock.clases} dialog={props.dialog}/>
+            </div>
         </div>
     );
 }
@@ -29,6 +44,7 @@ function ListItem(props) {
             <div className="Teacher_Home_Item_Left">
                 <p className="Teacher_Home_Item_Text_Bold">{c.nombre}</p>
                 <p className="Teacher_Home_Item_Text_Normal">{c.materia}</p>
+                <p className="Teacher_Home_Item_Text_Light">{c.duracion}</p>
                 <p className="Teacher_Home_Item_Text_Light">{c.frecuencia}</p>
                 <p className="Teacher_Home_Item_Text_Light">{c.costo}</p>
             </div>

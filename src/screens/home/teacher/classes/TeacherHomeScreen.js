@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {TeacherHomeHeader} from "./header/TeacherHomeHeader";
 import {TeacherHome} from "./main/TeacherHome";
-import ClassDialog from "./classes/ModalClass";
+import ClassDialog from "./modal/ModalClass";
 
 export default function TeacherHomeScreen() {
     const [open, setOpen] = React.useState(false);

@@ -12,7 +12,7 @@ export function LoginLeft() {
         navigate(path);
     }
     const onLoginClicked = () => {
-        window.location.href='/home/teacher'
+        window.location.href='/home/teacher/classes'
     };
 
     return (
