@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/public/fonts/quicksand-v30-latin-regular.eot');
+  src: local(''),
+  url('/public/fonts/quicksand-v30-latin-regular.eot?#iefix') format('embedded-opentype'),
+  url('/public/fonts/quicksand-v30-latin-regular.woff2') format('woff2'),
+  url('/public/fonts/quicksand-v30-latin-regular.woff') format('woff'),
+  url('/public/fonts/quicksand-v30-latin-regular.ttf') format('truetype'),
+  url('/public/fonts/quicksand-v30-latin-regular.svg#Quicksand') format('svg');
+}
