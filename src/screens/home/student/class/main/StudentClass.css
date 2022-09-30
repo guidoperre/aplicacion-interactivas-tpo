@@ -135,3 +135,25 @@
     color: #333333;
     margin: 0 16px 0 0;
 }
+
+.Student_Class_Hire {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    z-index: 2;
+    background-color: #547ecc;
+    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
+    border-radius: 32px;
+    cursor: pointer;
+    display: flex;
+    margin: 0 auto 0 auto;
+    user-select: none;
+}
+
+.Student_Class_Hire_Text{
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: white;
+    margin: 12px 32px 12px 32px;
+}

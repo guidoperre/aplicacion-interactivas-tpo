@@ -40,6 +40,9 @@ export function StudentClass() {
                     <TextInput title="Costo" type="text" text={"$500.00"}/>
                     <p className="Student_Class_Subtitle">Comentarios</p>
                     <CommentList comment={mock.comentarios}/>
+                    <div className="Student_Class_Hire" onClick={handleClickOpen}>
+                        <p className="Student_Class_Hire_Text">CONTRATAR</p>
+                    </div>
                 </div>
                 <ClassHireDialog
                     open={open}

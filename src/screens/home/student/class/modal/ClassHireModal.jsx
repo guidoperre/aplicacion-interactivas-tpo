@@ -5,7 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import {TextInput} from "../../../../../components/input/single/TextInput";
-import mock from "../../../../../components/data/comment/comments.json";
+import DialogActions from "@mui/material/DialogActions";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -17,6 +17,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function ClassHireDialog(props) {
+    const onHireClicked = () => {
+        window.location.href='/home/student/classes'
+    };
+
     return (
         <BootstrapDialog
             onClose={props.handleClose}
@@ -27,57 +31,25 @@ export default function ClassHireDialog(props) {
             </DialogTitle>
             <DialogContent>
                 <div className="Hire_Dialog_Content">
-                    <div className="Hire_Dialog_Content_Left">
-                        <p className="Hire_Dialog_Label_Title">Descripción</p>
-                        <TextInput title="Calificacion" type="text" text={"Buena"}/>
-                        <TextInput title="Profesor" type="text" text={"Juan Ramirez"}/>
-                        <label className="Hire_Dialog_Label">
-                            <p className="Hire_Dialog_Label_Title">Experiencia</p>
+                    <div className="Contact_Dialog_Content">
+                        <TextInput title="Nombre" type="text" placeholder={"Su nombre aqui"}/>
+                        <TextInput title="Email" type="text" placeholder={"Su email aqui"}/>
+                        <TextInput title="Telefono" type="text" placeholder={"Su numero aqui"}/>
+                        <TextInput title="Hora de contacto" type="text" placeholder={"La hora de contacto aqui"}/>
+                        <label className="Contact_Dialog_Label">
+                            <p className="Contact_Dialog_Label_Title">Mensaje</p>
                             <textarea
-                                className="Hire_Dialog_TextArea"
-                                value="Me recibi en la UBA en el año 2002, tengo un master en pedagogia."/>
+                                className="Contact_Dialog_TextArea"
+                                placeholder="Un mensaje que quiera que lea el profesor."/>
                         </label>
-                        <label className="Hire_Dialog_Label">
-                            <p className="Hire_Dialog_Label_Title">Descripción</p>
-                            <textarea
-                                className="Hire_Dialog_TextArea"
-                                value="En esta clase vamos a ver una introduccion al area de estudio."/>
-                        </label>
-                        <TextInput title="Duracion" type="text" text={"40 horas"}/>
-                        <TextInput title="Frecuencia" type="text" text={"Semanal"}/>
-                        <TextInput title="Costo" type="text" text={"$500.00"}/>
-                    </div>
-                    <div className="Hire_Dialog_Content_Right">
-                        <p className="Hire_Dialog_Label_Title">Comentarios</p>
-                        <CommentList comment={mock.comentarios}/>
                     </div>
                 </div>
             </DialogContent>
+            <DialogActions>
+                <div className="Modal_Button" onClick={onHireClicked}>
+                    <p className="Modal_Button_Text">Contatar</p>
+                </div>
+            </DialogActions>
         </BootstrapDialog>
     );
 }
-
-function CommentList(props) {
-    const comment = props.comment;
-
-    const listItems = comment.map((h) =>
-        <ListItem key={h.key} comment={h}/>
-    );
-    return (
-        <ul className="Student_Class_User_Comment_List">{listItems}</ul>
-    );
-}
-
-function ListItem(props) {
-    const c = props.comment;
-
-    return (
-        <li className="Student_Class_User_Comment_Item">
-            <div className="Student_Class_User_Comment_Left">
-                <p className="Student_Class_User_Comment_Text_Bold">{c.autor}</p>
-                <p className="Student_Class_User_Comment_Text_Normal">{c.descripcion}</p>
-            </div>
-        </li>
-    );
-}
-
