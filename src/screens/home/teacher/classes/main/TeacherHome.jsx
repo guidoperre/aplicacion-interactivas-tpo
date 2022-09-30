@@ -44,6 +44,7 @@ function ListItem(props) {
             <div className="Teacher_Home_Item_Left">
                 <p className="Teacher_Home_Item_Text_Bold">{c.nombre}</p>
                 <p className="Teacher_Home_Item_Text_Normal">{c.materia}</p>
+                <p className="Teacher_Home_Item_Text_Light">{c.duracion}</p>
                 <p className="Teacher_Home_Item_Text_Light">{c.frecuencia}</p>
                 <p className="Teacher_Home_Item_Text_Light">{c.costo}</p>
             </div>
