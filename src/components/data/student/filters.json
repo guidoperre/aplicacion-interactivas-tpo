@@ -1,0 +1,90 @@
+{
+    "materias": [
+        { 
+            "value": 1, 
+            "label": "Aplicaciones Interactivas",
+            "description": "Aprenderan a construir una aplicacion web desde cero, con FRONTEND y BACKEND funcional."
+        },
+        { 
+            "value": 2, 
+            "label": "Programación III",
+            "description": "Aprenderan los metodos de ordenamiento mas conocidos."
+        },
+        { 
+            "value": 3, 
+            "label": "Bases de Datos",
+            "description": "Aprenderan a gestionar una base de dato y sus tipos."
+        },
+        { 
+            "value": 3, 
+            "label": "Analisis y Diseño Orientado a Objetos",
+            "description": "Aprenderan los principales patrones de diseño de la programación"
+        }
+    ],
+    "tipoClase": [
+        { 
+            "value": 1, 
+            "label": "Individual"
+        },
+        { 
+            "value": 2, 
+            "label": "Grupal"
+        }
+    ],
+    "frecuencia": [
+        { 
+            "value": 1, 
+            "label": "Unica"
+        },
+        { 
+            "value": 2, 
+            "label": "Semanal"
+        },
+        { 
+            "value": 3, 
+            "label": "Mensual"
+        }
+    ],
+    "calificacion": [
+        { 
+            "value": 1, 
+            "label": "1"
+        },
+        { 
+            "value": 2, 
+            "label": "2"
+        },
+        { 
+            "value": 3, 
+            "label": "3"
+        },
+        { 
+            "value": 4, 
+            "label": "4"
+        },
+        { 
+            "value": 5, 
+            "label": "5"
+        },
+        { 
+            "value": 6, 
+            "label": "6"
+        },
+        { 
+            "value": 7, 
+            "label": "7"
+        },
+        { 
+            "value": 8, 
+            "label": "8"
+        },
+        { 
+            "value": 9, 
+            "label": "9"
+        },
+        { 
+            "value": 10, 
+            "label": "10"
+        }
+    ]
+}

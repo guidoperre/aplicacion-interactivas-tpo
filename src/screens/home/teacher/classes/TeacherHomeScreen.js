@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {TeacherHome} from "./main/TeacherHome";
 import ClassDialog from "./modal/ModalClass";
-import {TeacherHeader} from "../../header/TeacherHeader";
+import {HomeHeader} from "../../header/HomeHeader";
 
 export default function TeacherHomeScreen() {
     const [open, setOpen] = React.useState(false);
@@ -20,7 +20,7 @@ export default function TeacherHomeScreen() {
 
     return (
         <div className="Teacher_Home_Screen">
-            <TeacherHeader dialog={handleClickOpen}/>
+            <HomeHeader dialog={handleClickOpen}/>
             <TeacherHome dialog={handleClickOpen}/>
             <ToastContainer/>
             <ClassDialog

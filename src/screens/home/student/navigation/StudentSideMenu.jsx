@@ -32,7 +32,7 @@ export default function StudentSideMenu(props) {
         <div className="Student_Navigator">
             <div className="Student_Navigator_Header">
                 <img className="Student_Navigator_Image"
-                     src={process.env.PUBLIC_URL + '/class/student.jpg'}
+                     src={process.env.PUBLIC_URL + '/class/student.png'}
                      alt="" />
                 <div className="Student_Navigator_Header_Content">
                     <p className="Student_Navigator_Header_Title">Guido Perre</p>

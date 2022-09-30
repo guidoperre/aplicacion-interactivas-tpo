@@ -1,11 +1,11 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {TeacherHiring} from "./main/TeacherHiring";
-import ContactDialog from "./modal/ModalContact";
 import {HomeHeader} from "../../header/HomeHeader";
+import {SearchClass} from "./main/SearchClass";
+import StudentSideMenu from "../navigation/StudentSideMenu";
 
-export default function TeacherHiringScreen() {
+export default function SearchClassScreen() {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -19,12 +19,9 @@ export default function TeacherHiringScreen() {
     return (
         <div className="Teacher_Hiring_Screen">
             <HomeHeader/>
-            <TeacherHiring dialog={handleClickOpen}/>
+            <StudentSideMenu titleSelected={1}/>
+            <SearchClass dialog={handleClickOpen}/>
             <ToastContainer/>
-            <ContactDialog
-                open={open}
-                handleClickOpen={handleClickOpen}
-                handleClose={handleClose}/>
         </div>
     );
 }
