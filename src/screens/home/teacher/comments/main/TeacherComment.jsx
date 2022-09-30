@@ -1,6 +1,7 @@
 import React from "react";
 import './TeacherComment.css';
 import mock from "../../../../../components/data/comment/comments.json";
+import BlockDialog from "../modal/ModalBlock";
 
 export function TeacherComment() {
     const onClassesClicked = () => {
@@ -19,24 +20,30 @@ export function TeacherComment() {
                 <div className="Teacher_Comment_Navigator_Button" onClick={onClassesClicked}>
                     <p className="Teacher_Comment_Navigator_Button_Title">Clases</p>
                 </div>
-                <div className="Teacher_Comment_Navigator_Button">
-                    <p className="Teacher_Comment_Navigator_Button_Title" onClick={onHiringClicked}>Contrataciones</p>
+                <div className="Teacher_Comment_Navigator_Button" onClick={onHiringClicked}>
+                    <p className="Teacher_Comment_Navigator_Button_Title">Contrataciones</p>
                 </div>
                 <div className="Teacher_Comment_Navigator_Button">
                     <p className="Teacher_Comment_Navigator_Button_Title_Selected">Comentarios</p>
                 </div>
             </div>
             <div className="Teacher_Comment_Content">
-                <CommentList Comment={mock.comentarios}/>
+                <CommentList comment={mock.comentarios}/>
             </div>
         </div>
     );
 }
 
 function CommentList(props) {
-    const Comment = props.Comment;
-    const listItems = Comment.map((h) =>
-        <ListItem key={h.key} hire={h} dialog={props.dialog}/>
+    const comment = props.comment;
+    const [items, setItems] = React.useState(comment);
+
+    const onDelete = (key) => {
+        setItems((items) => items.filter((item, _) => item.key !== key));
+    };
+
+    const listItems = items.map((h) =>
+        <ListItem key={h.key} comment={h} onDelete={onDelete}/>
     );
     return (
         <ul className="Teacher_Comment_List">{listItems}</ul>
@@ -44,19 +51,31 @@ function CommentList(props) {
 }
 
 function ListItem(props) {
-    const h = props.hire;
+    const c = props.comment;
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
-        <li className="Teacher_Comment_Item">
-            <div className="Teacher_Comment_Item_Left">
-                <p className="Teacher_Comment_Item_Text_Normal">{h.estado}</p>
-                <p className="Teacher_Comment_Item_Text_Bold">{h.nombre}</p>
-                <p className="Teacher_Comment_Item_Text_Light">{h.alumno}</p>
+        <li className="Teacher_Comment_Item" onClick={handleClickOpen}>
+            <div className="Teacher_Comment_Left">
+                <p className="Teacher_Comment_Text_Bold">{c.autor}</p>
+                <p className="Teacher_Comment_Text_Normal">{c.descripcion}</p>
             </div>
-            <div className="Teacher_Home_Item_Right">
-                <p className="Teacher_Comment_Item_Actionable" onClick={props.dialog}>Contactar</p>
-                <p className="Teacher_Comment_Item_Actionable">Aceptar</p>
-                <p className="Teacher_Comment_Item_Actionable">Cancelar</p>
-            </div>
+            <img className="Teacher_Comment_Image"
+                 src={process.env.PUBLIC_URL + '/class/block.png'}
+                 alt={props.alt} />
+            <BlockDialog
+                open={open}
+                handleClickOpen={handleClickOpen}
+                handleClose={handleClose}
+                onDelete={() => props.onDelete(c.key)}/>
         </li>
     );
 }

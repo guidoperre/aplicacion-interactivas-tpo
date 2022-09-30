@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
+import DialogActions from "@mui/material/DialogActions";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -33,6 +34,11 @@ export default function BlockDialog(props) {
                     </label>
                 </div>
             </DialogContent>
+            <DialogActions>
+                <div className="Modal_Button" onClick={props.onDelete}>
+                    <p className="Modal_Button_Text">Guardar</p>
+                </div>
+            </DialogActions>
         </BootstrapDialog>
     );
 }
