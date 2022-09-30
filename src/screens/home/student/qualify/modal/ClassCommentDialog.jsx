@@ -1,12 +1,10 @@
 import * as React from 'react';
 import './ClassQualifyDialog.css';
 import { styled } from '@mui/material/styles';
-import Select from 'react-select'
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from "@mui/material/DialogActions";
-import mock from "../../../../../components/data/student/qualifications.json";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {

@@ -47,9 +47,9 @@ export function StudentClasses() {
 
 function CoursesQualifyList(props) {    
     const qualify = props.qualify;
-    const [items, setItems] = React.useState(qualify);
+    // const [items, setItems] = React.useState(qualify);
 
-    const listItems = items.map((h) =>
+    const listItems = qualify.map((h) =>
         <ListItem key={h.key} qualify={h} onQualify={props.onQualify} onComment={props.onComment}/>
     );
     return (
