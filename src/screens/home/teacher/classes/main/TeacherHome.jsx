@@ -21,6 +21,11 @@ export function TeacherHome(props) {
             <div className="Teacher_Home_Content">
                 <ClassesList classes={mock.clases} dialog={props.dialog} comment={handleCommentOpen}/>
             </div>
+            <div className="Teacher_Home_Add" onClick={() => props.dialog("Crear clase")}>
+                <img className="Teacher_Home_Add_Image"
+                     src={process.env.PUBLIC_URL + '/class/add.png'}
+                     alt={props.alt} />
+            </div>
             <CommentDialog
                 open={open}
                 handleClickOpen={handleCommentOpen}

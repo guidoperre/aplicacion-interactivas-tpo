@@ -1,69 +1,15 @@
 .Teacher_Comment {
     width: 100%;
     background: #FFFFFF;
-    margin-top: 6.5vw;
-    margin-bottom: 4vw;
     display: flex;
     flex-direction: row;
-}
-
-.Teacher_Comment_Navigator {
-    top: 9%;
-    left: 0;
-    position: absolute;
-    width: 20%;
-    height: 91%;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
-}
-
-.Teacher_Comment_Navigator_Header {
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid #CCCCCC;
-    background-color: #F4F4F4;
-}
-
-.Teacher_Comment_Navigator_Image {
-    width: 3vw;
-    height: 3vw;
-    border-radius: 50%;
-    margin: 32px 0 32px auto;
-}
-
-.Teacher_Comment_Navigator_Header_Title {
-    margin: auto auto auto 16px;
-    font-family: Quicksand, serif;
-    font-size: 16px;
-    font-weight: normal;
-    color: #333333;
-}
-
-.Teacher_Comment_Navigator_Button {
-    display: flex;
-    border-bottom: 1px solid #CCCCCC;
-    cursor: pointer;
-}
-
-.Teacher_Comment_Navigator_Button_Title_Selected {
-    margin: 32px auto 32px auto;
-    font-family: Quicksand, serif;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333333;
-}
-
-.Teacher_Comment_Navigator_Button_Title {
-    margin: 32px auto 32px auto;
-    font-family: Quicksand, serif;
-    font-size: 16px;
-    font-weight: normal;
-    color: #333333;
+    padding-left: 20%;
+    padding-top: 8vmin;
 }
 
 .Teacher_Comment_Content {
-    margin: 4vw auto auto 55vmin;
+    width: 100%;
+    margin: 32px 10% auto 10%;
 }
 
 .Teacher_Comment_List {
@@ -90,6 +36,13 @@
     gap: 4px;
 }
 
+.Teacher_Comment_Right {
+    display: flex;
+    flex-direction: row;
+    margin: auto 16px auto auto;
+    gap: 16px;
+}
+
 .Teacher_Comment_Text_Bold {
     font-family: Quicksand, serif;
     font-size: 14px;
@@ -109,7 +62,7 @@
 .Teacher_Comment_Image {
     width: 1vw;
     height: 1vw;
-    margin: auto 16px auto 0;
+    margin: auto 0 auto 0;
     user-select: none;
     cursor: pointer;
 }

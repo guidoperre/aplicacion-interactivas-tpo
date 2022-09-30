@@ -49,9 +49,15 @@ function ListItem(props) {
                 <p className="Teacher_Comment_Text_Bold">{c.autor}</p>
                 <p className="Teacher_Comment_Text_Normal">{c.descripcion}</p>
             </div>
-            <img className="Teacher_Comment_Image"
-                 src={process.env.PUBLIC_URL + '/class/block.png'}
-                 alt={props.alt} />
+            <div className="Teacher_Comment_Right">
+                <img className="Teacher_Comment_Image"
+                     src={process.env.PUBLIC_URL + '/class/approve.png'}
+                     alt="approve"
+                     onClick={() => props.onDelete(c.key)}/>
+                <img className="Teacher_Comment_Image"
+                     src={process.env.PUBLIC_URL + '/class/block.png'}
+                     alt="block"/>
+            </div>
             <BlockDialog
                 open={open}
                 handleClickOpen={handleClickOpen}
