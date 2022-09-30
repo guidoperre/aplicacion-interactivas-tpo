@@ -13,7 +13,7 @@ import TeacherRegisterScreen from "../screens/register/teacher/TeacherRegisterSc
 import TeacherHomeScreen from "../screens/home/teacher/classes/TeacherHomeScreen";
 import TeacherHiringScreen from "../screens/home/teacher/hirings/TeacherHiringScreen";
 import TeacherCommentScreen from "../screens/home/teacher/comments/TeacherCommentScreen";
-import StudentQualifyScreen from "../screens/home/student/qualify/StudentQualifyScreen";
+import StudentClassesScreen from "../screens/home/student/qualify/StudentClassesScreen";
 import SearchClassScreen from "../screens/home/student/search/SearchClassScreen";
 import StudentClassScreen from "../screens/home/student/class/StudentClassScreen";
 
@@ -31,9 +31,9 @@ export default function AppRouter() {
                     <Route path="/home/teacher/classes" element={<TeacherHomeScreen/>}/>
                     <Route path="/home/teacher/hiring" element={<TeacherHiringScreen/>}/>
                     <Route path="/home/teacher/comments" element={<TeacherCommentScreen/>}/>
-                    <Route path="/home/student/qualify" element={<StudentQualifyScreen/>}/>
                     <Route path="/home/student/search" element={<SearchClassScreen/>}/>
                     <Route path="/home/student/search/class" element={<StudentClassScreen/>}/>
+                    <Route path="/home/student/classes" element={<StudentClassesScreen/>}/>
                 </Routes>
             </div>
         </Router>
