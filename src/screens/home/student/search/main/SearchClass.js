@@ -19,7 +19,7 @@ export function SearchClass() {
                     (course === undefined || item.materiaId === course) &&
                     (classType === undefined || item.tipoClaseId === classType) &&
                     (frequency === undefined || item.frecuenciaId === frequency) &&
-                    (qualification === undefined || item.calificacion === qualification)
+                    (qualification === undefined || item.calificacionId === qualification)
                 )
         )
     }
