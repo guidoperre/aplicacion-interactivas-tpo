@@ -67,3 +67,8 @@ Al seleccionar los filtros deberá presionar el botón de <Buscar> y mostrará e
 Es esta pantalla se listarán las clases en las que el estudiante esta registrado con la opción de hacer un comentario o calificar la misma.
 
 
+##Colaboradores:
+  1. Perre Guido Simon
+  2. Perez Cimato Gonzalo
+  3. Muñoz Mancera David
+
