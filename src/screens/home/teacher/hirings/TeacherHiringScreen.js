@@ -1,9 +1,9 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {TeacherHiringHeader} from "./header/TeacherHiringHeader";
 import {TeacherHiring} from "./main/TeacherHiring";
 import ContactDialog from "./modal/ModalContact";
+import {TeacherHeader} from "../header/TeacherHeader";
 
 export default function TeacherHiringScreen() {
     const [open, setOpen] = React.useState(false);
@@ -18,7 +18,7 @@ export default function TeacherHiringScreen() {
 
     return (
         <div className="Teacher_Hiring_Screen">
-            <TeacherHiringHeader/>
+            <TeacherHeader/>
             <TeacherHiring dialog={handleClickOpen}/>
             <ToastContainer/>
             <ContactDialog

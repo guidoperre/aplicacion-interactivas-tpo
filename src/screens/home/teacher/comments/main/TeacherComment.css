@@ -20,16 +20,24 @@
 
 .Teacher_Comment_Navigator_Header {
     display: flex;
+    flex-direction: row;
     border-bottom: 1px solid #CCCCCC;
-    background-color: #84abe7;
+    background-color: #F4F4F4;
+}
+
+.Teacher_Comment_Navigator_Image {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    margin: 32px 0 32px auto;
 }
 
 .Teacher_Comment_Navigator_Header_Title {
-    margin: 32px auto 32px auto;
+    margin: auto auto auto 16px;
     font-family: Quicksand, serif;
     font-size: 16px;
     font-weight: normal;
-    color: #FFFFFF;
+    color: #333333;
 }
 
 .Teacher_Comment_Navigator_Button {

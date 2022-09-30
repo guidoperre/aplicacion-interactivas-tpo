@@ -2,6 +2,7 @@ import React from "react";
 import './TeacherHome.css';
 import mock from "../../../../../components/data/teacher/clases.json";
 import CommentDialog from "../modal/ModalComment";
+import TeacherSideMenu from "../../navigation/TeacherSideMenu";
 
 export function TeacherHome(props) {
     const [open, setOpen] = React.useState(false);
@@ -14,29 +15,9 @@ export function TeacherHome(props) {
         setOpen(false);
     };
 
-    const onHiringClicked = () => {
-        window.location.href='/home/teacher/hiring'
-    };
-    const onCommentsClicked = () => {
-        window.location.href='/home/teacher/comments'
-    };
-
     return (
         <div className="Teacher_Home">
-            <div className="Teacher_Home_Navigator">
-                <div className="Teacher_Home_Navigator_Header">
-                    <p className="Teacher_Home_Navigator_Header_Title">Profesor Juan Ramirez</p>
-                </div>
-                <div className="Teacher_Home_Navigator_Button">
-                    <p className="Teacher_Home_Navigator_Button_Title_Selected">Clases</p>
-                </div>
-                <div className="Teacher_Home_Navigator_Button" onClick={onHiringClicked}>
-                    <p className="Teacher_Home_Navigator_Button_Title">Contrataciones</p>
-                </div>
-                <div className="Teacher_Comment_Navigator_Button" onClick={onCommentsClicked}>
-                    <p className="Teacher_Comment_Navigator_Button_Title">Comentarios</p>
-                </div>
-            </div>
+            <TeacherSideMenu titleSelected={1}/>
             <div className="Teacher_Home_Content">
                 <ClassesList classes={mock.clases} dialog={props.dialog} comment={handleCommentOpen}/>
             </div>

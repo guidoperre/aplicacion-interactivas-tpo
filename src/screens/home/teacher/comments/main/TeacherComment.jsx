@@ -2,31 +2,12 @@ import React from "react";
 import './TeacherComment.css';
 import mock from "../../../../../components/data/comment/comments.json";
 import BlockDialog from "../modal/ModalBlock";
+import TeacherSideMenu from "../../navigation/TeacherSideMenu";
 
 export function TeacherComment() {
-    const onClassesClicked = () => {
-        window.location.href='/home/teacher/classes'
-    };
-    const onHiringClicked = () => {
-        window.location.href='/home/teacher/hiring'
-    };
-
     return (
         <div className="Teacher_Comment">
-            <div className="Teacher_Comment_Navigator">
-                <div className="Teacher_Comment_Navigator_Header">
-                    <p className="Teacher_Comment_Navigator_Header_Title">Profesor Juan Ramirez</p>
-                </div>
-                <div className="Teacher_Comment_Navigator_Button" onClick={onClassesClicked}>
-                    <p className="Teacher_Comment_Navigator_Button_Title">Clases</p>
-                </div>
-                <div className="Teacher_Comment_Navigator_Button" onClick={onHiringClicked}>
-                    <p className="Teacher_Comment_Navigator_Button_Title">Contrataciones</p>
-                </div>
-                <div className="Teacher_Comment_Navigator_Button">
-                    <p className="Teacher_Comment_Navigator_Button_Title_Selected">Comentarios</p>
-                </div>
-            </div>
+            <TeacherSideMenu titleSelected={3}/>
             <div className="Teacher_Comment_Content">
                 <CommentList comment={mock.comentarios}/>
             </div>
