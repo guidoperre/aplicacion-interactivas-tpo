@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {TeacherHiring} from "./main/TeacherHiring";
 import ContactDialog from "./modal/ModalContact";
-import {TeacherHeader} from "../header/TeacherHeader";
+import {TeacherHeader} from "../../header/TeacherHeader";
 
 export default function TeacherHiringScreen() {
     const [open, setOpen] = React.useState(false);
