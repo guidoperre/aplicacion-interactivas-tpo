@@ -5,6 +5,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import mock from "../../../../../components/data/comment/comments.json";
+import {useSelector} from "react-redux";
+import {useLocation} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -16,13 +19,29 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function CommentDialog(props) {
-    const comments = mock.comentarios;
+    const userAuth = useSelector((state) => state.userAuth);
+    const location = useLocation();
+    let comments = [];
 
     const [items, setItems] = React.useState(comments);
 
     const onBlock = (key) => {
         setItems((items) => items.filter((item, _) => item.key !== key));
     };
+
+    try {
+        getClassComments(userAuth.token, location.state.id ?? -1).then(r => {
+            if(r.status !== 200) {
+                toast.error('No pudimos obtener los comentarios de la clase (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                comments = r.content
+            }
+        })
+    } catch (error) {
+        console.log(error);
+    }
 
     const listItems = items.map((c) =>
         <ListComment key={c.key} comment={c} onBlock={onBlock}/>
@@ -45,7 +64,6 @@ export default function CommentDialog(props) {
     );
 }
 
-
 function ListComment(props) {
     const c = props.comment;
     return (
@@ -56,4 +74,12 @@ function ListComment(props) {
             </div>
         </li>
     );
+}
+
+async function getClassComments(token, id) {
+    const response = await fetch(`http://localhost:4000/teacherClasses/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    })
+    return {status: response.status, content: await response.json()};
 }

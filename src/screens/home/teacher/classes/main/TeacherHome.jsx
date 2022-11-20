@@ -3,9 +3,13 @@ import './TeacherHome.css';
 import mock from "../../../../../components/data/teacher/clases.json";
 import CommentDialog from "../modal/ModalComment";
 import TeacherSideMenu from "../../navigation/TeacherSideMenu";
+import {useSelector} from "react-redux";
+import {toast} from "react-toastify";
 
 export function TeacherHome(props) {
+    const userAuth = useSelector((state) => state.userAuth);
     const [open, setOpen] = React.useState(false);
+    let classes = []
 
     const handleCommentOpen = () => {
         setOpen(true);
@@ -15,11 +19,25 @@ export function TeacherHome(props) {
         setOpen(false);
     };
 
+    try {
+        getTeacherClasses(userAuth.token).then(r => {
+            if(r.status !== 200) {
+                toast.error('No pudimos obtener la informacion de las clases (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                classes = r.content
+            }
+        })
+    } catch (error) {
+        console.log(error);
+    }
+
     return (
         <div className="Teacher_Home">
             <TeacherSideMenu titleSelected={1}/>
             <div className="Teacher_Home_Content">
-                <ClassesList classes={mock.clases} dialog={props.dialog} comment={handleCommentOpen}/>
+                <ClassesList classes={classes} dialog={props.dialog} comment={handleCommentOpen}/>
             </div>
             <div className="Teacher_Home_Add" onClick={() => props.dialog("Crear clase")}>
                 <img className="Teacher_Home_Add_Image"
@@ -52,6 +70,7 @@ function ClassesList(props) {
 }
 
 function ListItem(props) {
+    const userAuth = useSelector((state) => state.userAuth);
     const [published, setPublished] = React.useState(true);
 
     const handlePublishState = () => {
@@ -62,9 +81,25 @@ function ListItem(props) {
     const c = props.class;
 
     if (published) {
-        publishedIcon = 'pause'
+        playClass(userAuth.token, c.id).then(r => {
+            if(r.status !== 200) {
+                toast.error('No pudimos empezar la clase (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                publishedIcon = 'pause'
+            }
+        })
     } else {
-        publishedIcon = 'play'
+        pauseClass(userAuth.token, c.id).then(r => {
+            if(r.status !== 200) {
+                toast.error('No pudimos pausar la clase (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                publishedIcon = 'play'
+            }
+        })
     }
 
     return (
@@ -106,4 +141,48 @@ function ClassAction(props) {
                  alt={props.alt} />
         </div>
     );
+}
+
+async function getTeacherClasses(token) {
+    const response = await fetch(`http://localhost:4000/teacherClasses/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    })
+    return {status: response.status, content: await response.json()};
+}
+
+async function pauseClass(token, id) {
+    const response = await fetch(`http://localhost:4000/teacherClasses/pause`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: {id: id}
+    })
+    return {status: response.status, content: await response.json()};
+}
+
+async function playClass(token, id) {
+    const response = await fetch(`http://localhost:4000/teacherClasses/start`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: {id: id}
+    })
+    return {status: response.status, content: await response.json()};
+}
+
+async function updateClass(token, course) {
+    const response = await fetch(`http://localhost:4000/teacherClasses/`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: course
+    })
+    return {status: response.status, content: await response.json()};
+}
+
+async function deleteClass(token, id) {
+    const response = await fetch(`http://localhost:4000/teacherClasses/`, {
+        method: 'delete',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: {id: id}
+    })
+    return {status: response.status, content: await response.json()};
 }
