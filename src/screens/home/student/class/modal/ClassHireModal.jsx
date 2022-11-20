@@ -6,6 +6,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import {TextInput} from "../../../../../components/input/single/TextInput";
 import DialogActions from "@mui/material/DialogActions";
+import {useSelector} from "react-redux";
+import {toast} from "react-toastify";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -17,8 +20,27 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function ClassHireDialog(props) {
+    const userAuth = useSelector((state) => state.userAuth);
+    const navigation = useNavigate();
+    const location = useLocation();
+    const [comment, setComment] = React.useState("");
+
     const onHireClicked = () => {
-        window.location.href='/home/student/classes'
+        try {
+            hireClass(userAuth.token, location.state.id, comment).then(r => {
+                if(r.status !== 200) {
+                    toast.error('No pudimos contratar la clase (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    props.handleClose()
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        } finally {
+            navigation('/home/student/classes')
+        }
     };
 
     return (
@@ -40,7 +62,9 @@ export default function ClassHireDialog(props) {
                             <p className="Contact_Dialog_Label_Title">Mensaje</p>
                             <textarea
                                 className="Contact_Dialog_TextArea"
-                                placeholder="Un mensaje que quiera que lea el profesor."/>
+                                placeholder="Un mensaje que quiera que lea el profesor."
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}/>
                         </label>
                     </div>
                 </div>
@@ -52,4 +76,13 @@ export default function ClassHireDialog(props) {
             </DialogActions>
         </BootstrapDialog>
     );
+}
+
+async function hireClass(token, id) {
+    const response = await fetch(`http://localhost:4000/studentClass/create`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: {class: id}
+    })
+    return {status: response.status, content: await response.json()};
 }

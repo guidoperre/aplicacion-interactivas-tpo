@@ -7,6 +7,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from "@mui/material/DialogActions";
 import mock from "../../../../../components/data/student/qualifications.json";
+import {useSelector} from "react-redux";
+import {toast} from "react-toastify";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -18,6 +20,27 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function ClassQualifyDialog(props) {
+    const [qualification, setQualification] = React.useState("");
+    const userAuth = useSelector((state) => state.userAuth);
+
+    const onQualifyClick = () => {
+        try {
+            postQualification(userAuth.token, qualification).then(r => {
+                if(r.status !== 200) {
+                    toast.error('No pudimos calificar la clase (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    props.handleClose()
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        } finally {
+            props.handleClose()
+        }
+    };
+
     return (
         <BootstrapDialog
             onClose={props.handleClose}
@@ -32,14 +55,24 @@ export default function ClassQualifyDialog(props) {
                     <Select
                         placeholder="Seleccione una calificación"
                         className="Search_Filter"                        
-                        options={mock.calificacion} />
+                        options={mock.calificacion}
+                        onChange={(e) => setQualification(e)}/>
                 </div>
             </DialogContent>
             <DialogActions>
-                <div className="Modal_Button" onClick={props.handleClose}>
+                <div className="Modal_Button" onClick={onQualifyClick}>
                     <p className="Modal_Button_Text">Guardar</p>
                 </div>
             </DialogActions>
         </BootstrapDialog>
     );
+}
+
+async function postQualification(token, qualification) {
+    const response = await fetch(`http://localhost:4000/qualification/create`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: {qualification: qualification}
+    })
+    return {status: response.status, content: await response.json()};
 }

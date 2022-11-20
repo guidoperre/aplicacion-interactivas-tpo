@@ -4,6 +4,7 @@ import Select from 'react-select'
 import 'bootstrap/dist/css/bootstrap.min.css' ;
 import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 export function SearchClass() {
     const userAuth = useSelector((state) => state.userAuth);
@@ -101,9 +102,10 @@ export function SearchClass() {
 
 function ListItem(props) {
     const c = props.class;
+    const navigate = useNavigate();
 
     const onClassClicked = () => {
-        window.location.href='/home/student/search/class'
+        navigate('/home/student/search/class', {state: {id: c.id}})
     };
 
     return (
