@@ -2,15 +2,30 @@ import React from "react";
 import './SearchClass.css';
 import Select from 'react-select'
 import 'bootstrap/dist/css/bootstrap.min.css' ;
-import filters from "../../../../../components/data/student/filters.json";
-import classes from "../../../../../components/data/student/classes.json";
+import {useSelector} from "react-redux";
 
 export function SearchClass() {
+    const userAuth = useSelector((state) => state.userAuth);
+    let classes = {}
+    let filters = {}
+
+    try {
+        classes = getClasses(userAuth.token)
+    } catch (error) {
+        console.log(error);
+    }
+
+    try {
+        filters = getFilters(userAuth.token)
+    } catch (error) {
+        console.log(error);
+    }
+
     const [course, setClass] = React.useState(undefined);
     const [classType, setClassType] = React.useState(undefined);
     const [frequency, setFrequency] = React.useState(undefined);
     const [qualification, setQualification] = React.useState(undefined);
-    const [items, setFilteredCourses] = React.useState(classes.cursos);
+    const [items, setFilteredCourses] = React.useState(classes.cursos ?? []);
 
     const searchClass = () => {
         setFilteredCourses(
@@ -83,4 +98,20 @@ function ListItem(props) {
             <p className="Search_Comment_Text_Normal">{c.costo}</p>
         </li>
     );
+}
+
+async function getClasses(token) {
+    const response = await fetch(`http://localhost:4000/studentClasses/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    })
+    return await response.json();
+}
+
+async function getFilters(token) {
+    const response = await fetch(`http://localhost:4000/studentClasses/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    })
+    return await response.json();
 }

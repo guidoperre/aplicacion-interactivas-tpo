@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import MainScreen from "../screens/main/MainScreen";
 import LoginScreen from "../screens/login/LoginScreen";
 import RegisterScreen from "../screens/register/main/RegisterScreen";
@@ -17,25 +13,53 @@ import StudentClassesScreen from "../screens/home/student/qualify/StudentClasses
 import SearchClassScreen from "../screens/home/student/search/SearchClassScreen";
 import StudentClassScreen from "../screens/home/student/class/StudentClassScreen";
 
-export default function AppRouter() {
-    return (
-        <Router>
-            <div>
-                <Routes>
-                    <Route path="/" element={<MainScreen/>}/>
-                    <Route path="/login" element={<LoginScreen/>}/>
-                    <Route path="/register" element={<RegisterScreen/>}/>
-                    <Route path="/register/student" element={<StudentRegisterScreen/>}/>
-                    <Route path="/register/teacher" element={<TeacherRegisterScreen/>}/>
-                    <Route path="/forgotpassword" element={<ForgotScreen/>}/>
-                    <Route path="/home/teacher/classes" element={<TeacherHomeScreen/>}/>
-                    <Route path="/home/teacher/hiring" element={<TeacherHiringScreen/>}/>
-                    <Route path="/home/teacher/comments" element={<TeacherCommentScreen/>}/>
-                    <Route path="/home/student/search" element={<SearchClassScreen/>}/>
-                    <Route path="/home/student/search/class" element={<StudentClassScreen/>}/>
-                    <Route path="/home/student/classes" element={<StudentClassesScreen/>}/>
-                </Routes>
-            </div>
-        </Router>
-    );
-}
+export const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <MainScreen/>
+    },
+    {
+        path: '/login',
+        element: <LoginScreen/>
+    },
+    {
+        path: '/register',
+        element: <RegisterScreen/>
+    },
+    {
+        path: '/register/student',
+        element: <StudentRegisterScreen/>
+    },
+    {
+        path: '/register/teacher',
+        element: <TeacherRegisterScreen/>
+    },
+    {
+        path: '/forgotpassword',
+        element: <ForgotScreen/>
+    },
+    {
+        path: '/home/teacher/classes',
+        element: <TeacherHomeScreen/>
+    },
+    {
+        path: '/home/teacher/hiring',
+        element: <TeacherHiringScreen/>
+    },
+    {
+        path: '/home/teacher/comments',
+        element: <TeacherCommentScreen/>
+    },
+    {
+        path: '/home/student/search',
+        element: <SearchClassScreen/>
+    },
+    {
+        path: '/home/student/search/class',
+        element: <StudentClassScreen/>
+    },
+    {
+        path: '/home/student/classes',
+        element: <StudentClassesScreen/>
+    }
+]);

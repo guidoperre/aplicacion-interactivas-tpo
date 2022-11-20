@@ -3,8 +3,13 @@ import './LoginLeft.css';
 import { Logo } from "../../../components/logo/Logo";
 import { TextInput } from "../../../components/input/single/TextInput";
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
+import {setToken} from "../../../auth/userAuthSlice.ts";
+import {useDispatch} from "react-redux";
 
 export function LoginLeft() {
+    const dispatch = useDispatch();
+    const navigator = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -18,12 +23,14 @@ export function LoginLeft() {
 
     const onLoginClicked = () => {
         login(email, password).then(r => {
-            if(r.status !== 200) {
+            if(r.status !== 201) {
                 toast.error(r.message, {
                     position: toast.POSITION.BOTTOM_LEFT
                 });
             } else {
-                // TODO: handlear login en base a la respuesta
+                dispatch(setToken(r.content.loginUser.token));
+                navigator('/home/student/search', {state: {token: r.content.loginUser.token}})
+                // TODO: handlear tipo login en base a la respuesta
             }
         })
     };
@@ -66,5 +73,5 @@ async function login(email, password) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email: email, password: password})
     })
-    return await response.json();
+    return {status: response.status, content: await response.json()};
 }

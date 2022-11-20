@@ -1,15 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './config/app/App';
-import reportWebVitals from './config/reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css' ;
+import reportWebVitals from './config/reportWebVitals';
+import {RouterProvider} from "react-router-dom";
+import {router} from "./routes/Router";
+import {configureStore} from "@reduxjs/toolkit";
+import authReducer from "./auth/userAuthSlice.ts";
+import {Provider} from "react-redux";
+
+const store = configureStore({
+    reducer: {
+        userAuth: authReducer
+    }
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Provider store={store}>
+        <React.StrictMode>
+            <RouterProvider router={router} />
+        </React.StrictMode>
+    </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
