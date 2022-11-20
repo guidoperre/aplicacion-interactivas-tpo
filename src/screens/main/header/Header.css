@@ -11,7 +11,7 @@
 }
 
 .Logo {
-    margin-left: 12.5%;
+    margin-left: 15%;
 }
 
 .Navigation {
@@ -33,6 +33,7 @@
 .Login {
     height: 2vw;
     border: 1px solid white;
+    background: #6c8ed0;
     border-radius: 1vw;
     display: flex;
     cursor: pointer;
