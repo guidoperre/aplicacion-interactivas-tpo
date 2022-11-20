@@ -1,22 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/institular_logo.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="/logo/institular_logo.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>circle-intersection.js tests</title>
 
-    <title>Institular</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css">
+  <script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+  <script src="./circles/circle-intersection.js"></script>
 
-  </body>
+  <script>
+    function generateRandomCircles() {
+      return [{x: 0, y: 0, radius: 2}, {x: 2, y: 1, radius: 2}, {x: -2, y: 1, radius: 2}];
+    }
+
+    test("randomCircleAreas", function() {
+        var circles = generateRandomCircles();
+        var area = circleIntersection.intersectionArea(circles)
+        ok(area, "Ganamos" + area)
+    });
+  </script>
+</head>
+<body>
+<div id="qunit"></div>
+</body>
 </html>
