@@ -8,11 +8,15 @@ import {router} from "./routes/Router";
 import {configureStore} from "@reduxjs/toolkit";
 import authReducer from "./auth/userAuthSlice.ts";
 import {Provider} from "react-redux";
+import {StateLoader} from "./config/StateLoader"
+
+const stateLoader = new StateLoader();
 
 const store = configureStore({
     reducer: {
         userAuth: authReducer
-    }
+    },
+    preloadedState: stateLoader.loadState()
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -28,3 +32,8 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+store.subscribe(() => {
+    //this is just a function that saves state to localStorage
+    stateLoader.saveState(store.getState());
+});

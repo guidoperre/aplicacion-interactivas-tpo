@@ -50,8 +50,8 @@ export function StudentRegisterLeft() {
                 bachelor: bachelor
             }
         ).then(r => {
-            if(r.status === undefined || r.status !== 200) {
-                toast.error(r.message, {
+            if(r.status !== 200) {
+                toast.error(r.content.message, {
                     position: toast.POSITION.BOTTOM_LEFT
                 });
             } else {
@@ -117,6 +117,6 @@ async function register(data) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     })
-    return await response.json();
+    return {status: response.status, content: await response.json()};
 }
 

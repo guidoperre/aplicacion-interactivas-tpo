@@ -3,10 +3,28 @@ import './StudentClasses.css';
 import mock from "../../../../../components/data/student/classes.json";
 import ClassQualifyDialog from "../modal/ClassQualifyDialog";
 import ClassCommentDialog from "../modal/ClassCommentDialog";
+import {useSelector} from "react-redux";
+import {toast} from "react-toastify";
 
 export function StudentClasses() {
     const [open, setOpen] = React.useState(false);
     const [openC, setOpenC] = React.useState(false);
+    const userAuth = useSelector((state) => state.userAuth);
+    let courses = {}
+
+    try {
+        getClasses(userAuth.token).then(r => {
+            if(r.status !== 200) {
+                toast.error('Ocurrio un error cargando los cursos (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                courses = r.content
+            }
+        })
+    } catch (error) {
+        console.log(error);
+    }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -31,7 +49,7 @@ export function StudentClasses() {
     return (
         <div className="Student_Class_Qualify">
             <div className="Student_Class_Qualify_Content">
-                <CoursesQualifyList qualify={mock.cursos} onQualify={onQualify} onComment={handleCClickOpen}/>
+                <CoursesQualifyList qualify={courses.cursos ?? []} onQualify={onQualify} onComment={handleCClickOpen}/>
             </div>
             <ClassQualifyDialog
                 open={open}
@@ -78,4 +96,12 @@ function ListItem(props) {
             </div>
         </li>
     );
+}
+
+async function getClasses(token) {
+    const response = await fetch(`http://localhost:4000/studentClasses/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    })
+    return {status: response.status, content: await response.json()};
 }

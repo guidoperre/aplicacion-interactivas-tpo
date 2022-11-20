@@ -3,6 +3,7 @@ import './SearchClass.css';
 import Select from 'react-select'
 import 'bootstrap/dist/css/bootstrap.min.css' ;
 import {useSelector} from "react-redux";
+import {toast} from "react-toastify";
 
 export function SearchClass() {
     const userAuth = useSelector((state) => state.userAuth);
@@ -10,13 +11,29 @@ export function SearchClass() {
     let filters = {}
 
     try {
-        classes = getClasses(userAuth.token)
+        getClasses(userAuth.token).then(r => {
+            if(r.status !== 200) {
+                toast.error('Ocurrio un error cargando los cursos (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                classes = r.content
+            }
+        })
     } catch (error) {
         console.log(error);
     }
 
     try {
-        filters = getFilters(userAuth.token)
+        getFilters(userAuth.token).then(r => {
+            if(r.status !== 200) {
+                toast.error('Ocurrio un error cargando los filtros (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                filters = r.content
+            }
+        })
     } catch (error) {
         console.log(error);
     }
