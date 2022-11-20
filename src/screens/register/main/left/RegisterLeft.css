@@ -73,7 +73,7 @@
     font-family: Quicksand, serif;
     font-size: 14px;
     font-weight: 400;
-    margin: auto;
+    margin: auto 4px;
     user-select: none;
 }
 
@@ -84,6 +84,7 @@
     display: flex;
     cursor: pointer;
     margin-top: 1vw;
+    text-decoration: none;
 }
 
 .Register_Button_Text {
@@ -92,6 +93,7 @@
     font-weight: 400;
     color: white;
     margin: auto;
+    text-decoration: none;
 }
 
 .Register_Login {

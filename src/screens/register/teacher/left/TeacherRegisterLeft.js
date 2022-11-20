@@ -1,11 +1,43 @@
-import React from "react";
+import React, {useState} from "react";
 import './TeacherRegisterLeft.css';
 import {Logo} from "../../../../components/logo/Logo";
 import {TextInput} from "../../../../components/input/single/TextInput";
+import {useLocation, useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 export function TeacherRegisterLeft() {
+    const location = useLocation();
+    const navigate = useNavigate()
+    const [title, setTitle] = useState()
+    const [experience, setExperience] = useState()
+
+    const onTitleChange = (e) => {
+        setTitle(e.target.value)
+    }
+
+    const onExperienceChange = (e) => {
+        setExperience(e)
+    }
     const onRegisterClicked = () => {
-        window.location.href='/login'
+        // TODO: Probar este flujo cuando tengamos respuesta
+        register(
+            {
+                name: location.state.name,
+                email: location.state.email,
+                phone: location.state.phone,
+                password: location.state.password,
+                title: title,
+                experience: experience
+            }
+        ).then(r => {
+            if(r.status !== 200) {
+                toast.error(r.message, {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                navigate('/login', {state: {register_success: true}})
+            }
+        })
     }
 
     return (
@@ -17,12 +49,19 @@ export function TeacherRegisterLeft() {
                 <p className="TeacherRegister_Title">Crea tu cuenta de profesor 😋</p>
                 <p className="TeacherRegister_Subtitle">Si ya tenes cuenta, podes <a className="TeacherRegister_Login" href="/login">iniciar sesión aquí</a></p>
                 <div className="TeacherRegister_Input_Container">
-                    <TextInput title="Titulo" type="text" placeholder="Repartidor de pizzas"/>
+                    <TextInput
+                        title="Titulo"
+                        type="text"
+                        placeholder="Repartidor de pizzas"
+                        value={title}
+                        onTextChange={onTitleChange}/>
                     <label className="TeacherRegister_Label">
                         <p className="TeacherRegister_Label_Title">Experiencia</p>
                         <textarea
                             className="TeacherRegister_TextArea"
-                            placeholder="Hace 5 años trabajo como repartidor en..."/>
+                            placeholder="Hace 5 años trabajo como repartidor en..."
+                            value={experience}
+                            onChange={onExperienceChange}/>
                     </label>
                 </div>
                 <div className="TeacherRegister_Button" onClick={onRegisterClicked}>
@@ -32,4 +71,13 @@ export function TeacherRegisterLeft() {
             <p className="Copyright_Text">2022 Institular ®. Reservados todos los derechos.</p>
         </div>
     )
+}
+
+async function register(data) {
+    const response = await fetch(`http://localhost:4000/users/registration`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    return await response.json();
 }

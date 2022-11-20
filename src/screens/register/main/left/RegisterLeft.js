@@ -2,26 +2,47 @@ import React, {useState} from "react";
 import './RegisterLeft.css';
 import {Logo} from "../../../../components/logo/Logo";
 import {TextInput} from "../../../../components/input/single/TextInput";
-
-
+import { useNavigate } from "react-router-dom";
 
 export function RegisterLeft() {
+    const navigate = useNavigate()
     const [checked, setChecked] = useState("")
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
+    const [password, setPassword] = useState("")
+
+    const onNameChange = (e) => {
+        setName(e.target.value)
+    }
+
+    const onEmailChange = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const onPhoneChange = (e) => {
+        setPhone(e.target.value)
+    }
+
+    const onPasswordChange = (e) => {
+        setPassword(e.target.value)
+    }
 
     const onCheckboxClicked = (e) => {
         setChecked(e.target.name)
     }
 
     const onRegisterClicked = () => {
+        let path
         switch (checked) {
             case "alumno":
-                window.location.href='/register/student'
+                path = '/register/student'
                 break
             case "profesor":
-                window.location.href='/register/teacher'
+                path = '/register/teacher'
                 break
-
         }
+        navigate(path, {state: {name: name, email: email, phone: phone, password: password}})
     };
 
     return (
@@ -34,10 +55,30 @@ export function RegisterLeft() {
                 <p className="Register_Subtitle">Si ya tenes cuenta, podes <a className="Register_Login" href="/login">iniciar sesión aquí</a></p>
                 <div className="Register_Input_Container">
                     <UserTypeSelector onChanged={event => onCheckboxClicked(event)}/>
-                    <TextInput title="Nombre completo" type="text" placeholder="Juan Perez"/>
-                    <TextInput title="Email" type="email" placeholder="alumno@gmail.com"/>
-                    <TextInput title="Telefono" type="number" placeholder="1123456789"/>
-                    <TextInput title="Contraseña" type="password" placeholder="Secreta1234"/>
+                    <TextInput
+                        title="Nombre completo"
+                        type="text"
+                        placeholder="Juan Perez"
+                        value = {name}
+                        onTextChange={onNameChange}/>
+                    <TextInput
+                        title="Email"
+                        type="email"
+                        placeholder="alumno@gmail.com"
+                        value = {email}
+                        onTextChange={onEmailChange}/>
+                    <TextInput
+                        title="Telefono"
+                        type="number"
+                        placeholder="1123456789"
+                        value = {phone}
+                        onTextChange={onPhoneChange}/>
+                    <TextInput
+                        title="Contraseña"
+                        type="password"
+                        placeholder="Secreta1234"
+                        value = {password}
+                        onTextChange={onPasswordChange}/>
                 </div>
                 <div className="Register_Button" onClick={onRegisterClicked}>
                     <p className="Register_Button_Text">Continuar</p>

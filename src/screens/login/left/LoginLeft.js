@@ -1,13 +1,31 @@
-import React from "react";
-import {useNavigate} from "react-router-dom";
+import React, {useState} from "react";
 import './LoginLeft.css';
 import { Logo } from "../../../components/logo/Logo";
 import { TextInput } from "../../../components/input/single/TextInput";
+import {toast} from "react-toastify";
 
 export function LoginLeft() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const onEmailChange = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const onPasswordChange = (e) => {
+        setPassword(e.target.value)
+    }
 
     const onLoginClicked = () => {
-        window.location.href='/home/teacher/classes'
+        login(email, password).then(r => {
+            if(r.status !== 200) {
+                toast.error(r.message, {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                // TODO: handlear login en base a la respuesta
+            }
+        })
     };
 
     return (
@@ -19,8 +37,18 @@ export function LoginLeft() {
                 <p className="Login_Title">Iniciar sesión ✌</p>
                 <p className="Login_Subtitle">Si queres crearte una cuenta con email, podes <a className="Login_Register" href="/register">registrarte aquí</a></p>
                 <div className="Login_Input_Container">
-                    <TextInput title="Email" type="email" placeholder="alumno@gmail.com"/>
-                    <TextInput title="Contraseña" type="password" placeholder="Secreta1234"/>
+                    <TextInput
+                        title="Email"
+                        type="email"
+                        placeholder="alumno@gmail.com"
+                        value = {email}
+                        onTextChange={onEmailChange}/>
+                    <TextInput
+                        title="Contraseña"
+                        type="password"
+                        placeholder="Secreta1234"
+                        value = {password}
+                        onTextChange={onPasswordChange}/>
                 </div>
                 <a className="Login_Forgot_Password" href="/forgotpassword">¿Olvidó su contraseña?</a>
                 <div className="Login_Button" onClick={onLoginClicked}>
@@ -30,4 +58,13 @@ export function LoginLeft() {
             <p className="Copyright_Text">2022 Institular ®. Reservados todos los derechos.</p>
         </div>
     )
+}
+
+async function login(email, password) {
+    const response = await fetch(`http://localhost:4000/users/login/`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email, password: password})
+    })
+    return await response.json();
 }
