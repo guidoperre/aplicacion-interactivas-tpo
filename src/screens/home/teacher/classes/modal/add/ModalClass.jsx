@@ -107,23 +107,6 @@ async function addClass(token, course) {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
         body: JSON.stringify({
-            key: '1',
-            nombre: course.name,
-            materia: course.subject,
-            duracion: course.duration,
-            frecuencia: course.frequency,
-            costo: course.price
-        })
-    })
-    return {status: response.status, content: await response.json()};
-}
-
-async function updateClass(token, course) {
-    const response = await fetch(`http://localhost:4000/teacherClasses/`, {
-        method: 'PUT',
-        headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: JSON.stringify({
-            key: course.key,
             nombre: course.name,
             materia: course.subject,
             duracion: course.duration,

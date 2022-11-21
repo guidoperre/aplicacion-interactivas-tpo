@@ -192,7 +192,7 @@ async function pauseClass(token, id) {
     const response = await fetch(`http://localhost:4000/teacherClasses/pause`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: {id: id}
+        body: JSON.stringify({key: id})
     })
     return {status: response.status, content: await response.json()};
 }
@@ -201,7 +201,7 @@ async function playClass(token, id) {
     const response = await fetch(`http://localhost:4000/teacherClasses/start`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: {id: id}
+        body: JSON.stringify({key: id})
     })
     return {status: response.status, content: await response.json()};
 }
