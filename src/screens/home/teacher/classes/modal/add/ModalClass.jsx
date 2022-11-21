@@ -5,8 +5,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
-import {TextInput} from "../../../../../components/input/single/TextInput";
-import {useState} from "react";
+import {TextInput} from "../../../../../../components/input/single/TextInput";
+import {useEffect, useState} from "react";
 import {toast} from "react-toastify";
 import {useSelector} from "react-redux";
 
@@ -36,10 +36,12 @@ export default function ClassDialog(props) {
                 frequency: frequency,
                 price: price
             }).then(r => {
-                if(r.status !== 200) {
+                if(r.status !== 201) {
                     toast.error('No pudimos agregar la clase (' + r.status + ')' , {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
+                } else {
+                    window.location.reload()
                 }
             })
         } catch (error) {
@@ -101,12 +103,27 @@ export default function ClassDialog(props) {
 }
 
 async function addClass(token, course) {
-    console.log(course)
     const response = await fetch(`http://localhost:4000/teacherClasses/create`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
         body: JSON.stringify({
             key: '1',
+            nombre: course.name,
+            materia: course.subject,
+            duracion: course.duration,
+            frecuencia: course.frequency,
+            costo: course.price
+        })
+    })
+    return {status: response.status, content: await response.json()};
+}
+
+async function updateClass(token, course) {
+    const response = await fetch(`http://localhost:4000/teacherClasses/`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: JSON.stringify({
+            key: course.key,
             nombre: course.name,
             materia: course.subject,
             duracion: course.duration,

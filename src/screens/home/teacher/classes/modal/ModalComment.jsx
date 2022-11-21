@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './ModalClass.css';
+import './add/ModalClass.css';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';

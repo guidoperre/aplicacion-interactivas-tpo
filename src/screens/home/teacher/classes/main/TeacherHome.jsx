@@ -4,6 +4,7 @@ import CommentDialog from "../modal/ModalComment";
 import TeacherSideMenu from "../../navigation/TeacherSideMenu";
 import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
+import ModifyClassDialog from "../modal/modify/ModifyClassModal";
 
 export function TeacherHome(props) {
     const userAuth = useSelector((state) => state.userAuth);
@@ -55,6 +56,7 @@ export function TeacherHome(props) {
 }
 
 function ClassesList(props) {
+    const userAuth = useSelector((state) => state.userAuth);
     const classes = props.classes;
     const [items, setItems] = React.useState([]);
 
@@ -63,7 +65,15 @@ function ClassesList(props) {
     }, [classes]);
 
     const onDelete = (key) => {
-        setItems((items) => items.filter((item, _) => item.key !== key));
+        deleteClass(userAuth.token, key).then(r => {
+            if(r.status !== 200) {
+                toast.error('No pudimos eliminar la clase (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                window.location.reload()
+            }
+        })
     };
 
     const listItems = items.map((c) =>
@@ -77,6 +87,7 @@ function ClassesList(props) {
 function ListItem(props) {
     const userAuth = useSelector((state) => state.userAuth);
     const [published, setPublished] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const c = props.class;
     let publishedIcon
 
@@ -84,18 +95,17 @@ function ListItem(props) {
         setPublished(props.activo ?? true)
     }, [props.activo]);
 
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     const handlePublishState = () => {
         if (published) {
-            playClass(userAuth.token, c.id).then(r => {
-                if(r.status !== 200) {
-                    toast.error('No pudimos empezar la clase (' + r.status + ')' , {
-                        position: toast.POSITION.BOTTOM_LEFT
-                    });
-                } else {
-                    setPublished(!published);
-                }
-            })
-        } else {
             pauseClass(userAuth.token, c.id).then(r => {
                 if(r.status !== 200) {
                     toast.error('No pudimos pausar la clase (' + r.status + ')' , {
@@ -105,8 +115,17 @@ function ListItem(props) {
                     setPublished(!published);
                 }
             })
+        } else {
+            playClass(userAuth.token, c.id).then(r => {
+                if(r.status !== 200) {
+                    toast.error('No pudimos empezar la clase (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setPublished(!published);
+                }
+            })
         }
-
     };
 
     if (published) {
@@ -130,7 +149,7 @@ function ListItem(props) {
                     image={publishedIcon}
                     alt={publishedIcon}/>
                 <ClassAction
-                    onClick={() => props.dialog("Modificar clase")}
+                    onClick={handleClickOpen}
                     image="edit"
                     alt="edit"/>
                 <ClassAction
@@ -142,6 +161,11 @@ function ListItem(props) {
                     image="comment"
                     alt="comment"/>
             </div>
+            <ModifyClassDialog
+                open={open}
+                handleClickOpen={handleClickOpen}
+                handleClose={handleClose}
+                course={c}/>
         </li>
     );
 }
@@ -182,20 +206,11 @@ async function playClass(token, id) {
     return {status: response.status, content: await response.json()};
 }
 
-async function updateClass(token, course) {
-    const response = await fetch(`http://localhost:4000/teacherClasses/`, {
-        method: 'PUT',
-        headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: course
-    })
-    return {status: response.status, content: await response.json()};
-}
-
 async function deleteClass(token, id) {
     const response = await fetch(`http://localhost:4000/teacherClasses/`, {
         method: 'delete',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: {id: id}
+        body: JSON.stringify({key: id})
     })
-    return {status: response.status, content: await response.json()};
+    return {status: response.status};
 }

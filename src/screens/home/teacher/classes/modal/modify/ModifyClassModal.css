@@ -1,0 +1,95 @@
+.Modify_Class_Dialog_Content {
+    min-width: 20vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    margin: 1vw;
+}
+
+.Modify_Modal_Title {
+    font-family: Quicksand, serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: #333333;
+    margin: auto auto auto auto;
+}
+
+.Modify_Modal_Button {
+    background: #6c8ed0;
+    border-radius: 8px;
+    display: flex;
+    cursor: pointer;
+    margin-right: 24px;
+    margin-bottom: 12px;
+}
+
+.Modify_Modal_Button_Text {
+    font-family: Quicksand, serif;
+    font-size: 0.75vw;
+    font-weight: 400;
+    color: white;
+    margin: auto;
+    padding: 8px 24px;
+}
+
+.Modify_Teacher_Modal_Comment_Content {
+    max-height: 30vw;
+    min-width: 20vw;
+    display: flex;
+}
+
+.Modify_Teacher_Modal_Comment_List {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.Modify_Teacher_Modal_Comment_Item {
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    margin-right: 2vw;
+    margin-bottom: 1vw;
+    background: #FFFFFF;
+    box-shadow: 0 3px 6px rgba(51, 51, 51, 0.1);
+    border-radius: 8px;
+}
+
+.Modify_Teacher_Modal_Comment_Left {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 16px 16px 16px;
+    gap: 4px;
+}
+
+.Modify_Teacher_Modal_Comment_Text_Bold {
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0 auto 0 0;
+}
+
+.Modify_Teacher_Modal_Comment_Text_Normal {
+    font-family: Quicksand, serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333333;
+    margin: 0 auto 0 0;
+}
+
+.Modify_Teacher_Modal_Comment_Right {
+    display: flex;
+    flex-direction: row;
+    margin: auto 16px auto auto;
+    gap: 16px;
+}
+
+.Modify_Teacher_Modal_Comment_Image {
+    width: 1vw;
+    height: 1vw;
+    margin: auto;
+    user-select: none;
+    cursor: pointer;
+}
