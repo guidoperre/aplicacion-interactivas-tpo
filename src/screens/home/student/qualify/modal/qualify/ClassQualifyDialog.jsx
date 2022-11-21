@@ -9,6 +9,7 @@ import DialogActions from "@mui/material/DialogActions";
 import mock from "../../../../../../components/data/student/qualifications.json";
 import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
+import {useEffect} from "react";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -22,6 +23,25 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export default function ClassQualifyDialog(props) {
     const [qualification, setQualification] = React.useState("");
     const userAuth = useSelector((state) => state.userAuth);
+    const [qualifications, setQualifications] = React.useState([]);
+
+    useEffect(() => {
+        try {
+            getQualifications(userAuth.token).then(r => {
+                if(r.status !== 200) {
+                    toast.error('Ocurrio un error cargando los calificaciones (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    console.log(r.content)
+                    setQualifications(r.content.data.docs)
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [false]);
+
 
     const onQualifyClick = () => {
         try {
@@ -55,7 +75,7 @@ export default function ClassQualifyDialog(props) {
                     <Select
                         placeholder="Seleccione una calificación"
                         className="Search_Filter"                        
-                        options={mock.calificacion}
+                        options={qualifications}
                         onChange={(e) => setQualification(e)}/>
                 </div>
             </DialogContent>
@@ -66,6 +86,14 @@ export default function ClassQualifyDialog(props) {
             </DialogActions>
         </BootstrapDialog>
     );
+}
+
+async function getQualifications(token) {
+    const response = await fetch(`http://localhost:4000/qualification/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    })
+    return {status: response.status, content: await response.json()};
 }
 
 async function postQualification(token, qualification, courseKey) {
