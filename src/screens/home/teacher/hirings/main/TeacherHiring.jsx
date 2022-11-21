@@ -1,30 +1,79 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './TeacherHiring.css';
-import mock from "../../../../../components/data/teacher/hiring.json";
 import TeacherSideMenu from "../../navigation/TeacherSideMenu";
+import {useSelector} from "react-redux";
+import {toast} from "react-toastify";
 
 export function TeacherHiring(props) {
+    const userAuth = useSelector((state) => state.userAuth);
+    const [hiring, setHiring] = React.useState([]);
+
+    useEffect(() => {
+        try {
+            getTeacherHiring(userAuth.token).then(r => {
+                if(r.status !== 200) {
+                    toast.error('No pudimos obtener la informacion de las clases (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setHiring(r.content.data.docs)
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [false]);
+
     return (
         <div className="Teacher_Hiring">
             <TeacherSideMenu titleSelected={2}/>
             <div className="Teacher_Hiring_Content">
-                <HiringList hiring={mock.contrataciones} dialog={props.dialog}/>
+                <HiringList hiring={hiring} dialog={props.dialog}/>
             </div>
         </div>
     );
 }
 
 function HiringList(props) {
+    const userAuth = useSelector((state) => state.userAuth);
     const hiring = props.hiring;
+    const [items, setItems] = React.useState([]);
 
-    const [items, setItems] = React.useState(hiring);
+    useEffect(() => {
+        setItems(hiring)
+    }, [hiring]);
 
     const onDelete = (key) => {
-        setItems((items) => items.filter((item, _) => item.key !== key));
+        deleteRequest(userAuth.token, key).then(r => {
+            if(r.status !== 200) {
+                toast.error('No pudimos rechazar la peticion (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                window.location.reload()
+            }
+        })
+    };
+
+    const onApprove = (key) => {
+        approveRequest(userAuth.token, key).then(r => {
+            if(r.status !== 200) {
+                toast.error('No pudimos aceptar la peticion (' + r.status + ')' , {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                window.location.reload()
+            }
+        })
     };
 
     const listItems = items.map((h) =>
-        <ListItem key={h.key} hire={h} dialog={props.dialog} onDelete={onDelete}/>
+        <ListItem
+            key={h.key}
+            hire={h}
+            dialog={props.dialog}
+            onApprove={onApprove}
+            onDelete={onDelete}/>
     );
     return (
         <ul className="Teacher_Hiring_List">{listItems}</ul>
@@ -33,6 +82,7 @@ function HiringList(props) {
 
 function ListItem(props) {
     const h = props.hire;
+
     return (
         <li className="Teacher_Hiring_Item">
             <div className="Teacher_Hiring_Item_Left">
@@ -46,7 +96,7 @@ function ListItem(props) {
                     image="phone"
                     alt="phone"/>
                 <HiringAction
-                    onClick={() => props.onDelete(h.key)}
+                    onClick={() => props.onApprove(h.key)}
                     image="approve"
                     alt="approve"/>
                 <HiringAction
@@ -66,4 +116,30 @@ function HiringAction(props) {
                  alt={props.alt} />
         </div>
     );
+}
+
+async function getTeacherHiring(token) {
+    const response = await fetch(`http://localhost:4000/hiring/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    })
+    return {status: response.status, content: await response.json()};
+}
+
+async function deleteRequest(token, id) {
+    const response = await fetch(`http://localhost:4000/hiring/`, {
+        method: 'delete',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: JSON.stringify({key: id})
+    })
+    return {status: response.status};
+}
+
+async function approveRequest(token, id) {
+    const response = await fetch(`http://localhost:4000/hiring/`, {
+        method: 'delete',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: JSON.stringify({key: id})
+    })
+    return {status: response.status};
 }
