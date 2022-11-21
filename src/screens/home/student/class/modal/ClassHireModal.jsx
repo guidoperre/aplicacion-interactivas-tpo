@@ -8,7 +8,7 @@ import {TextInput} from "../../../../../components/input/single/TextInput";
 import DialogActions from "@mui/material/DialogActions";
 import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -22,12 +22,25 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export default function ClassHireDialog(props) {
     const userAuth = useSelector((state) => state.userAuth);
     const navigation = useNavigate();
-    const location = useLocation();
+    const [name, setName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [phone, setPhone] = React.useState("");
+    const [contact, setContact] = React.useState("");
     const [comment, setComment] = React.useState("");
 
     const onHireClicked = () => {
         try {
-            hireClass(userAuth.token, location.state.id, comment).then(r => {
+            hireClass(
+                userAuth.token,
+                {
+                    key: props.key,
+                    nombre: name,
+                    email: email,
+                    telefono: phone,
+                    hora_de_contacto: contact,
+                    comentario: comment
+                }
+            ).then(r => {
                 if(r.status !== 200) {
                     toast.error('No pudimos contratar la clase (' + r.status + ')' , {
                         position: toast.POSITION.BOTTOM_LEFT
@@ -54,10 +67,30 @@ export default function ClassHireDialog(props) {
             <DialogContent>
                 <div className="Hire_Dialog_Content">
                     <div className="Contact_Dialog_Content">
-                        <TextInput title="Nombre" type="text" placeholder={"Su nombre aqui"}/>
-                        <TextInput title="Email" type="text" placeholder={"Su email aqui"}/>
-                        <TextInput title="Telefono" type="text" placeholder={"Su numero aqui"}/>
-                        <TextInput title="Hora de contacto" type="text" placeholder={"La hora de contacto aqui"}/>
+                        <TextInput
+                            title="Nombre"
+                            type="text"
+                            placeholder={"Su nombre aqui"}
+                            text={name}
+                            onTextChange={(e) => setName(e.target.value)}/>
+                        <TextInput
+                            title="Email"
+                            type="text"
+                            placeholder={"Su email aqui"}
+                            text={email}
+                            onTextChange={(e) => setEmail(e.target.value)}/>
+                        <TextInput
+                            title="Telefono"
+                            type="text"
+                            placeholder={"Su numero aqui"}
+                            text={phone}
+                            onTextChange={(e) => setPhone(e.target.value)}/>
+                        <TextInput
+                            title="Hora de contacto"
+                            type="text"
+                            placeholder={"La hora de contacto aqui"}
+                            text={contact}
+                            onTextChange={(e) => setContact(e.target.value)}/>
                         <label className="Contact_Dialog_Label">
                             <p className="Contact_Dialog_Label_Title">Mensaje</p>
                             <textarea
@@ -78,11 +111,11 @@ export default function ClassHireDialog(props) {
     );
 }
 
-async function hireClass(token, id) {
+async function hireClass(token, course) {
     const response = await fetch(`http://localhost:4000/studentClass/create`, {
-        method: 'GET',
+        method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: {class: id}
+        body: JSON.stringify(course)
     })
     return {status: response.status, content: await response.json()};
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './SearchClass.css';
 import Select from 'react-select'
 import 'bootstrap/dist/css/bootstrap.min.css' ;
@@ -8,46 +8,48 @@ import {useNavigate} from "react-router-dom";
 
 export function SearchClass() {
     const userAuth = useSelector((state) => state.userAuth);
-    let classes = {}
-    let filters = {}
-
-    try {
-        getClasses(userAuth.token).then(r => {
-            if(r.status !== 200) {
-                toast.error('Ocurrio un error cargando los cursos (' + r.status + ')' , {
-                    position: toast.POSITION.BOTTOM_LEFT
-                });
-            } else {
-                classes = r.content
-            }
-        })
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        getFilters(userAuth.token).then(r => {
-            if(r.status !== 200) {
-                toast.error('Ocurrio un error cargando los filtros (' + r.status + ')' , {
-                    position: toast.POSITION.BOTTOM_LEFT
-                });
-            } else {
-                filters = r.content
-            }
-        })
-    } catch (error) {
-        console.log(error);
-    }
-
+    const [classes, setClasses] = React.useState([]);
+    const [filters, setFilters] = React.useState([]);
     const [course, setClass] = React.useState(undefined);
     const [classType, setClassType] = React.useState(undefined);
     const [frequency, setFrequency] = React.useState(undefined);
     const [qualification, setQualification] = React.useState(undefined);
-    const [items, setFilteredCourses] = React.useState(classes.cursos ?? []);
+
+    useEffect(() => {
+        try {
+            getClasses(userAuth.token).then(r => {
+                if(r.status !== 200) {
+                    toast.error('Ocurrio un error cargando los cursos (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setClasses(r.content.data.docs)
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [false]);
+
+    useEffect(() => {
+        try {
+            getFilters(userAuth.token).then(r => {
+                if(r.status !== 200) {
+                    toast.error('Ocurrio un error cargando los filtros (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setFilters(r.content.data.docs)
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [false]);
 
     const searchClass = () => {
-        setFilteredCourses(
-            () => classes.cursos
+        setClasses(
+            () => classes
                 .filter((item, _) =>
                     (course === undefined || item.materiaId === course) &&
                     (classType === undefined || item.tipoClaseId === classType) &&
@@ -57,7 +59,7 @@ export function SearchClass() {
         )
     }
 
-    const listItems = items.map((c) =>
+    const listItems = classes.map((c) =>
         <ListItem key={c.key} class={c}/>
     );
 
@@ -101,11 +103,11 @@ export function SearchClass() {
 }
 
 function ListItem(props) {
-    const c = props.class;
     const navigate = useNavigate();
+    const c = props.class;
 
     const onClassClicked = () => {
-        navigate('/home/student/search/class', {state: {id: c.id}})
+        navigate('/home/student/search/class', {state: {key: c.key}})
     };
 
     return (
@@ -124,7 +126,7 @@ async function getClasses(token) {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'x-access-token': token}
     })
-    return await response.json();
+    return {status: response.status, content: await response.json()};
 }
 
 async function getFilters(token) {
@@ -132,5 +134,5 @@ async function getFilters(token) {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'x-access-token': token}
     })
-    return await response.json();
+    return {status: response.status, content: await response.json()};
 }

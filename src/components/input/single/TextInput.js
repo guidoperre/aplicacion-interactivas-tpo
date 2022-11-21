@@ -10,7 +10,6 @@ export function TextInput(props) {
                 type={props.type}
                 placeholder={props.placeholder}
                 value={props.text}
-                onKeyDown={props.onKeyClicked}
                 onChange={props.onTextChange}/>
         </div>
     )

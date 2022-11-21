@@ -29,7 +29,8 @@ export function StudentClasses() {
         }
     }, [false]);
 
-    const openQualify = () => {
+    const openQualify = (key) => {
+        setSelectedClass(key)
         openQualifyDialog(true);
     };
 
@@ -37,7 +38,8 @@ export function StudentClasses() {
         openQualifyDialog(false);
     };
 
-    const openComment = () => {
+    const openComment = (key) => {
+        setSelectedClass(key)
         openCommentDialog(true);
     };
 

@@ -65,31 +65,31 @@ export default function ClassDialog(props) {
                         title="Nombre"
                         type="text"
                         placeholder={"Nombre de la clase"}
-                        value={name}
+                        text={name}
                         onTextChange={(e) => setName(e.target.value)}/>
                     <TextInput
                         title="Materia"
                         type="text"
                         placeholder={"Nombre de la materia"}
-                        value={subject}
+                        text={subject}
                         onTextChange={(e) => setSubject(e.target.value)}/>
                     <TextInput
                         title="Duracion en horas"
                         type="number"
                         placeholder={"40"}
-                        value={duration}
+                        text={duration}
                         onTextChange={(e) => setDuration(e.target.value)}/>
                     <TextInput
                         title="Frecuencia"
                         type="text"
                         placeholder={"Semanal"}
-                        value={frequency}
+                        text={frequency}
                         onTextChange={(e) => setFrequency(e.target.value)}/>
                     <TextInput
                         title="Costo"
                         type="number"
                         placeholder={"100.00"}
-                        value={price}
+                        text={price}
                         onTextChange={(e) => setPrice(e.target.value)}/>
                 </div>
             </DialogContent>
