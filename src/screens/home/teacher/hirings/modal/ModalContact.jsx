@@ -5,6 +5,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import {TextInput} from "../../../../../components/input/single/TextInput";
+import {useSelector} from "react-redux";
+import {useEffect} from "react";
+import {toast} from "react-toastify";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -16,6 +19,25 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function ContactDialog(props) {
+    const userAuth = useSelector((state) => state.userAuth);
+    const [student, setStudent] = React.useState([]);
+
+    useEffect(() => {
+        try {
+            getStudentInfo(userAuth.token).then(r => {
+                if(r.status !== 200) {
+                    toast.error('No pudimos obtener la informacion del estudiante (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setStudent(r.content)
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [false]);
+
     return (
         <BootstrapDialog
             onClose={props.handleClose}
@@ -40,4 +62,13 @@ export default function ContactDialog(props) {
             </DialogContent>
         </BootstrapDialog>
     );
+}
+
+async function getStudentInfo(token, key) {
+    const response = await fetch(`http://localhost:4000/student/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: JSON.stringify({key: key})
+    })
+    return {status: response.status, content: await response.json()};
 }
