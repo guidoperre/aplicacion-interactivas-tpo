@@ -6,7 +6,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from "@mui/material/DialogActions";
-import mock from "../../../../../components/data/student/qualifications.json";
+import mock from "../../../../../../components/data/student/qualifications.json";
 import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
 
@@ -19,15 +19,15 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-export default function ClassCommentDialog(props) {
-    const [comment, setComment] = React.useState("");
+export default function ClassQualifyDialog(props) {
+    const [qualification, setQualification] = React.useState("");
     const userAuth = useSelector((state) => state.userAuth);
 
-    const onCommentClick = () => {
+    const onQualifyClick = () => {
         try {
-            postComment(userAuth.token, comment).then(r => {
+            postQualification(userAuth.token, qualification, props.selectedClass).then(r => {
                 if(r.status !== 200) {
-                    toast.error('No pudimos publicar el comentario (' + r.status + ')' , {
+                    toast.error('No pudimos calificar la clase (' + r.status + ')' , {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                 } else {
@@ -47,34 +47,32 @@ export default function ClassCommentDialog(props) {
             aria-labelledby="customized-dialog-title"
             open={props.open}>
             <DialogTitle sx={{ marginTop: 2, marginLeft: 4, p: 0 }}>
-                <p className="Modal_Title">Comentar</p>
+                <p className="Modal_Title">Calificaión</p>
             </DialogTitle>
             <DialogContent>
                 <div className="Class_Qualify_Dialog_Content">
-                    <label className="Contact_Dialog_Label">
-                        <p className="Contact_Dialog_Label_Title">Comentario</p>
-                        <textarea
-                            className="Contact_Dialog_TextArea"
-                            placeholder="Me gusto mucho la clase porque..."
-                            value = {comment}
-                            onChange={(e) => setComment(e.target.value)}/>
-                    </label>
+                    <p className="Class_Qualify_Dialog_Label_Title">Calificación del curso</p>
+                    <Select
+                        placeholder="Seleccione una calificación"
+                        className="Search_Filter"                        
+                        options={mock.calificacion}
+                        onChange={(e) => setQualification(e)}/>
                 </div>
             </DialogContent>
             <DialogActions>
-                <div className="Modal_Button" onClick={onCommentClick}>
-                    <p className="Modal_Button_Text">Enviar</p>
+                <div className="Modal_Button" onClick={onQualifyClick}>
+                    <p className="Modal_Button_Text">Guardar</p>
                 </div>
             </DialogActions>
         </BootstrapDialog>
     );
 }
 
-async function postComment(token, comment) {
-    const response = await fetch(`http://localhost:4000/comments/create`, {
+async function postQualification(token, qualification, courseKey) {
+    const response = await fetch(`http://localhost:4000/qualification/create`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: {comment: comment}
+        body: JSON.stringify({qualification: qualification})
     })
     return {status: response.status, content: await response.json()};
 }

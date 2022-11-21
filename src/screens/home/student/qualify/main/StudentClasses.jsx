@@ -1,74 +1,83 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './StudentClasses.css';
 import mock from "../../../../../components/data/student/classes.json";
-import ClassQualifyDialog from "../modal/ClassQualifyDialog";
-import ClassCommentDialog from "../modal/ClassCommentDialog";
+import ClassQualifyDialog from "../modal/qualify/ClassQualifyDialog";
+import ClassCommentDialog from "../modal/comment/ClassCommentDialog";
 import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
 
 export function StudentClasses() {
-    const [open, setOpen] = React.useState(false);
-    const [openC, setOpenC] = React.useState(false);
+    const [qualifyDialog, openQualifyDialog] = React.useState(false);
+    const [commentDialog, openCommentDialog] = React.useState(false);
+    const [selectedClass, setSelectedClass] = React.useState();
     const userAuth = useSelector((state) => state.userAuth);
-    let courses = {}
+    const [courses, setCourses] = React.useState([]);
 
-    try {
-        getClasses(userAuth.token).then(r => {
-            if(r.status !== 200) {
-                toast.error('Ocurrio un error cargando los cursos (' + r.status + ')' , {
-                    position: toast.POSITION.BOTTOM_LEFT
-                });
-            } else {
-                courses = r.content
-            }
-        })
-    } catch (error) {
-        console.log(error);
-    }
+    useEffect(() => {
+        try {
+            getClasses(userAuth.token).then(r => {
+                if(r.status !== 200) {
+                    toast.error('Ocurrio un error cargando los cursos (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setCourses(r.content.data.docs)
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [false]);
 
-    const handleClickOpen = () => {
-        setOpen(true);
+    const openQualify = () => {
+        openQualifyDialog(true);
     };
 
-    const handleClose = () => {
-        setOpen(false);
+    const closeQualify = () => {
+        openQualifyDialog(false);
     };
 
-    const handleCClickOpen = () => {
-        setOpenC(true);
+    const openComment = () => {
+        openCommentDialog(true);
     };
 
-    const handleCClose = () => {
-        setOpenC(false);
-    };
-
-    const onQualify = () => {
-        setOpen(true);
+    const closeComment = () => {
+        openCommentDialog(false);
     };
 
     return (
         <div className="Student_Class_Qualify">
             <div className="Student_Class_Qualify_Content">
-                <CoursesQualifyList qualify={courses.cursos ?? []} onQualify={onQualify} onComment={handleCClickOpen}/>
+                <CoursesQualifyList qualify={courses} onQualify={openQualify} onComment={openComment}/>
             </div>
             <ClassQualifyDialog
-                open={open}
-                handleClickOpen={handleClickOpen}
-                handleClose={handleClose}/>
+                open={qualifyDialog}
+                handleClickOpen={openQualify}
+                handleClose={closeQualify}
+                selectedClass={selectedClass}/>
             <ClassCommentDialog
-                open={openC}
-                handleClickOpen={handleCClickOpen}
-                handleClose={handleCClose}/>
+                open={commentDialog}
+                handleClickOpen={openComment}
+                handleClose={closeComment}
+                selectedClass={selectedClass}/>
         </div>
     );
 }
 
-function CoursesQualifyList(props) {    
+function CoursesQualifyList(props) {
     const qualify = props.qualify;
-    const [items, setItems] = React.useState(qualify);
+    const [items, setItems] = React.useState([]);
+
+    useEffect(() => {
+        setItems(qualify)
+    }, [qualify]);
 
     const listItems = items.map((h) =>
-        <ListItem key={h.key} qualify={h} onQualify={props.onQualify} onComment={props.onComment}/>
+        <ListItem
+            key={h.key}
+            qualify={h}
+            onQualify={() => props.onQualify(h.key)}
+            onComment={() => props.onComment(h.key)}/>
     );
     return (
         <ul className="Student_Class_Qualify_List">{listItems}</ul>
