@@ -4,9 +4,7 @@ import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import mock from "../../../../../components/data/comment/comments.json";
 import {useSelector} from "react-redux";
-import {useLocation} from "react-router-dom";
 import {toast} from "react-toastify";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -20,7 +18,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 export default function CommentDialog(props) {
     const userAuth = useSelector((state) => state.userAuth);
-    const location = useLocation();
     let comments = [];
 
     const [items, setItems] = React.useState(comments);
@@ -30,7 +27,7 @@ export default function CommentDialog(props) {
     };
 
     try {
-        getClassComments(userAuth.token, location.state.id ?? -1).then(r => {
+        getClassComments(userAuth.token, props.id ?? -1).then(r => {
             if(r.status !== 200) {
                 toast.error('No pudimos obtener los comentarios de la clase (' + r.status + ')' , {
                     position: toast.POSITION.BOTTOM_LEFT

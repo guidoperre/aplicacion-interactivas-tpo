@@ -1,6 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './TeacherHome.css';
-import mock from "../../../../../components/data/teacher/clases.json";
 import CommentDialog from "../modal/ModalComment";
 import TeacherSideMenu from "../../navigation/TeacherSideMenu";
 import {useSelector} from "react-redux";
@@ -9,7 +8,7 @@ import {toast} from "react-toastify";
 export function TeacherHome(props) {
     const userAuth = useSelector((state) => state.userAuth);
     const [open, setOpen] = React.useState(false);
-    let classes = []
+    const [classes, setClasses] = React.useState([]);
 
     const handleCommentOpen = () => {
         setOpen(true);
@@ -19,19 +18,22 @@ export function TeacherHome(props) {
         setOpen(false);
     };
 
-    try {
-        getTeacherClasses(userAuth.token).then(r => {
-            if(r.status !== 200) {
-                toast.error('No pudimos obtener la informacion de las clases (' + r.status + ')' , {
-                    position: toast.POSITION.BOTTOM_LEFT
-                });
-            } else {
-                classes = r.content
-            }
-        })
-    } catch (error) {
-        console.log(error);
-    }
+    useEffect(() => {
+        try {
+            getTeacherClasses(userAuth.token).then(r => {
+                if(r.status !== 200) {
+                    toast.error('No pudimos obtener la informacion de las clases (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    console.log(r.content.data.docs)
+                    setClasses(r.content.data.docs)
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [false]);
 
     return (
         <div className="Teacher_Home">
@@ -54,8 +56,11 @@ export function TeacherHome(props) {
 
 function ClassesList(props) {
     const classes = props.classes;
+    const [items, setItems] = React.useState([]);
 
-    const [items, setItems] = React.useState(classes);
+    useEffect(() => {
+        setItems(classes)
+    }, [classes]);
 
     const onDelete = (key) => {
         setItems((items) => items.filter((item, _) => item.key !== key));
@@ -72,34 +77,42 @@ function ClassesList(props) {
 function ListItem(props) {
     const userAuth = useSelector((state) => state.userAuth);
     const [published, setPublished] = React.useState(true);
+    const c = props.class;
+    let publishedIcon
+
+    useEffect(() => {
+        setPublished(props.activo ?? true)
+    }, [props.activo]);
 
     const handlePublishState = () => {
-        setPublished(!published);
+        if (published) {
+            playClass(userAuth.token, c.id).then(r => {
+                if(r.status !== 200) {
+                    toast.error('No pudimos empezar la clase (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setPublished(!published);
+                }
+            })
+        } else {
+            pauseClass(userAuth.token, c.id).then(r => {
+                if(r.status !== 200) {
+                    toast.error('No pudimos pausar la clase (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setPublished(!published);
+                }
+            })
+        }
+
     };
 
-    let publishedIcon
-    const c = props.class;
-
     if (published) {
-        playClass(userAuth.token, c.id).then(r => {
-            if(r.status !== 200) {
-                toast.error('No pudimos empezar la clase (' + r.status + ')' , {
-                    position: toast.POSITION.BOTTOM_LEFT
-                });
-            } else {
-                publishedIcon = 'pause'
-            }
-        })
+        publishedIcon = 'pause'
     } else {
-        pauseClass(userAuth.token, c.id).then(r => {
-            if(r.status !== 200) {
-                toast.error('No pudimos pausar la clase (' + r.status + ')' , {
-                    position: toast.POSITION.BOTTOM_LEFT
-                });
-            } else {
-                publishedIcon = 'play'
-            }
-        })
+        publishedIcon = 'play'
     }
 
     return (
