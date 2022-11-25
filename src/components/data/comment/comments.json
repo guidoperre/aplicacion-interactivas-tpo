@@ -3,26 +3,31 @@
         {
             "key": 1,
             "autor": "Guido Perre",
+            "keyClass": 2,
             "descripcion": "La clase estuvo buenisima, recomendada 100%."
         },
         {
             "key": 2,
             "autor": "Guido Perre",
+            "keyClass": 2,
             "descripcion": "La clase estuvo buenisima, recomendada 100%."
         },
         {
             "key": 3,
             "autor": "Guido Perre",
+            "keyClass": 2,
             "descripcion": "La clase estuvo buenisima, recomendada 100%."
         },
         {
             "key": 4,
             "autor": "Guido Perre",
+            "keyClass": 2,
             "descripcion": "La clase estuvo buenisima, recomendada 100%."
         },
         {
             "key": 5,
             "autor": "Guido Perre",
+            "keyClass": 2,
             "descripcion": "La clase estuvo buenisima, recomendada 100%."
         },
         {
@@ -33,11 +38,13 @@
         {
             "key": 7,
             "autor": "Guido Perre",
+            "keyClass": 2,
             "descripcion": "La clase estuvo buenisima, recomendada 100%."
         },
         {
             "key": 8,
             "autor": "Guido Perre",
+            "keyClass": 2,
             "descripcion": "La clase estuvo buenisima, recomendada 100%."
         }
     ]
