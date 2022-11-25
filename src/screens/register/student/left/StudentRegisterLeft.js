@@ -44,13 +44,14 @@ export function StudentRegisterLeft() {
                 phone: location.state.phone,
                 password: location.state.password,
                 date: date,
-                primary: primary,
-                secondary: secondary,
-                associate: associate,
-                bachelor: bachelor
+                primary: primary.label,
+                secondary: secondary.label,
+                associate: associate.label,
+                bachelor: bachelor.label
             }
         ).then(r => {
-            if(r.status !== 200) {
+            console.log(r.status)
+            if(r.status !== 201) {
                 toast.error(r.content.message, {
                     position: toast.POSITION.BOTTOM_LEFT
                 });
@@ -112,7 +113,7 @@ export function StudentRegisterLeft() {
 }
 
 async function register(data) {
-    const response = await fetch(`http://localhost:4000/users/registration`, {
+    const response = await fetch(`http://localhost:4000/student/registration`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)

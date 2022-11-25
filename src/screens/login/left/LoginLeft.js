@@ -1,17 +1,30 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './LoginLeft.css';
 import { Logo } from "../../../components/logo/Logo";
 import { TextInput } from "../../../components/input/single/TextInput";
 import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {setToken} from "../../../auth/userAuthSlice.ts";
 import {useDispatch} from "react-redux";
 
 export function LoginLeft() {
     const dispatch = useDispatch();
-    const navigator = useNavigate()
+    const navigator = useNavigate();
+    const location = useLocation();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    useEffect(() => {
+        try {
+            if (location.state.register_success) {
+                toast.success("¡Se registro correctamente!", {
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            }
+        } catch (e) {
+            // no-op
+        }
+    }, [location.state]);
 
     const onEmailChange = (e) => {
         setEmail(e.target.value)
@@ -23,14 +36,18 @@ export function LoginLeft() {
 
     const onLoginClicked = () => {
         login(email, password).then(r => {
+            console.log(r)
             if(r.status !== 201) {
                 toast.error(r.message, {
                     position: toast.POSITION.BOTTOM_LEFT
                 });
             } else {
                 dispatch(setToken(r.content.loginUser.token));
-                navigator('/home/student/search', {state: {token: r.content.loginUser.token}})
-                // TODO: handlear tipo login en base a la respuesta
+                if (r.content.loginUser.user.type === "teacher") {
+                    navigator('/home/teacher/classes')
+                } else {
+                    navigator('/home/student/search')
+                }
             }
         })
     };

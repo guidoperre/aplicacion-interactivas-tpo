@@ -16,10 +16,9 @@ export function TeacherRegisterLeft() {
     }
 
     const onExperienceChange = (e) => {
-        setExperience(e)
+        setExperience(e.target.value)
     }
     const onRegisterClicked = () => {
-        // TODO: Probar este flujo cuando tengamos respuesta
         register(
             {
                 name: location.state.name,
@@ -30,8 +29,8 @@ export function TeacherRegisterLeft() {
                 experience: experience
             }
         ).then(r => {
-            if(r.status !== 200) {
-                toast.error(r.message, {
+            if(r.status !== 201) {
+                toast.error(r.content.message, {
                     position: toast.POSITION.BOTTOM_LEFT
                 });
             } else {
@@ -74,10 +73,10 @@ export function TeacherRegisterLeft() {
 }
 
 async function register(data) {
-    const response = await fetch(`http://localhost:4000/users/registration`, {
+    const response = await fetch(`http://localhost:4000/teacher/registration`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     })
-    return await response.json();
+    return {status: response.status, content: await response.json()};
 }
