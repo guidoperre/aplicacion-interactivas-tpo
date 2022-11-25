@@ -9,7 +9,8 @@ import {useNavigate} from "react-router-dom";
 export function SearchClass() {
     const userAuth = useSelector((state) => state.userAuth);
     const [classes, setClasses] = React.useState([]);
-    const [filters, setFilters] = React.useState([]);
+    const [filteredClasses, setFilteredClasses] = React.useState([]);
+    const [filters, setFilters] = React.useState({});
     const [course, setClass] = React.useState(undefined);
     const [classType, setClassType] = React.useState(undefined);
     const [frequency, setFrequency] = React.useState(undefined);
@@ -23,7 +24,9 @@ export function SearchClass() {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                 } else {
+                    console.log(r.content.data.docs);
                     setClasses(r.content.data.docs)
+                    setFilteredClasses(r.content.data.docs)
                 }
             })
         } catch (error) {
@@ -39,7 +42,33 @@ export function SearchClass() {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                 } else {
-                    setFilters(r.content.data.docs)
+                    const data = r.content.data
+                    const materias = data.materias.map(
+                        function(element, index){
+                            return {value: index, label: element};
+                        }
+                    )
+                    const tipo = data.tipo.map(
+                        function(element, index){
+                            return {value: index, label: element};
+                        }
+                    )
+                    const frecuencia = data.frecuencia.map(
+                        function(element, index){
+                            return {value: index, label: element};
+                        }
+                    )
+                    const calificacion = data.calificacion.map(
+                        function(element, index){
+                            return {value: index, label: element};
+                        }
+                    )
+
+                    data.materias = materias
+                    data.tipo = tipo
+                    data.frecuencia = frecuencia
+                    data.calificacion = calificacion
+                    setFilters(data)
                 }
             })
         } catch (error) {
@@ -48,18 +77,18 @@ export function SearchClass() {
     }, [false]);
 
     const searchClass = () => {
-        setClasses(
+        setFilteredClasses(
             () => classes
-                .filter((item, _) =>
-                    (course === undefined || item.materiaId === course) &&
-                    (classType === undefined || item.tipoClaseId === classType) &&
-                    (frequency === undefined || item.frecuenciaId === frequency) &&
-                    (qualification === undefined || item.calificacionId === qualification)
-                )
+                .filter((item, _) => {
+                    return (course === undefined || item.materia === course) &&
+                    (classType === undefined || item.tipo === classType) &&
+                    (frequency === undefined || item.frecuencia === frequency) &&
+                    (qualification === undefined || item.calificacion === qualification)
+                })
         )
     }
 
-    const listItems = classes.map((c) =>
+    const listItems = (filteredClasses ?? []).map((c) =>
         <ListItem key={c.key} class={c}/>
     );
 
@@ -73,22 +102,22 @@ export function SearchClass() {
                             <Select
                                 placeholder="Seleccionar materia"
                                 className="Search_Filter"
-                                onChange={e => setClass(e.value)}
+                                onChange={e => setClass(e.label)}
                                 options={filters.materias} />
                             <Select
                                 placeholder="Seleccionar tipo de clase"
                                 className="Search_Filter"
-                                onChange={e => setClassType(e.value)}
-                                options={filters.tipoClase} />
+                                onChange={e => setClassType(e.label)}
+                                options={filters.tipo} />
                             <Select
                                 placeholder="Seleccionar frecuencia"
                                 className="Search_Filter"
-                                onChange={e => setFrequency(e.value)}
+                                onChange={e => setFrequency(e.label)}
                                 options={filters.frecuencia} />
                             <Select
                                 placeholder="Seleccionar calificación"
                                 className="Search_Filter"
-                                onChange={e => setQualification(e.value)}
+                                onChange={e => setQualification(e.label)}
                                 options={filters.calificacion} />
                         </div>
                     </div>
@@ -115,14 +144,14 @@ function ListItem(props) {
             <img className="Search_Comment_Image"
                  src={process.env.PUBLIC_URL + '/class/course.png'}
                  alt="course"/>
-            <p className="Search_Comment_Text_Bold">{c.materiaNombre}</p>
-            <p className="Search_Comment_Text_Normal">{c.costo}</p>
+            <p className="Search_Comment_Text_Bold">{c.nombre}</p>
+            <p className="Search_Comment_Text_Normal">${c.costo}</p>
         </li>
     );
 }
 
 async function getClasses(token) {
-    const response = await fetch(`http://localhost:4000/studentClasses/`, {
+    const response = await fetch(`http://localhost:4000/teacherClasses/all`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'x-access-token': token}
     })
@@ -130,7 +159,7 @@ async function getClasses(token) {
 }
 
 async function getFilters(token) {
-    const response = await fetch(`http://localhost:4000/studentClasses/`, {
+    const response = await fetch(`http://localhost:4000/teacherClasses/filters`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'x-access-token': token}
     })

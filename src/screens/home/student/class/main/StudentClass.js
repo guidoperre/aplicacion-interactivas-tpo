@@ -12,6 +12,14 @@ export function StudentClass() {
     const location = useLocation();
     const [open, setOpen] = React.useState(false);
     const [course, setCourse] = React.useState({});
+    const [comments, setComments] = React.useState([]);
+    let calificacion
+    let profesor
+    let experiencia
+    let descripcion
+    let duracion
+    let frecuencia
+    let costo
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -29,7 +37,7 @@ export function StudentClass() {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                 } else {
-                    setCourse(r.content.data.docs[0])
+                    setCourse(r.content.data)
                 }
             })
         } catch (error) {
@@ -37,26 +45,50 @@ export function StudentClass() {
         }
     }, [false]);
 
+    useEffect(() => {
+        try {
+            getComments(userAuth.token, location.state.key ?? -1).then(r => {
+                if(r.status !== 200) {
+                    toast.error('No pudimos obtener la informacion de la clase (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setComments(r.content.data)
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [false]);
+
+    calificacion = course.calificacion ?? 'N/E'
+    profesor = course.profesor ?? 'N/E'
+    experiencia = course.experiencia ?? 'N/E'
+    descripcion = course.descripcion ?? 'N/E'
+    duracion = course.duracion ?? 'N/E'
+    frecuencia = course.frecuencia ?? 'N/E'
+    costo = "$" + course.costo ?? '0'
+
     return (
         <div className="Student_Class_Content">
             <div className="Student_Class_Container">
                 <div className="Student_Class_Content_Left">
                     <p className="Student_Class_Title">{course.nombre}</p>
-                    <TextInput title="Calificacion" type="text" text={course.calificacion}/>
-                    <TextInput title="Profesor" type="text" text={course.nombreProfesor}/>
+                    <TextInput title="Calificacion" type="text" text={calificacion}/>
+                    <TextInput title="Profesor" type="text" text={profesor}/>
                     <label className="Student_Class_Label">
                         <p className="Student_Class_Label_Title">Experiencia</p>
-                        <textarea className="Student_Class_TextArea" value={course.experienciaProfesor}/>
+                        <textarea className="Student_Class_TextArea" value={experiencia}/>
                     </label>
                     <label className="Student_Class_Label">
                         <p className="Student_Class_Label_Title">Descripción</p>
-                        <textarea className="Student_Class_TextArea" value={course.descripcion}/>
+                        <textarea className="Student_Class_TextArea" value={descripcion}/>
                     </label>
-                    <TextInput title="Duracion" type="text" text={course.duracion}/>
-                    <TextInput title="Frecuencia" type="text" text={course.frecuencia}/>
-                    <TextInput title="Costo" type="text" text={course.costo}/>
+                    <TextInput title="Duracion" type="text" text={duracion}/>
+                    <TextInput title="Frecuencia" type="text" text={frecuencia}/>
+                    <TextInput title="Costo" type="text" text={costo}/>
                     <p className="Student_Class_Subtitle">Comentarios</p>
-                    <CommentList comment={course.comments ?? []}/>
+                    <CommentList comment={comments ?? []}/>
                     <div className="Student_Class_Hire" onClick={handleClickOpen}>
                         <p className="Student_Class_Hire_Text">CONTRATAR</p>
                     </div>
@@ -65,7 +97,8 @@ export function StudentClass() {
                     open={open}
                     handleClickOpen={handleClickOpen}
                     handleClose={handleClose}
-                    key={course.key}/>
+                    key={location.state.key ?? -1}
+                    materia={course.nombre}/>
             </div>
         </div>
     )
@@ -88,8 +121,8 @@ function ListItem(props) {
     return (
         <li className="Student_Class_User_Comment_Item">
             <div className="Student_Class_User_Comment_Left">
-                <p className="Student_Class_User_Comment_Text_Bold">{c.autor}</p>
-                <p className="Student_Class_User_Comment_Text_Normal">{c.descripcion}</p>
+                <p className="Student_Class_User_Comment_Text_Bold">{c.author}</p>
+                <p className="Student_Class_User_Comment_Text_Normal">{c.comment}</p>
             </div>
         </li>
     );
@@ -98,7 +131,15 @@ function ListItem(props) {
 async function getClass(token, key) {
     const response = await fetch(`http://localhost:4000/teacherClasses/`, {
         method: 'GET',
-        headers: {'Content-Type': 'application/json', 'x-access-token': token, 'class_key': key}
+        headers: {'Content-Type': 'application/json', 'x-access-token': token, 'key': key}
+    })
+    return {status: response.status, content: await response.json()};
+}
+
+async function getComments(token, key) {
+    const response = await fetch(`http://localhost:4000/teacherClassComment/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token, 'key': key}
     })
     return {status: response.status, content: await response.json()};
 }
