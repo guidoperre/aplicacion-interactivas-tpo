@@ -16,7 +16,7 @@ export function TeacherHiring(props) {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                 } else {
-                    setHiring(r.content.data.docs)
+                    setHiring(r.content.data)
                 }
             })
         } catch (error) {
@@ -28,7 +28,7 @@ export function TeacherHiring(props) {
         <div className="Teacher_Hiring">
             <TeacherSideMenu titleSelected={2}/>
             <div className="Teacher_Hiring_Content">
-                <HiringList hiring={hiring} dialog={props.dialog}/>
+                <HiringList hiring={hiring ?? []} dialog={(h) => props.dialog(h)}/>
             </div>
         </div>
     );
@@ -71,7 +71,7 @@ function HiringList(props) {
         <ListItem
             key={h.key}
             hire={h}
-            dialog={props.dialog}
+            dialog={(h) => props.dialog(h)}
             onApprove={onApprove}
             onDelete={onDelete}/>
     );
@@ -86,13 +86,13 @@ function ListItem(props) {
     return (
         <li className="Teacher_Hiring_Item">
             <div className="Teacher_Hiring_Item_Left">
-                <p className="Teacher_Hiring_Item_Text_Normal">{h.estado}</p>
+                <p className="Teacher_Hiring_Item_Text_Normal">Pendiente</p>
                 <p className="Teacher_Hiring_Item_Text_Bold">{h.nombre}</p>
                 <p className="Teacher_Hiring_Item_Text_Light">{h.alumno}</p>
             </div>
             <div className="Teacher_Home_Item_Right">
                 <HiringAction
-                    onClick={props.dialog}
+                    onClick={() => props.dialog(h)}
                     image="phone"
                     alt="phone"/>
                 <HiringAction

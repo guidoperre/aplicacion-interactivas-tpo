@@ -98,6 +98,7 @@ export function StudentClass() {
                     handleClickOpen={handleClickOpen}
                     handleClose={handleClose}
                     key={location.state.key ?? -1}
+                    profesorKey={course.profesorKey}
                     materia={course.nombre}/>
             </div>
         </div>

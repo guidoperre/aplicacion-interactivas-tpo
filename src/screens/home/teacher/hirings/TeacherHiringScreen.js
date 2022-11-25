@@ -7,8 +7,10 @@ import {HomeHeader} from "../../header/HomeHeader";
 
 export default function TeacherHiringScreen() {
     const [open, setOpen] = React.useState(false);
+    const [hiring, setHiring] = React.useState({});
 
-    const handleClickOpen = () => {
+    const handleClickOpen = (h) => {
+        setHiring(h)
         setOpen(true);
     };
 
@@ -24,7 +26,8 @@ export default function TeacherHiringScreen() {
             <ContactDialog
                 open={open}
                 handleClickOpen={handleClickOpen}
-                handleClose={handleClose}/>
+                handleClose={handleClose}
+                h={hiring}/>
         </div>
     );
 }
