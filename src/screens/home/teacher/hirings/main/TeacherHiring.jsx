@@ -140,11 +140,13 @@ async function deleteRequest(token, h) {
 }
 
 async function approveRequest(token, h) {
+    console.log(h.studentKey)
     const response = await fetch(`http://localhost:4000/hiring/approve`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
         body: JSON.stringify({
             key: h.key,
+            studentKey: h.studentKey,
             email: h.email,
             nombre: h.nombre
         })
