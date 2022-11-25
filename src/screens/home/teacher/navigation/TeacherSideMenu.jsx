@@ -1,8 +1,34 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import './TeacherSideMenu.css';
+import {useSelector} from "react-redux";
+import {toast} from "react-toastify";
 
 export default function TeacherSideMenu(props) {
+    const userAuth = useSelector((state) => state.userAuth);
+    const [user, setUser] = React.useState({});
+    let classesStyle
+    let hiringStyle
+    let commentsStyle
+    let userType
+
+    useEffect(() => {
+        try {
+            getUserInfo(userAuth.token).then(r => {
+                console.log(r.content);
+                if(r.status !== 200) {
+                    toast.error('No pudimos obtener su informacion de usuario (' + r.status + ')' , {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    });
+                } else {
+                    setUser(r.content.data)
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [false]);
+
     const onClassesClicked = () => {
         window.location.href='/home/teacher/classes'
     };
@@ -12,10 +38,6 @@ export default function TeacherSideMenu(props) {
     const onCommentsClicked = () => {
         window.location.href='/home/teacher/comments'
     };
-
-    let classesStyle
-    let hiringStyle
-    let commentsStyle
 
     switch (props.titleSelected) {
         case 1:
@@ -40,15 +62,21 @@ export default function TeacherSideMenu(props) {
             break;
     }
 
+    if (user.type === "teacher") {
+        userType = "Profesor"
+    } else if (user.type === "student"){
+        userType = "Estudiante"
+    }
+
     return(
         <div className="Teacher_Navigator">
             <div className="Teacher_Navigator_Header">
                 <img className="Teacher_Navigator_Image"
-                     src={process.env.PUBLIC_URL + '/class/profesor.jpg'}
+                     src={process.env.PUBLIC_URL + '/class/teacher.png'}
                      alt="" />
                 <div className="Teacher_Navigator_Header_Content">
-                    <p className="Teacher_Navigator_Header_Title">Juan Ramirez</p>
-                    <p className="Teacher_Navigator_Header_Subtitle">Profesor</p>
+                    <p className="Teacher_Navigator_Header_Title">{user.name}</p>
+                    <p className="Teacher_Navigator_Header_Subtitle">{userType}</p>
                 </div>
 
             </div>
@@ -64,4 +92,12 @@ export default function TeacherSideMenu(props) {
             <p className="Navigator_Footer_Text">2022 Institular ®. Reservados todos los derechos.</p>
         </div>
     );
+}
+
+async function getUserInfo(token) {
+    const response = await fetch(`http://localhost:4000/users/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    })
+    return {status: response.status, content: await response.json()};
 }
