@@ -181,7 +181,7 @@ function ClassAction(props) {
 }
 
 async function getTeacherClasses(token) {
-    const response = await fetch(`http://localhost:4000/teacherClasses/`, {
+    const response = await fetch(`http://localhost:4000/teacherClasses/all`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'x-access-token': token}
     })

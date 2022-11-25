@@ -26,6 +26,7 @@ export default function ClassDialog(props) {
     const [duration, setDuration] = useState("")
     const [frequency, setFrequency] = useState("")
     const [price, setPrice] = useState("")
+    const [description, setDescription] = useState("")
 
     const onAddClassClick = () => {
         try {
@@ -34,7 +35,8 @@ export default function ClassDialog(props) {
                 subject: subject,
                 duration: duration,
                 frequency: frequency,
-                price: price
+                price: price,
+                description: description
             }).then(r => {
                 if(r.status !== 201) {
                     toast.error('No pudimos agregar la clase (' + r.status + ')' , {
@@ -91,6 +93,14 @@ export default function ClassDialog(props) {
                         placeholder={"100.00"}
                         text={price}
                         onTextChange={(e) => setPrice(e.target.value)}/>
+                    <label className="Class_Comment_Dialog_Label">
+                        <p className="Class_Comment_Dialog_Label_Title">Descripcion</p>
+                        <textarea
+                            className="Class_Comment_TextArea"
+                            placeholder="En la clase vamos a ver..."
+                            value = {description}
+                            onChange={(e) => setDescription(e.target.value)}/>
+                    </label>
                 </div>
             </DialogContent>
             <DialogActions>
@@ -103,10 +113,19 @@ export default function ClassDialog(props) {
 }
 
 async function addClass(token, course) {
+    const teacherInformation = await (await fetch(`http://localhost:4000/teacher/`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    })).json()
+    const data = teacherInformation.data
     const response = await fetch(`http://localhost:4000/teacherClasses/create`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
         body: JSON.stringify({
+            profesorKey: data.key,
+            profesor: data.name,
+            experiencia: data.experience,
+            descripcion: course.description,
             nombre: course.name,
             materia: course.subject,
             duracion: course.duration,
