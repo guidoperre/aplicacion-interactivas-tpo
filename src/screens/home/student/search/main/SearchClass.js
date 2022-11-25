@@ -9,6 +9,7 @@ import {useNavigate} from "react-router-dom";
 export function SearchClass() {
     const userAuth = useSelector((state) => state.userAuth);
     const [classes, setClasses] = React.useState([]);
+    const [filteredClasses, setFilteredClasses] = React.useState([]);
     const [filters, setFilters] = React.useState({});
     const [course, setClass] = React.useState(undefined);
     const [classType, setClassType] = React.useState(undefined);
@@ -25,6 +26,7 @@ export function SearchClass() {
                 } else {
                     console.log(r.content.data.docs);
                     setClasses(r.content.data.docs)
+                    setFilteredClasses(r.content.data.docs)
                 }
             })
         } catch (error) {
@@ -75,7 +77,7 @@ export function SearchClass() {
     }, [false]);
 
     const searchClass = () => {
-        setClasses(
+        setFilteredClasses(
             () => classes
                 .filter((item, _) => {
                     return (course === undefined || item.materia === course) &&
@@ -86,7 +88,7 @@ export function SearchClass() {
         )
     }
 
-    const listItems = (classes ?? []).map((c) =>
+    const listItems = (filteredClasses ?? []).map((c) =>
         <ListItem key={c.key} class={c}/>
     );
 
