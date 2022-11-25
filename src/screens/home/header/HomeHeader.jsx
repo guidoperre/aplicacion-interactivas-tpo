@@ -1,9 +1,13 @@
 import React from "react";
 import './HomeHeader.css';
 import {Logo} from "../../../components/logo/Logo";
+import {setToken} from "../../../auth/userAuthSlice.ts";
+import {useDispatch} from "react-redux";
 
 export function HomeHeader() {
+    const dispatch = useDispatch();
     const onLogoutClicked = () => {
+        dispatch(setToken(null));
         window.location.href='/login'
     };
 
