@@ -43,8 +43,8 @@ function HiringList(props) {
         setItems(hiring)
     }, [hiring]);
 
-    const onDelete = (key) => {
-        deleteRequest(userAuth.token, key).then(r => {
+    const onDelete = (h) => {
+        deleteRequest(userAuth.token, h).then(r => {
             if(r.status !== 200) {
                 toast.error('No pudimos rechazar la peticion (' + r.status + ')' , {
                     position: toast.POSITION.BOTTOM_LEFT
@@ -55,8 +55,8 @@ function HiringList(props) {
         })
     };
 
-    const onApprove = (key) => {
-        approveRequest(userAuth.token, key).then(r => {
+    const onApprove = (h) => {
+        approveRequest(userAuth.token, h).then(r => {
             if(r.status !== 200) {
                 toast.error('No pudimos aceptar la peticion (' + r.status + ')' , {
                     position: toast.POSITION.BOTTOM_LEFT
@@ -96,11 +96,11 @@ function ListItem(props) {
                     image="phone"
                     alt="phone"/>
                 <HiringAction
-                    onClick={() => props.onApprove(h.key)}
+                    onClick={() => props.onApprove(h)}
                     image="approve"
                     alt="approve"/>
                 <HiringAction
-                    onClick={() => props.onDelete(h.key)}
+                    onClick={() => props.onDelete(h)}
                     image="cancel"
                     alt="cancel"/>
             </div>
@@ -126,20 +126,28 @@ async function getTeacherHiring(token) {
     return {status: response.status, content: await response.json()};
 }
 
-async function deleteRequest(token, id) {
+async function deleteRequest(token, h) {
     const response = await fetch(`http://localhost:4000/hiring/`, {
-        method: 'delete',
+        method: 'DELETE',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: JSON.stringify({key: id})
+        body: JSON.stringify({
+            key: h.key,
+            email: h.email,
+            nombre: h.nombre
+        })
     })
     return {status: response.status};
 }
 
-async function approveRequest(token, id) {
-    const response = await fetch(`http://localhost:4000/hiring/`, {
-        method: 'delete',
+async function approveRequest(token, h) {
+    const response = await fetch(`http://localhost:4000/hiring/approve`, {
+        method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: JSON.stringify({key: id})
+        body: JSON.stringify({
+            key: h.key,
+            email: h.email,
+            nombre: h.nombre
+        })
     })
     return {status: response.status};
 }
