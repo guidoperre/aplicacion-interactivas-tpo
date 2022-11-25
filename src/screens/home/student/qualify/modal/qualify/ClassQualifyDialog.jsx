@@ -66,7 +66,7 @@ export default function ClassQualifyDialog(props) {
             aria-labelledby="customized-dialog-title"
             open={props.open}>
             <DialogTitle sx={{ marginTop: 2, marginLeft: 4, p: 0 }}>
-                <p className="Modal_Title">Calificaión</p>
+                <p className="Modal_Title">Calificación</p>
             </DialogTitle>
             <DialogContent>
                 <div className="Class_Qualify_Dialog_Content">
@@ -96,10 +96,12 @@ async function getQualifications(token) {
 }
 
 async function postQualification(token, qualification, courseKey) {
-    const response = await fetch(`http://localhost:4000/qualification/create`, {
-        method: 'GET',
+    debugger;
+    const response = await fetch(`http://localhost:4000/studentClasses/qualify`, {
+        method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: JSON.stringify({qualification: qualification})
+        body: JSON.stringify({qualify: qualification, keyClass: courseKey})
     })
+    debugger;
     return {status: response.status, content: await response.json()};
 }
