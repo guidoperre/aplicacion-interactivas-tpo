@@ -97,7 +97,8 @@ export function StudentClass() {
                     open={open}
                     handleClickOpen={handleClickOpen}
                     handleClose={handleClose}
-                    key={course.key}/>
+                    key={location.state.key ?? -1}
+                    materia={course.nombre}/>
             </div>
         </div>
     )

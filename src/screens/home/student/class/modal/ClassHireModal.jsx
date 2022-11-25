@@ -33,15 +33,16 @@ export default function ClassHireDialog(props) {
             hireClass(
                 userAuth.token,
                 {
-                    key: props.key,
-                    nombre: name,
+                    classKey: props.key,
+                    nombre: props.materia,
+                    alumno: name,
                     email: email,
                     telefono: phone,
-                    hora_de_contacto: contact,
+                    horaContacto: contact,
                     comentario: comment
                 }
             ).then(r => {
-                if(r.status !== 200) {
+                if(r.status !== 201) {
                     toast.error('No pudimos contratar la clase (' + r.status + ')' , {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
@@ -112,7 +113,8 @@ export default function ClassHireDialog(props) {
 }
 
 async function hireClass(token, course) {
-    const response = await fetch(`http://localhost:4000/studentClass/create`, {
+    console.log(course)
+    const response = await fetch(`http://localhost:4000/hiring/create`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
         body: JSON.stringify(course)

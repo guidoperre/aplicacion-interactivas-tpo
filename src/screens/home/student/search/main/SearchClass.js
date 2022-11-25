@@ -86,7 +86,7 @@ export function SearchClass() {
         )
     }
 
-    const listItems = classes.map((c) =>
+    const listItems = (classes ?? []).map((c) =>
         <ListItem key={c.key} class={c}/>
     );
 
@@ -149,7 +149,7 @@ function ListItem(props) {
 }
 
 async function getClasses(token) {
-    const response = await fetch(`http://localhost:4000/teacherClasses/`, {
+    const response = await fetch(`http://localhost:4000/teacherClasses/all`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'x-access-token': token}
     })
