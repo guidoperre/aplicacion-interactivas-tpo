@@ -34,6 +34,7 @@ export default function ClassHireDialog(props) {
                 userAuth.token,
                 {
                     classKey: props.key,
+                    profesorKey: props.profesorKey,
                     nombre: props.materia,
                     alumno: name,
                     email: email,
