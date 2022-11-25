@@ -21,7 +21,7 @@ export function StudentClasses() {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                 } else {
-                    setCourses(r.content.data.docs)
+                    setCourses(r.content.data)
                 }
             })
         } catch (error) {
@@ -92,8 +92,8 @@ function ListItem(props) {
     return (
         <li className="Student_Class_Qualify_Item">
             <div className="Student_Class_Qualify_Left">
-                <p className="Student_Class_Qualify_Text_Bold">{c.materiaNombre}</p>
-                <p className="Student_Class_Qualify_Text_Normal"><b>Frecuencia: </b>{c.frecuenciaDescripcion}</p>
+                <p className="Student_Class_Qualify_Text_Bold">{c.materia}</p>
+                <p className="Student_Class_Qualify_Text_Normal"><b>Frecuencia: </b>{c.frecuencia}</p>
             </div>
             <div className="Student_Class_Qualify_Right" >
                 <img className="Student_Class_Qualify_Image"
