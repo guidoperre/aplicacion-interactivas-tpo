@@ -106,7 +106,7 @@ function ListItem(props) {
 
     const handlePublishState = () => {
         if (published) {
-            pauseClass(userAuth.token, c.id).then(r => {
+            pauseClass(userAuth.token, c.key).then(r => {
                 if(r.status !== 200) {
                     toast.error('No pudimos pausar la clase (' + r.status + ')' , {
                         position: toast.POSITION.BOTTOM_LEFT
@@ -116,7 +116,7 @@ function ListItem(props) {
                 }
             })
         } else {
-            playClass(userAuth.token, c.id).then(r => {
+            playClass(userAuth.token, c.key).then(r => {
                 if(r.status !== 200) {
                     toast.error('No pudimos empezar la clase (' + r.status + ')' , {
                         position: toast.POSITION.BOTTOM_LEFT
@@ -189,6 +189,7 @@ async function getTeacherClasses(token) {
 }
 
 async function pauseClass(token, id) {
+    console.log(id)
     const response = await fetch(`http://localhost:4000/teacherClasses/pause`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
@@ -198,6 +199,7 @@ async function pauseClass(token, id) {
 }
 
 async function playClass(token, id) {
+    console.log(id)
     const response = await fetch(`http://localhost:4000/teacherClasses/start`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},

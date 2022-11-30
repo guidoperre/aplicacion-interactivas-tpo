@@ -24,7 +24,7 @@ export default function ClassCommentDialog(props) {
     const onCommentClick = () => {
         try {
             postComment(userAuth.token, comment, props.selectedClass).then(r => {
-                if(r.status !== 200) {
+                if(r.status !== 201) {
                     toast.error('No pudimos publicar el comentario (' + r.status + ')' , {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
