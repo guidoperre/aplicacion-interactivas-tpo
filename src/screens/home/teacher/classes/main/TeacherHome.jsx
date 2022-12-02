@@ -27,8 +27,8 @@ export function TeacherHome(props) {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                 } else {
-                    console.log(r.content.data.docs)
-                    setClasses(r.content.data.docs)
+                    console.log(r.content.data)
+                    setClasses(r.content.data)
                 }
             })
         } catch (error) {
@@ -92,8 +92,8 @@ function ListItem(props) {
     let publishedIcon
 
     useEffect(() => {
-        setPublished(props.activo ?? true)
-    }, [props.activo]);
+        setPublished(c.activo ?? true)
+    }, [c.activo]);
 
 
     const handleClickOpen = () => {
@@ -188,22 +188,22 @@ async function getTeacherClasses(token) {
     return {status: response.status, content: await response.json()};
 }
 
-async function pauseClass(token, id) {
-    console.log(id)
+async function pauseClass(token, key) {
+    console.log(key)
     const response = await fetch(`http://localhost:4000/teacherClasses/pause`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: JSON.stringify({key: id})
+        body: JSON.stringify({key: key})
     })
     return {status: response.status, content: await response.json()};
 }
 
-async function playClass(token, id) {
-    console.log(id)
+async function playClass(token, key) {
+    console.log(key)
     const response = await fetch(`http://localhost:4000/teacherClasses/start`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: JSON.stringify({key: id})
+        body: JSON.stringify({key: key})
     })
     return {status: response.status, content: await response.json()};
 }
