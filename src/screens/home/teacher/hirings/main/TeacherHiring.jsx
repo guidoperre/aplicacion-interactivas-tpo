@@ -132,38 +132,25 @@ async function deleteRequest(token, h) {
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
         body: JSON.stringify({
             key: h.key,
-            classKey: h.key,
-            studentKey: h.studentKey,
-            alumno: h.alumno,
-            profesorKey: h.profesorKey,
             email: h.email,
-            nombre: h.nombre,
-            comentario: h.comentario,
-            horaContacto: h.horaContacto,
-            telefono: h.telefono
+            nombre: h.nombre
         })
     })
-    return {status: response.status, content: await response.json()};
+    return {status: response.status};
 }
 
 async function approveRequest(token, h) {
-    console.log(h);
-    debugger;
+    console.log(h.studentKey)
     const response = await fetch(`http://localhost:4000/hiring/approve`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
         body: JSON.stringify({
             key: h.key,
-            classKey: h.key,
+            classKey: h.classKey,
             studentKey: h.studentKey,
-            alumno: h.alumno,
-            profesorKey: h.profesorKey,
             email: h.email,
-            nombre: h.nombre,
-            comentario: h.comentario,
-            horaContacto: h.horaContacto,
-            telefono: h.telefono
+            nombre: h.nombre
         })
     })
-    return {status: response.status, content: await response.json()};
+    return {status: response.status};
 }
