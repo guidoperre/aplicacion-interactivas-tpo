@@ -146,6 +146,7 @@ async function approveRequest(token, h) {
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
         body: JSON.stringify({
             key: h.key,
+            classKey: h.classKey,
             studentKey: h.studentKey,
             email: h.email,
             nombre: h.nombre
