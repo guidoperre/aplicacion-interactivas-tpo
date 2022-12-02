@@ -12,6 +12,7 @@ import TeacherCommentScreen from "../screens/home/teacher/comments/TeacherCommen
 import StudentClassesScreen from "../screens/home/student/qualify/StudentClassesScreen";
 import SearchClassScreen from "../screens/home/student/search/SearchClassScreen";
 import StudentClassScreen from "../screens/home/student/class/StudentClassScreen";
+import RecoverScreen from "../screens/recover/RecoverScreen";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
     {
         path: '/register/teacher',
         element: <TeacherRegisterScreen/>
+    },
+    {
+        path: '/recoverPassword',
+        element: <RecoverScreen/>
     },
     {
         path: '/forgotpassword',

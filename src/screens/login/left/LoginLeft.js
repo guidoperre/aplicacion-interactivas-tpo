@@ -38,7 +38,7 @@ export function LoginLeft() {
         login(email, password).then(r => {
             console.log(r)
             if(r.status !== 201) {
-                toast.error(r.message, {
+                toast.error("El usuario y/o contraseña es incorrecto", {
                     position: toast.POSITION.BOTTOM_LEFT
                 });
             } else {
