@@ -8,7 +8,7 @@ import {TextInput} from "../../../../../components/input/single/TextInput";
 import DialogActions from "@mui/material/DialogActions";
 import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -20,6 +20,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function ClassHireDialog(props) {
+    const location = useLocation();
     const userAuth = useSelector((state) => state.userAuth);
     const navigation = useNavigate();
     const [name, setName] = React.useState("");
@@ -33,7 +34,7 @@ export default function ClassHireDialog(props) {
             hireClass(
                 userAuth.token,
                 {
-                    classKey: props.key,
+                    classKey: location.state.key,
                     profesorKey: props.profesorKey,
                     nombre: props.materia,
                     alumno: name,
