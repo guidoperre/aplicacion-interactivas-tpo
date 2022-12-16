@@ -69,10 +69,11 @@ export default function ClassCommentDialog(props) {
 }
 
 async function postComment(token, comment, courseKey) {
+    debugger;
     const response = await fetch(`http://localhost:4000/comments/create`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
-        body: JSON.stringify({comment: comment})
+        body: JSON.stringify({comment: comment, classKey: courseKey})
     })
     return {status: response.status, content: await response.json()};
 }
